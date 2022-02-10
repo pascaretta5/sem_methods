@@ -10,4 +10,4 @@ Backlog: https://trello.com/b/OAWpc20Q/backlog
 [![LICENSE](https://img.shields.io/github/license/40511028/sem.svg?style=flat-square)](https://github.com/40511028/sem/blob/master/LICENSE)
 
 # Software Engineering Methods
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/40511028/SEM_GROUP22/Checkout/develop?style=flat-square)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/40511028/SEM_GROUP22/A%20workflow%20for%20my%20Hello%20World%20App/develop?style=flat-square)
