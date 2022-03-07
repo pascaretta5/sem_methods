@@ -117,7 +117,7 @@ public class App
     Parameters: ArrayList<Country> countries -- takes an array with all the cuontries.
     Return type: VOID
     */
-    public void printCountriesPop(ArrayList<Country> countries)
+    /*public void printCountriesPop(ArrayList<Country> countries)
     {
         // Print header
         System.out.println(String.format("%-10s %-25s", "Population", "Name"));
@@ -128,7 +128,7 @@ public class App
                     String.format("%-10s %-25s", c.population, c.name);
             System.out.println(c_string);
         }
-    }
+    }*/
     public static void main(String[] args)
     {
         // Create new Application
@@ -137,11 +137,12 @@ public class App
         // Connect to database
         a.connect();
 
-        // ---------- Issue #1 ----------
+        /* ---------- Issue #1 ----------
         //call method to execute the query and get the population
         ArrayList<Country> countries = a.getCountryPopulationLargeToSmall();
         //print Name and Population in console
-        a.printCountriesPop(countries);
+        a.printCountriesPop(countries);*/
+
 
         // Disconnect from database
         a.disconnect();
