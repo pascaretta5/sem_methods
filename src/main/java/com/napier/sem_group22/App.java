@@ -36,7 +36,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database   ---- localhost:33060 -- db:3306
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -70,12 +70,13 @@ public class App
             }
         }
     }
-    /* ----------- getCountryPopulationLargeToSmall() -- Issue #1 ---------------
-    Objective: get the name and the population from the workd database in order of lagest to smallest population.
-    Parameters: None
-    Return Type: ArrayList<Country> -- returns an aray with all the contries
+
+    /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
+    Objective: get all the countries in a determined region ordered from largest to smallest.
+    Parameters: String region -- specified region.
+    Return type: ArrayList<Country>
     */
-    public ArrayList<Country> getCountryPopulationLargeToSmall() {
+    public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
 
         try
         {
@@ -84,9 +85,10 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT Population, Name "
-                    +"FROM country "
-                    + "ORDER BY Population DESC;";
+                    "SELECT SurfaceArea, Name "
+                            +"FROM country "
+                            +"WHERE Region LIKE '" + region + "' "
+                            + "ORDER BY SurfaceArea DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
@@ -94,17 +96,18 @@ public class App
             //Create Country ArrayList
             ArrayList<Country> countries = new ArrayList<Country>();
 
-            // Check one is returned
+            // Check one is returned and go through all countries to get the details
             while (rset.next())
             {
                 Country count = new Country();
+
                 count.name = rset.getString("Name");
-                count.population = rset.getInt("Population");
-                countries.add(count);
+                count.surface_area = rset.getInt("SurfaceArea");
+                countries.add(count); // add country in ArrayList<Country> countries
             }
-            return countries;
+            return countries; // return ArrayList
         }
-        catch (Exception e)
+        catch (Exception e) //no country found
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get countries population");
@@ -112,36 +115,41 @@ public class App
         }
     }
 
-    /* ----------- printCountriesPop(ArrayList<Country> countries) ---------------
-    Objective: print columns names and all the data from the countries(name, population) in the ArrayList.
-    Parameters: ArrayList<Country> countries -- takes an array with all the cuontries.
-    Return type: VOID
-    */
-    /*public void printCountriesPop(ArrayList<Country> countries)
+    /* ----------- printCountries(ArrayList<Country> countries) ---------------
+   Objective: print all the countries in the ArrayList.
+   Parameters: ArrayList<Country> countries -- list of countries to be printed
+   Return type: VOID
+   */
+    public void printCountries(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-10s %-25s", "Population", "Name"));
+        System.out.println(String.format("%-10s %-15s", "SurfaceArea", "Name"));
         // Loop over all employees in the list
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-10s %-25s", c.population, c.name);
+                    String.format("%-10s %-15s", c.surface_area, c.name);
             System.out.println(c_string);
         }
-    }*/
+    }
+
+
     public static void main(String[] args)
     {
         // Create new Application
         App a = new App();
 
-        // Connect to database
+        // Connect to databasea
         a.connect();
 
-        /* ---------- Issue #1 ----------
-        //call method to execute the query and get the population
-        ArrayList<Country> countries = a.getCountryPopulationLargeToSmall();
-        //print Name and Population in console
-        a.printCountriesPop(countries);*/
+        //------------------------------- Issue #3 --------------------------------
+        // the user can declare any region that they want
+        String region = "Caribbean";
+        //get all countries from that region from largest to smallest area
+        ArrayList<Country> countries = a.getCountryByRegionLargeToSmall(region);
+        //print countries and column names
+        a.printCountries(countries);
+
 
 
         // Disconnect from database
