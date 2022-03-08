@@ -1,6 +1,12 @@
+/*
+* Country class with all the attributes/columns in the database that the country table has
+* Updates:
+* - Create class, add the attributes 07/08/22 by Sara.
+ */
 package com.napier.sem_group22;
 
 public class Country {
+
     public String code;
 
     public String name;
