@@ -1,3 +1,9 @@
+/*
+Author: Sara Hussein Celda
+Matric num: 40496531
+Date: 07/03/22
+This App has the necessary code to complete the issue #3.
+*/
 package com.napier.sem_group22;
 
 import java.sql.*;
@@ -28,7 +34,7 @@ public class App
         }
 
         int retries = 10;
-        for (int i = 0; i < retries; ++i)
+        for (int i = 0; i < retries; ++i) //try to connect to database 10 times while the database is running
         {
             System.out.println("Connecting to database...");
             try
@@ -40,7 +46,7 @@ public class App
                 System.out.println("Successfully connected");
                 break;
             }
-            catch (SQLException sqle)
+            catch (SQLException sqle) //cant connect to database
             {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
@@ -71,10 +77,11 @@ public class App
         }
     }
 
-    /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
-    Objective: get all the countries in a determined region ordered from largest to smallest.
-    Parameters: String region -- specified region.
-    Return type: ArrayList<Country>
+    /** ----------- getCountryByRegionLargeToSmall(String region) ---------------
+    *
+    * Objective: get all the countries in a determined region ordered from largest to smallest.
+    * Parameters: String region -- specified region.
+    * Return type: ArrayList<Country>
     */
     public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
 
@@ -115,11 +122,11 @@ public class App
         }
     }
 
-    /* ----------- printCountries(ArrayList<Country> countries) ---------------
-   Objective: print all the countries in the ArrayList.
-   Parameters: ArrayList<Country> countries -- list of countries to be printed
-   Return type: VOID
-   */
+    /** ----------- printCountries(ArrayList<Country> countries) ---------------
+     * Objective: print all the countries in the ArrayList.
+     * Parameters: ArrayList<Country> countries -- list of countries to be printed
+     * Return type: VOID
+     */
     public void printCountries(ArrayList<Country> countries)
     {
         // Print header
