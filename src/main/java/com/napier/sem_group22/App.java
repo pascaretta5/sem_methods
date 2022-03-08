@@ -1,3 +1,10 @@
+/*
+ * Author: Sara Hussein Celda
+ * Matric Num: 40496531
+ * Date: 08/03/22
+ * App with code to get data for issue #3. The issue should replace the region variable with the region that they desire to
+ * get data from.
+ */
 package com.napier.sem_group22;
 
 import java.sql.*;
