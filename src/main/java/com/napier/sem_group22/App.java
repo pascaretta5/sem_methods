@@ -36,7 +36,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database   ---- localhost:33060 -- db:3306
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -76,7 +76,7 @@ public class App
     Parameters: String region -- specified region.
     Return type: ArrayList<Country>
     */
-    public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
+    public ArrayList<Country> getCountryByContinentLargeToSmall(String continent) {
 
         try
         {
@@ -85,10 +85,10 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT SurfaceArea, Name "
+                    "SELECT Population, Name "
                             +"FROM country "
-                            +"WHERE Region LIKE '" + region + "' "
-                            + "ORDER BY SurfaceArea DESC;";
+                            +"WHERE Continent LIKE '" + continent + "' "
+                            + "ORDER BY Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
@@ -102,7 +102,7 @@ public class App
                 Country count = new Country();
 
                 count.name = rset.getString("Name");
-                count.surface_area = rset.getInt("SurfaceArea");
+                count.population = rset.getInt("Population");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
@@ -123,12 +123,12 @@ public class App
     public void printCountries(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-10s %-15s", "SurfaceArea", "Name"));
+        System.out.println(String.format("%-10s %-15s", "Population", "Name"));
         // Loop over all employees in the list
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-10s %-15s", c.surface_area, c.name);
+                    String.format("%-10s %-15s", c.population, c.name);
             System.out.println(c_string);
         }
     }
@@ -144,9 +144,9 @@ public class App
 
         //------------------------------- Issue #3 --------------------------------
         // the user can declare any region that they want
-        String region = "Caribbean";
+        String continent = "Europe";
         //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getCountryByRegionLargeToSmall(region);
+        ArrayList<Country> countries = a.getCountryByContinentLargeToSmall(continent);
         //print countries and column names
         a.printCountries(countries);
 
