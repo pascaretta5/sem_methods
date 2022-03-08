@@ -1,3 +1,8 @@
+/**
+* Author: Sara Hussein Celda
+* MAtric Num: 40496531
+* App to with the code to complete Issue #1.
+*/
 package com.napier.sem_group22;
 
 import java.sql.*;
@@ -28,7 +33,7 @@ public class App
         }
 
         int retries = 10;
-        for (int i = 0; i < retries; ++i)
+        for (int i = 0; i < retries; ++i) //for loop to try to connect to the database 10 times 
         {
             System.out.println("Connecting to database...");
             try
