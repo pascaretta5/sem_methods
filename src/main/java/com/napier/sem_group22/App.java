@@ -1,6 +1,6 @@
 /*
- * Authors: Sara Hussein Celda, Bruno Pascaretta Guerra
- * Matric Num: 40496531, 40536560
+ * Authors: Sara Hussein Celda, Bruno Pascaretta Guerra, Andrej Legen, Andrei Vasiliu
+ * Matric Num: 40496531, 40536560, 40288595, 40511028
  * Date: 08/03/22
  * App with code to get data for issue #3. The issue should replace the region variable with the region that they desire to
  * get data from.
