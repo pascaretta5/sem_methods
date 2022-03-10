@@ -32,4 +32,9 @@ public class Country {
     public String head_of_state;
 
     public int capital;
+
+    public String city_name;
+
+    public String district;
+
 }
