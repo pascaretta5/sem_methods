@@ -1,8 +1,8 @@
 /*
- * Author: Sara Hussein Celda
- * Matric Num: 40496531
+ * Author: Sara, Bruno
  * Date: 10/03/22
- * App with code to get data for issue #4. The top N (given N by the user in the terminal)-
+ * App with code to get data for issue #1, #2,#3, #4. Issue #4 method is called in main method,
+ *  The top N (given N by the user in the terminal)
  * populated countries in the world where N is provided by the user.
  * get data from.
  */
