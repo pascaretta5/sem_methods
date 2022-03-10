@@ -1,7 +1,7 @@
 /*
  * Author: Sara Hussein Celda
  * Matric Num: 40496531
- * Date: 09/03/22
+ * Date: 10/03/22
  * App with code to get data for issue #4. The top N (given N by the user in the terminal)-
  * populated countries in the world where N is provided by the user.
  * get data from.
@@ -220,8 +220,9 @@ public class App
 
             // Create string for SQL statement
             String strThreeBiggestPopByCont =
-                    "SELECT x.Population, x.Continent, x.Name "
-                            +"FROM country x WHERE x.name IN (SELECT * FROM (SELECT y.Name FROM country y WHERE y.Continent = x.Continent ORDER BY Population DESC LIMIT " + N + ") z) ORDER BY x.Continent;";
+                    "SELECT x.Code, x.Population, x.Continent, x.Name, x.Region, city.Name "
+                            +"FROM country x  JOIN city ON x.Capital = city.ID " +
+                            "WHERE x.name IN (SELECT * FROM (SELECT y.Name FROM country y WHERE y.Continent = x.Continent ORDER BY Population DESC LIMIT " + N + ") z) ORDER BY x.Continent;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strThreeBiggestPopByCont);
@@ -235,9 +236,12 @@ public class App
                 Country count = new Country();
 
 
+                count.code = rset.getString("Code");
                 count.population = rset.getInt("Population");
                 count.name = rset.getString("Name");
                 count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
@@ -258,16 +262,15 @@ public class App
     public void printCountriesIssue4(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-10s %-15s %-20s", "Population", "Continent", "Name"));
+        System.out.println(String.format("%-10s %-15s %-20s %-25s %-30s %-35s", "Code", "Population", "Continent", "Name", "Region", "Capital"));
         // Loop over all employees in the list
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-10s %-15s %-20s", c.population, c.continent, c.name);
+                    String.format("%-10s %-15s %-20s %-25s %-30s %-35s", c.code, c.population, c.continent, c.name, c.region, c.capitalName);
             System.out.println(c_string);
         }
     }
-
 
     public static void main(String[] args)
     {
@@ -303,10 +306,14 @@ public class App
         System.out.println("Please enter the number of countries that you wish to get Updated : ");
         String N = scanner.nextLine();*/
 
+        //sample input
         String N = "4";
+        //create array with all the countries
         ArrayList<Country> countries = a.getThreeBiggestCountries(N);
-        //print the countries
+        //print the countries report
         a.printCountriesIssue4(countries);
+        //print the countries
+
 
 
 
