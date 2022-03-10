@@ -1,13 +1,13 @@
 /*
-Authors: Sara, Bruno.
-Date last update: 10/03/22
-Issues #1 and #2 code.
+ * Author: Sara, Bruno
+ * Date: 10/03/22
+ * App with code to get data for issue #1, #2, #3.It is called from the main only the Issue #3 for this feature.
+ * The issue should replace the region variable with the region that they desire to get data from.
  */
 package com.napier.sem_group22;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class App
@@ -171,6 +171,55 @@ public class App
         }
     }
 
+    //---------------------------------------Issue #3-------------------------
+    /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
+    Objective: get all the countries in a determined region ordered from largest to smallest.
+    Parameters: String region -- specified region.
+    Return type: ArrayList<Country>
+    */
+    public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
+
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strPopulationLageSmall =
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
+                            +"WHERE Region LIKE '" + region + "' "
+                            + "ORDER BY SurfaceArea DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
+
+            //Create Country ArrayList
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            // Check one is returned and go through all countries to get the details
+            while (rset.next())
+            {
+                Country count = new Country();
+
+                count.name = rset.getString("Name");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+                countries.add(count); // add country in ArrayList<Country> countries
+            }
+            return countries; // return ArrayList
+        }
+        catch (Exception e) //no country found
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries population");
+            return null;
+        }
+    }
+
     /* ----------- printCountries(ArrayList<Country> countries) ---------------
    Objective: print all the countries in the ArrayList.
    Parameters: ArrayList<Country> countries -- list of countries to be printed
@@ -184,7 +233,7 @@ public class App
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-10s %-15s %-20s %-25s %-30s %-35s", c.code, c.population, c.continent,  c.name, c.region, c.capitalName);
+                    String.format("%-10s %-15s %-20s %-25s %-30s %-35s", c.code, c.population, c.continent, c.name, c.region, c.capitalName);
             System.out.println(c_string);
         }
     }
@@ -195,12 +244,14 @@ public class App
         // Create new Application
         App a = new App();
 
-        // Connect to databasea
+        // Connect to database
         a.connect();
 
-        //------------------------------- Issue #2 --------------------------------
-        //get all countries by continent from largest to smallest area
-        ArrayList<Country> countries = a.getCountryByContinentLargeToSmall();
+        //------------------------------- Issue #3 --------------------------------
+        // the user can declare any region that they want
+        String region = "Caribbean";
+        //get all countries from that region from largest to smallest area
+        ArrayList<Country> countries = a.getCountryByRegionLargeToSmall(region);
         //print countries and column names
         a.printCountries(countries);
 
