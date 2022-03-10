@@ -1,11 +1,15 @@
 /*
  * Author: Sara, Bruno
  * Date: 10/03/22
- * App with code to get data for issue #1, #2, #3.It is called from the main only the Issue #3 for this feature.
- * The issue should replace the region variable with the region that they desire to get data from.
+ * App with code to get data for issue #1, #2,#3, #4. Issue #4 method is called in main method,
+ *  The top N (given N by the user in the terminal)
+ * populated countries in the world where N is provided by the user.
+ * get data from.
  */
 package com.napier.sem_group22;
 
+import java.io.InputStreamReader;
+import java.util.Scanner;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -220,7 +224,56 @@ public class App
         }
     }
 
-    /* ----------- printCountries(ArrayList<Country> countries) ---------------
+    //-------------------------------------- Issue #4 functions ---------------------------------------
+    /* ----------- getThreeBiggestCountries(String N) ---------------
+    Objective: get the N countries with the biggest population from each continent.
+    Parameters: String N -- number of countries from each continent.
+    Return type: ArrayList<Country>
+    */
+    public ArrayList<Country> getThreeBiggestCountries(String N) {
+
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strThreeBiggestPopByCont =
+                    "SELECT x.Code, x.Population, x.Continent, x.Name, x.Region, city.Name "
+                            +"FROM country x  JOIN city ON x.Capital = city.ID " +
+                            "WHERE x.name IN (SELECT * FROM (SELECT y.Name FROM country y WHERE y.Continent = x.Continent ORDER BY Population DESC LIMIT " + N + ") z) ORDER BY x.Continent;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strThreeBiggestPopByCont);
+
+            //Create Country ArrayList
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            // Check one is returned and go through all countries to get the details
+            while (rset.next())
+            {
+                Country count = new Country();
+
+
+                count.code = rset.getString("Code");
+                count.population = rset.getInt("Population");
+                count.name = rset.getString("Name");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+                countries.add(count); // add country in ArrayList<Country> countries
+            }
+            return countries; // return ArrayList
+        }
+        catch (Exception e) //no country found
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries population");
+            return null;
+        }
+    }
+
+    /* ----------- printCountriesIssue4(ArrayList<Country> countries) ---------------
    Objective: print all the countries in the ArrayList.
    Parameters: ArrayList<Country> countries -- list of countries to be printed
    Return type: VOID
@@ -238,22 +291,31 @@ public class App
         }
     }
 
-
     public static void main(String[] args)
     {
         // Create new Application
         App a = new App();
 
-        // Connect to database
+        // Connect to databasea
         a.connect();
 
-        //------------------------------- Issue #3 --------------------------------
-        // the user can declare any region that they want
-        String region = "Caribbean";
-        //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getCountryByRegionLargeToSmall(region);
-        //print countries and column names
+
+        // ---------------------------- Issue #4 -------------
+        //get N as input from the terminal
+        /* cant get input from log in docker compose????
+        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+        System.out.println("Please enter the number of countries that you wish to get Updated : ");
+        String N = scanner.nextLine();*/
+
+        //sample input
+        String N = "4";
+        //create array with all the countries
+        ArrayList<Country> countries = a.getThreeBiggestCountries(N);
+        //print the countries report
         a.printCountries(countries);
+        //print the countries
+
+
 
 
 
