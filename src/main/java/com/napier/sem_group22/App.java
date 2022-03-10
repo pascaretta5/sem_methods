@@ -1,3 +1,8 @@
+/*
+Authors: Sara, Bruno.
+Date last update: 10/03/22
+Issues #1 and #2 code.
+ */
 package com.napier.sem_group22;
 
 import java.sql.*;
@@ -72,13 +77,13 @@ public class App
         }
     }
 
-    /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
-    Objective: get all the countries in a determined region ordered from largest to smallest.
-    Parameters: String region -- specified region.
-    Return type: ArrayList<Country>
-    */
-    /* ------------ getCountryByRegionLargeToSmall(string region) METHOD----------
-    public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
+    //---------------------------------------Issue #1-------------------------
+    /* ----------- getCountryPopulationLargeToSmall() ---------------
+   Objective: get all the countries population from largest to smallest.
+   Parameters: NONE
+   Return type: ArrayList<Country> countries -- list of countries to be printed
+   */
+    public ArrayList<Country> getCountryPopulationLargeToSmall() {
 
         try
         {
@@ -87,10 +92,9 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT SurfaceArea, Name "
-                            +"FROM country "
-                            +"WHERE Region LIKE '" + region + "' "
-                            + "ORDER BY SurfaceArea DESC;";
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
+                            + "ORDER BY Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
@@ -98,44 +102,34 @@ public class App
             //Create Country ArrayList
             ArrayList<Country> countries = new ArrayList<Country>();
 
-            // Check one is returned and go through all countries to get the details
+            // Check one is returned
             while (rset.next())
             {
                 Country count = new Country();
-
                 count.name = rset.getString("Name");
-                count.surface_area = rset.getInt("SurfaceArea");
-                countries.add(count); // add country in ArrayList<Country> countries
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+
+                countries.add(count);
             }
-            return countries; // return ArrayList
+            return countries;
         }
-        catch (Exception e) //no country found
+        catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get countries population");
             return null;
         }
     }
-    */
-    /* ----------- printCountries(ArrayList<Country> countries) ---------------
-   Objective: print all the countries in the ArrayList.
-   Parameters: ArrayList<Country> countries -- list of countries to be printed
-   Return type: VOID
+    //---------------------------------------Issue #3-------------------------
+    /* ----------- getCountryByContinentLargeToSmall() ---------------
+   Objective: get all the countries population in a continent from largest to smallest.
+   Parameters: NONE
+   Return type: ArrayList<Country> countries -- list of countries to be printed
    */
-    /*
-    public void printCountries(ArrayList<Country> countries)
-    {
-        // Print header
-        System.out.println(String.format("%-10s %-15s", "SurfaceArea", "Name"));
-        // Loop over all employees in the list
-        for (Country c : countries)
-        {
-            String c_string =
-                    String.format("%-10s %-15s", c.surface_area, c.name);
-            System.out.println(c_string);
-        }
-    }
-    */
     public ArrayList<Country> getCountryByContinentLargeToSmall() {
 
         try
@@ -145,8 +139,8 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT Continent, Name, Population "
-                            +"FROM country "
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
                             + "ORDER BY Continent, Population DESC;";
 
             // Execute SQL statement
@@ -159,9 +153,12 @@ public class App
             while (rset.next())
             {
                 Country count = new Country();
-                count.continent = rset.getString("Continent");
                 count.name = rset.getString("Name");
                 count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
@@ -182,12 +179,12 @@ public class App
     public void printCountries(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-20s %-20s %-20s", "Continent", "Name", "Population"));
+        System.out.println(String.format("%-10s %-15s %-20s %-25s %-30s %-35s", "Code", "Population", "Continent", "Name", "Region", "Capital"));
         // Loop over all employees in the list
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-20s %-20s %-20s", c.continent, c.name, c.population);
+                    String.format("%-10s %-15s %-20s %-25s %-30s %-35s", c.code, c.population, c.continent,  c.name, c.region, c.capitalName);
             System.out.println(c_string);
         }
     }
@@ -201,10 +198,8 @@ public class App
         // Connect to databasea
         a.connect();
 
-        //------------------------------- Issue #3 --------------------------------
-        // the user can declare any region that they want
-
-        //get all countries from that region from largest to smallest area
+        //------------------------------- Issue #2 --------------------------------
+        //get all countries by continent from largest to smallest area
         ArrayList<Country> countries = a.getCountryByContinentLargeToSmall();
         //print countries and column names
         a.printCountries(countries);
