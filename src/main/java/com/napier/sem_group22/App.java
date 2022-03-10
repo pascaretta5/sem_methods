@@ -205,10 +205,11 @@ public class App
 
             // Create string for SQL statement
 
+            //Needed to join both table CITY and COUNTRY in order to retrieve the right capital.
             String strPopulationLageSmall =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
-                            + "WHERE Continent LIKE '" + continent + "' "
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            + "FROM city JOIN country ON CountryCode = Code "
+                            + "WHERE country.capital = city.ID AND Continent LIKE '" + continent +"' "
                             + "ORDER BY Population DESC "
                             + "LIMIT " + limit + "; ";
 
@@ -218,16 +219,16 @@ public class App
             //Create Country ArrayList
             ArrayList<Country> countries = new ArrayList<Country>();
 
-            // Check one is returned and go through all countries to get the details
+            // Check one is returned and go through all countries and to get the details
             while (rset.next())
             {
                 Country count = new Country();
-                count.code = rset.getString("Code");
-                count.region = rset.getString("Region");
-                count.capital = rset.getString("Capital");
-                count.continent = rset.getString("Continent");
-                count.name = rset.getString("Name");
-                count.population = rset.getInt("Population");
+                count.code = rset.getString("country.Code");
+                count.region = rset.getString("country.Region");
+                count.capital = rset.getString("city.Name");
+                count.continent = rset.getString("country.Continent");
+                count.name = rset.getString("country.Name");
+                count.population = rset.getInt("country.Population");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
