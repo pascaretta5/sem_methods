@@ -1,3 +1,9 @@
+/**
+ * Author: Sara Hussein Celda
+ * Matric Num: 40496531
+ * Date of last update:
+ *  - 10/03/22 - Added new attribute capitalName to the class - Sara
+ */
 package com.napier.sem_group22;
 
 public class Country {
@@ -25,5 +31,7 @@ public class Country {
 
     public String head_of_state;
 
-    public int capital;
+    public int capital; //capital ID
+
+    public String capitalName;
 }

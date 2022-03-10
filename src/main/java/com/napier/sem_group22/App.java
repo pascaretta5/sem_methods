@@ -1,6 +1,7 @@
 /**
 * Author: Sara Hussein Celda
-* MAtric Num: 40496531
+* Matric Num: 40496531
+ * Date of last update: 10/03/22
 * App to with the code to complete Issue #1.
 */
 package com.napier.sem_group22;
@@ -76,9 +77,9 @@ public class App
         }
     }
     /* ----------- getCountryPopulationLargeToSmall() -- Issue #1 ---------------
-    Objective: get the name and the population from the workd database in order of lagest to smallest population.
+    Objective: get the name and the population from the work database in order of lagest to smallest population.
     Parameters: None
-    Return Type: ArrayList<Country> -- returns an aray with all the contries
+    Return Type: ArrayList<Country> -- returns an array with all the contries
     */
     public ArrayList<Country> getCountryPopulationLargeToSmall() {
 
@@ -89,8 +90,8 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT Population, Name "
-                    +"FROM country "
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                    +"FROM country JOIN city ON country.Capital = city.ID "
                     + "ORDER BY Population DESC;";
 
             // Execute SQL statement
@@ -105,6 +106,11 @@ public class App
                 Country count = new Country();
                 count.name = rset.getString("Name");
                 count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+
                 countries.add(count);
             }
             return countries;
@@ -125,12 +131,12 @@ public class App
     public void printCountriesPop(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-10s %-25s", "Population", "Name"));
+        System.out.println(String.format("%-10s %-15s %-20s %-25s %-30s %-35s", "Code", "Population", "Continent", "Name", "Region", "Capital"));
         // Loop over all employees in the list
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-10s %-25s", c.population, c.name);
+                    String.format("%-10s %-15s %-20s %-25s %-30s %-35s", c.code, c.population, c.continent, c.name, c.region, c.capitalName);
             System.out.println(c_string);
         }
     }
