@@ -81,11 +81,11 @@ public class App
         }
     }
 
-    //-------------------------------------- Issue #1 funtions ---------------------------------------
-    /* ----------- getCountryPopulationLargeToSmall() -----------------
-   Objective: get the name and the population from the workd database in order of lagest to smallest population.
-   Parameters: None
-   Return Type: ArrayList<Country> -- returns an aray with all the contries
+    //---------------------------------------Issue #1-------------------------
+    /* ----------- getCountryPopulationLargeToSmall() ---------------
+   Objective: get all the countries population from largest to smallest.
+   Parameters: NONE
+   Return type: ArrayList<Country> countries -- list of countries to be printed
    */
     public ArrayList<Country> getCountryPopulationLargeToSmall() {
 
@@ -96,8 +96,8 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT Population, Name "
-                            +"FROM country "
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
                             + "ORDER BY Population DESC;";
 
             // Execute SQL statement
@@ -112,6 +112,11 @@ public class App
                 Country count = new Country();
                 count.name = rset.getString("Name");
                 count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+
                 countries.add(count);
             }
             return countries;
@@ -123,26 +128,54 @@ public class App
             return null;
         }
     }
+    //---------------------------------------Issue #2-------------------------
+    /* ----------- getCountryByContinentLargeToSmall() ---------------
+   Objective: get all the countries population in a continent from largest to smallest.
+   Parameters: NONE
+   Return type: ArrayList<Country> countries -- list of countries to be printed
+   */
+    public ArrayList<Country> getCountryByContinentLargeToSmall() {
 
-    /* ----------- printCountriesPop(ArrayList<Country> countries) ---------------
-    Objective: print columns names and all the data from the countries(name, population) in the ArrayList.
-    Parameters: ArrayList<Country> countries -- takes an array with all the cuontries.
-    Return type: VOID
-    */
-    public void printCountriesPop(ArrayList<Country> countries)
-    {
-        // Print header
-        System.out.println(String.format("%-10s %-25s", "Population", "Name"));
-        // Loop over all employees in the list
-        for (Country c : countries)
+        try
         {
-            String c_string =
-                    String.format("%-10s %-25s", c.population, c.name);
-            System.out.println(c_string);
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strPopulationLageSmall =
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
+                            + "ORDER BY Continent, Population DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
+
+            //Create Country ArrayList
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            // Check one is returned and go through all countries to get the details
+            while (rset.next())
+            {
+                Country count = new Country();
+                count.name = rset.getString("Name");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+                countries.add(count); // add country in ArrayList<Country> countries
+            }
+            return countries; // return ArrayList
+        }
+        catch (Exception e) //no country found
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries population");
+            return null;
         }
     }
 
-    //----------------------------------Issue #3 functions -------------------------------------------
+    //---------------------------------------Issue #3-------------------------
     /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
     Objective: get all the countries in a determined region ordered from largest to smallest.
     Parameters: String region -- specified region.
@@ -157,8 +190,8 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT SurfaceArea, Name "
-                            +"FROM country "
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
                             +"WHERE Region LIKE '" + region + "' "
                             + "ORDER BY SurfaceArea DESC;";
 
@@ -174,7 +207,11 @@ public class App
                 Country count = new Country();
 
                 count.name = rset.getString("Name");
-                count.surface_area = rset.getInt("SurfaceArea");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
@@ -187,24 +224,6 @@ public class App
         }
     }
 
-    /* ----------- printCountries(ArrayList<Country> countries) ---------------
-   Objective: print all the countries in the ArrayList.
-   Parameters: ArrayList<Country> countries -- list of countries to be printed
-   Return type: VOID
-   */
-
-    public void printCountries(ArrayList<Country> countries)
-    {
-        // Print header
-        System.out.println(String.format("%-10s %-15s", "SurfaceArea", "Name"));
-        // Loop over all employees in the list
-        for (Country c : countries)
-        {
-            String c_string =
-                    String.format("%-10s %-15s", c.surface_area, c.name);
-            System.out.println(c_string);
-        }
-    }
     //-------------------------------------- Issue #4 functions ---------------------------------------
     /* ----------- getThreeBiggestCountries(String N) ---------------
     Objective: get the N countries with the biggest population from each continent.
@@ -259,7 +278,7 @@ public class App
    Parameters: ArrayList<Country> countries -- list of countries to be printed
    Return type: VOID
    */
-    public void printCountriesIssue4(ArrayList<Country> countries)
+    public void printCountries(ArrayList<Country> countries)
     {
         // Print header
         System.out.println(String.format("%-10s %-15s %-20s %-25s %-30s %-35s", "Code", "Population", "Continent", "Name", "Region", "Capital"));
@@ -280,24 +299,6 @@ public class App
         // Connect to databasea
         a.connect();
 
-        // -----------------------------Issue #1 ----------------
-        /*
-        //call method to execute the query and get the population
-        ArrayList<Country> countries = a.getCountryPopulationLargeToSmall();
-        //print Name and Population in console
-        a.printCountriesPop(countries);
-         */
-
-        //------------------------------- Issue #3 -------------
-        /*
-        // the user can declare any region that they want
-        String region = "Caribbean";
-        //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getCountryByRegionLargeToSmall(region);
-        //print countries and column names
-        a.printCountries(countries); */
-
-
 
         // ---------------------------- Issue #4 -------------
         //get N as input from the terminal
@@ -311,7 +312,7 @@ public class App
         //create array with all the countries
         ArrayList<Country> countries = a.getThreeBiggestCountries(N);
         //print the countries report
-        a.printCountriesIssue4(countries);
+        a.printCountries(countries);
         //print the countries
 
 
