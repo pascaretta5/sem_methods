@@ -124,7 +124,7 @@ public class App
             return null;
         }
     }
-    //---------------------------------------Issue #3-------------------------
+    //---------------------------------------Issue #2-------------------------
     /* ----------- getCountryByContinentLargeToSmall() ---------------
    Objective: get all the countries population in a continent from largest to smallest.
    Parameters: NONE
