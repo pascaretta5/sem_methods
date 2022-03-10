@@ -31,5 +31,12 @@ public class Country {
 
     public String head_of_state;
 
+    public int capital;
+
     public String capitalName;
+
+    public String cityName;
+
+    public String district;
+
 }

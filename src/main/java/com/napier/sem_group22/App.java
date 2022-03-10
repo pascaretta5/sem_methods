@@ -1,14 +1,14 @@
 /*
- * Author: Sara , Bruno
+ * Author: Sara, Bruno, Andrei
  * Date: 10/03/22
- * App with code to get data for issue #1, #2, #3, #4, #5. The main method call the method for the issue #5.
- *  The issue should provide the number of countries per continent they want to display.
+ * App with code to get data for issue #1-#5 and #7.
+ * The method for the Issue #7 is called in the main methods. This method gets all cities in the
+ * world ordered from largest to smallest.
  */
 package com.napier.sem_group22;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class App
@@ -77,7 +77,6 @@ public class App
             }
         }
     }
-
     //---------------------------------------Issue #1-------------------------
     /* ----------- getCountryPopulationLargeToSmall() ---------------
    Objective: get all the countries population from largest to smallest.
@@ -333,37 +332,83 @@ public class App
         }
     }
 
+    /* -------------------------------Issue 7: getAllCitiesLargestToSmallest --------------
+   Objective: get all cities in the world ordered from largest to smallest.
+   Parameters: String region -- specified region.
+   Return type: ArrayList<Country>
+   */
+    public ArrayList<City> getAllCitiesLargestToSmallest() {
+
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strPopulationLageSmall =
+                    "SELECT city.name, country.name, district, city.population "
+                            +"FROM city JOIN country ON CountryCode = Code "
+                            + "ORDER BY city.population DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
+
+            //Create Country ArrayList
+            ArrayList<City> cities = new ArrayList<City>();
+
+            // Check one is returned and go through all countries to get the details
+            while (rset.next())
+            {
+                City acity = new City();
+                acity.name = rset.getString("city.name");
+                acity.countryName = rset.getString("country.name");
+                acity.district = rset.getString("district");
+                acity.population = rset.getInt("city.population");
+                cities.add(acity); // add country in ArrayList<Country> countries
+
+            }
+            return cities; // return ArrayList
+        }
+        catch (Exception e) //no country found
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries population");
+            return null;
+        }
+    }
+
+    /* ----------- printCountries(ArrayList<Country> countries) ---------------
+   Objective: print all the countries in the ArrayList.
+   Parameters: ArrayList<Country> countries -- list of countries to be printed
+   Return type: VOID
+   */
+    public void printCity(ArrayList<City> cities)
+    {
+        // Print header
+        System.out.println(String.format("%-14s %-14s %-14s %-20s", "City Name", "Country Name",  "District", "Population"));
+        // Loop over all countries in the list
+        for (City cit : cities)
+        {
+            String c_string =
+                    String.format("%-20s %-30s %-25s %-20s", cit.name, cit.countryName, cit.district, cit.population);
+            System.out.println(c_string);
+        }
+    }
+
 
     public static void main(String[] args)
     {
         // Create new Application
         App a = new App();
 
-        // Connect to database
+        // Connect to databasea
         a.connect();
 
-        //------------------------------- Issue #5 --------------------------------
-        // the user can declare any continent they want
-
-        //------ NEED TO BE THOUGHT IN A WAY HOW TO ASK THE USER REMOTELY----------
-        /*
-        System.out.println("\nPlease, choose the continent: \n");
-        Scanner myObj = new Scanner(System.in);
-        String continent = myObj.nextLine();
-        //The user can choose how many countries to display
-        System.out.println("Top X number countries (Choose X): \n");
-        Scanner myObj2 = new Scanner(System.in);
-        int limit = myObj2.nextInt();
-        */
-        //For while, the following variables:
-        String continent = "North America";
-        int limit = 5;
-        //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getTopCountryByContinentLargeToSmall(continent, limit);
-        //print countries and column names
-        a.printCountries(countries);
-
-
+        //------------------------------- Issue #7 --------------------------------
+        //get all cities in the world ordered from largest to smallest.
+        ArrayList<City> cities = a.getAllCitiesLargestToSmallest();
+        //print cities and column names
+        a.printCity(cities);
 
         // Disconnect from database
         a.disconnect();
