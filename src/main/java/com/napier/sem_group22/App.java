@@ -1,17 +1,14 @@
 /*
- * Author: Sara, Bruno
+ * Author: Sara , Bruno
  * Date: 10/03/22
- * App with code to get data for issue #1, #2,#3, #4. Issue #4 method is called in main method,
- *  The top N (given N by the user in the terminal)
- * populated countries in the world where N is provided by the user.
- * get data from.
+ * App with code to get data for issue #1, #2, #3, #4, #5. The main method call the method for the issue #5.
+ *  The issue should provide the number of countries per continent they want to display.
  */
 package com.napier.sem_group22;
 
-import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class App
@@ -273,49 +270,98 @@ public class App
         }
     }
 
-    /* ----------- printCountriesIssue4(ArrayList<Country> countries) ---------------
+    //--------------------Issue #5: All the top N countries in a continent where N is provided by the user------------------
+    /* ----------- printCountries(ArrayList<Country> countries) ---------------
    Objective: print all the countries in the ArrayList.
    Parameters: ArrayList<Country> countries -- list of countries to be printed
    Return type: VOID
    */
+    public ArrayList<Country> getTopCountryByContinentLargeToSmall(String continent, int limit) {
+
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+
+            //Needed to join both table CITY and COUNTRY in order to retrieve the right capital.
+            String strPopulationLageSmall =
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            + "FROM city JOIN country ON CountryCode = Code "
+                            + "WHERE country.capital = city.ID AND Continent LIKE '" + continent +"' "
+                            + "ORDER BY Population DESC "
+                            + "LIMIT " + limit + "; ";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
+
+            //Create Country ArrayList
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            // Check one is returned and go through all countries and to get the details
+            while (rset.next())
+            {
+                Country count = new Country();
+                count.code = rset.getString("country.Code");
+                count.region = rset.getString("country.Region");
+                count.capitalName = rset.getString("city.Name");
+                count.continent = rset.getString("country.Continent");
+                count.name = rset.getString("country.Name");
+                count.population = rset.getInt("country.Population");
+                countries.add(count); // add country in ArrayList<Country> countries
+            }
+            return countries; // return ArrayList
+        }
+        catch (Exception e) //no country found
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries population");
+            return null;
+        }
+    }
     public void printCountries(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-10s %-15s %-20s %-25s %-30s %-35s", "Code", "Population", "Continent", "Name", "Region", "Capital"));
+        System.out.println(String.format("%-20s %-15s %-20s %-20s %-20s %-20s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all employees in the list
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-10s %-15s %-20s %-25s %-30s %-35s", c.code, c.population, c.continent, c.name, c.region, c.capitalName);
+                    String.format("%-20s %-15s %-20s %-20s %-20s %-20s", c.code, c.name, c.continent, c.region, c.population, c.capitalName);
             System.out.println(c_string);
         }
     }
+
 
     public static void main(String[] args)
     {
         // Create new Application
         App a = new App();
 
-        // Connect to databasea
+        // Connect to database
         a.connect();
 
+        //------------------------------- Issue #5 --------------------------------
+        // the user can declare any continent they want
 
-        // ---------------------------- Issue #4 -------------
-        //get N as input from the terminal
-        /* cant get input from log in docker compose????
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
-        System.out.println("Please enter the number of countries that you wish to get Updated : ");
-        String N = scanner.nextLine();*/
-
-        //sample input
-        String N = "4";
-        //create array with all the countries
-        ArrayList<Country> countries = a.getThreeBiggestCountries(N);
-        //print the countries report
+        //------ NEED TO BE THOUGHT IN A WAY HOW TO ASK THE USER REMOTELY----------
+        /*
+        System.out.println("\nPlease, choose the continent: \n");
+        Scanner myObj = new Scanner(System.in);
+        String continent = myObj.nextLine();
+        //The user can choose how many countries to display
+        System.out.println("Top X number countries (Choose X): \n");
+        Scanner myObj2 = new Scanner(System.in);
+        int limit = myObj2.nextInt();
+        */
+        //For while, the following variables:
+        String continent = "North America";
+        int limit = 5;
+        //get all countries from that region from largest to smallest area
+        ArrayList<Country> countries = a.getTopCountryByContinentLargeToSmall(continent, limit);
+        //print countries and column names
         a.printCountries(countries);
-        //print the countries
-
-
 
 
 
