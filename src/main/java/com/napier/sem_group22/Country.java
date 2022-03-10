@@ -1,12 +1,12 @@
-/*
-* Country class with all the attributes/columns in the database that the country table has
-* Updates:
-* - Create class, add the attributes 07/08/22 by Sara.
+/**
+ * Author: Sara Hussein Celda
+ * Matric Num: 40496531
+ * Date of last update:
+ *  - 10/03/22 - Added new attribute capitalName to the class - Sara
  */
 package com.napier.sem_group22;
 
 public class Country {
-
     public String code;
 
     public String name;
@@ -31,7 +31,7 @@ public class Country {
 
     public String head_of_state;
 
-    public int capital;
+    public int capital; //capital ID
 
     public String capitalName;
 }

@@ -1,10 +1,9 @@
-/*
- * Author: Sara Hussein Celda
- * Matric Num: 40496531
- * Date: 08/03/22
- * App with code to get data for issue #3. The issue should replace the region variable with the region that they desire to
- * get data from.
- */
+/**
+* Author: Sara Hussein Celda
+* Matric Num: 40496531
+ * Date of last update: 10/03/22
+* App to with the code to complete Issue #1.
+*/
 package com.napier.sem_group22;
 
 import java.sql.*;
@@ -35,7 +34,7 @@ public class App
         }
 
         int retries = 10;
-        for (int i = 0; i < retries; ++i)
+        for (int i = 0; i < retries; ++i) //for loop to try to connect to the database 10 times 
         {
             System.out.println("Connecting to database...");
             try
@@ -77,13 +76,12 @@ public class App
             }
         }
     }
-
-    /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
-    Objective: get all the countries in a determined region ordered from largest to smallest.
-    Parameters: String region -- specified region.
-    Return type: ArrayList<Country>
+    /* ----------- getCountryPopulationLargeToSmall() -- Issue #1 ---------------
+    Objective: get the name and the population from the work database in order of lagest to smallest population.
+    Parameters: None
+    Return Type: ArrayList<Country> -- returns an array with all the contries
     */
-    public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
+    public ArrayList<Country> getCountryPopulationLargeToSmall() {
 
         try
         {
@@ -93,9 +91,8 @@ public class App
             // Create string for SQL statement
             String strPopulationLageSmall =
                     "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
-                            +"FROM country JOIN city ON country.Capital = city.ID "
-                            +"WHERE Region LIKE '" + region + "' "
-                            + "ORDER BY SurfaceArea DESC;";
+                    +"FROM country JOIN city ON country.Capital = city.ID "
+                    + "ORDER BY Population DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
@@ -103,22 +100,22 @@ public class App
             //Create Country ArrayList
             ArrayList<Country> countries = new ArrayList<Country>();
 
-            // Check one is returned and go through all countries to get the details
+            // Check one is returned
             while (rset.next())
             {
                 Country count = new Country();
-
                 count.name = rset.getString("Name");
                 count.population = rset.getInt("Population");
                 count.code = rset.getString("Code");
                 count.continent = rset.getString("Continent");
                 count.region = rset.getString("Region");
                 count.capitalName = rset.getString("city.Name");
-                countries.add(count); // add country in ArrayList<Country> countries
+
+                countries.add(count);
             }
-            return countries; // return ArrayList
+            return countries;
         }
-        catch (Exception e) //no country found
+        catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get countries population");
@@ -126,12 +123,12 @@ public class App
         }
     }
 
-    /* ----------- printCountries(ArrayList<Country> countries) ---------------
-   Objective: print all the countries in the ArrayList.
-   Parameters: ArrayList<Country> countries -- list of countries to be printed
-   Return type: VOID
-   */
-    public void printCountries(ArrayList<Country> countries)
+    /* ----------- printCountriesPop(ArrayList<Country> countries) ---------------
+    Objective: print columns names and all the data from the countries(name, population) in the ArrayList.
+    Parameters: ArrayList<Country> countries -- takes an array with all the cuontries.
+    Return type: VOID
+    */
+    public void printCountriesPop(ArrayList<Country> countries)
     {
         // Print header
         System.out.println(String.format("%-10s %-15s %-20s %-25s %-30s %-35s", "Code", "Population", "Continent", "Name", "Region", "Capital"));
@@ -143,25 +140,19 @@ public class App
             System.out.println(c_string);
         }
     }
-
-
     public static void main(String[] args)
     {
         // Create new Application
         App a = new App();
 
-        // Connect to databasea
+        // Connect to database
         a.connect();
 
-        //------------------------------- Issue #3 --------------------------------
-        // the user can declare any region that they want
-        String region = "Caribbean";
-        //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getCountryByRegionLargeToSmall(region);
-        //print countries and column names
-        a.printCountries(countries);
-
-
+        // ---------- Issue #1 ----------
+        //call method to execute the query and get the population
+        ArrayList<Country> countries = a.getCountryPopulationLargeToSmall();
+        //print Name and Population in console
+        a.printCountriesPop(countries);
 
         // Disconnect from database
         a.disconnect();
