@@ -92,8 +92,8 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT SurfaceArea, Name "
-                            +"FROM country "
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
                             +"WHERE Region LIKE '" + region + "' "
                             + "ORDER BY SurfaceArea DESC;";
 
@@ -109,7 +109,11 @@ public class App
                 Country count = new Country();
 
                 count.name = rset.getString("Name");
-                count.surface_area = rset.getInt("SurfaceArea");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
@@ -130,12 +134,12 @@ public class App
     public void printCountries(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-10s %-15s", "SurfaceArea", "Name"));
+        System.out.println(String.format("%-10s %-15s %-20s %-25s %-30s %-35s", "Code", "Population", "Continent", "Name", "Region", "Capital"));
         // Loop over all employees in the list
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-10s %-15s", c.surface_area, c.name);
+                    String.format("%-10s %-15s %-20s %-25s %-30s %-35s", c.code, c.population, c.continent, c.name, c.region, c.capitalName);
             System.out.println(c_string);
         }
     }
