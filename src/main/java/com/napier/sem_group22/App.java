@@ -1,9 +1,9 @@
 /*
- * Author: Sara Hussein Celda
- * Matric Num: 40496531
- * Date: 08/03/22
- * App with code to get data for issue #3. The issue should replace the region variable with the region that they desire to
- * get data from.
+ * Author: Sara, Bruno, Andrei
+ * Date: 10/03/22
+ * App with code to get data for issue #1-#5 and #7.
+ * The method for the Issue #7 is called in the main methods. This method gets all cities in the
+ * world ordered from largest to smallest.
  */
 package com.napier.sem_group22;
 
@@ -77,13 +77,106 @@ public class App
             }
         }
     }
+    //---------------------------------------Issue #1-------------------------
+    /* ----------- getCountryPopulationLargeToSmall() ---------------
+   Objective: get all the countries population from largest to smallest.
+   Parameters: NONE
+   Return type: ArrayList<Country> countries -- list of countries to be printed
+   */
+    public ArrayList<Country> getCountryPopulationLargeToSmall() {
 
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strPopulationLageSmall =
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
+                            + "ORDER BY Population DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
+
+            //Create Country ArrayList
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            // Check one is returned
+            while (rset.next())
+            {
+                Country count = new Country();
+                count.name = rset.getString("Name");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+
+                countries.add(count);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries population");
+            return null;
+        }
+    }
+    //---------------------------------------Issue #2-------------------------
+    /* ----------- getCountryByContinentLargeToSmall() ---------------
+   Objective: get all the countries population in a continent from largest to smallest.
+   Parameters: NONE
+   Return type: ArrayList<Country> countries -- list of countries to be printed
+   */
+    public ArrayList<Country> getCountryByContinentLargeToSmall() {
+
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strPopulationLageSmall =
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
+                            + "ORDER BY Continent, Population DESC;";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
+
+            //Create Country ArrayList
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            // Check one is returned and go through all countries to get the details
+            while (rset.next())
+            {
+                Country count = new Country();
+                count.name = rset.getString("Name");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
+                countries.add(count); // add country in ArrayList<Country> countries
+            }
+            return countries; // return ArrayList
+        }
+        catch (Exception e) //no country found
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get countries population");
+            return null;
+        }
+    }
+
+    //---------------------------------------Issue #3-------------------------
     /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
     Objective: get all the countries in a determined region ordered from largest to smallest.
     Parameters: String region -- specified region.
     Return type: ArrayList<Country>
     */
-    /*
     public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
 
         try
@@ -93,8 +186,8 @@ public class App
 
             // Create string for SQL statement
             String strPopulationLageSmall =
-                    "SELECT SurfaceArea, Name "
-                            +"FROM country "
+                    "SELECT Code, country.Population, Continent, country.Name, Region, city.Name "
+                            +"FROM country JOIN city ON country.Capital = city.ID "
                             +"WHERE Region LIKE '" + region + "' "
                             + "ORDER BY SurfaceArea DESC;";
 
@@ -110,7 +203,11 @@ public class App
                 Country count = new Country();
 
                 count.name = rset.getString("Name");
-                count.surface_area = rset.getInt("SurfaceArea");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
@@ -122,32 +219,44 @@ public class App
             return null;
         }
     }
+
+    //-------------------------------------- Issue #4 functions ---------------------------------------
+    /* ----------- getThreeBiggestCountries(String N) ---------------
+    Objective: get the N countries with the biggest population from each continent.
+    Parameters: String N -- number of countries from each continent.
+    Return type: ArrayList<Country>
     */
+    public ArrayList<Country> getThreeBiggestCountries(String N) {
 
-    // ----------2nd Issue: All the countries in a continent organised by largest population to smallest.-----------
-
-    //In order to execute, just UNCOMMENT.
-  /*  public ArrayList<Country> getCountryByContinentLargeToSmall() {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
-            String strPopulationLageSmall =
-                    "SELECT Continent, Name, Population "
-                            +"FROM country "
-                            + "ORDER BY Continent, Population DESC;";
+            String strThreeBiggestPopByCont =
+                    "SELECT x.Code, x.Population, x.Continent, x.Name, x.Region, city.Name "
+                            +"FROM country x  JOIN city ON x.Capital = city.ID " +
+                            "WHERE x.name IN (SELECT * FROM (SELECT y.Name FROM country y WHERE y.Continent = x.Continent ORDER BY Population DESC LIMIT " + N + ") z) ORDER BY x.Continent;";
+
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
+            ResultSet rset = stmt.executeQuery(strThreeBiggestPopByCont);
+
             //Create Country ArrayList
             ArrayList<Country> countries = new ArrayList<Country>();
+
             // Check one is returned and go through all countries to get the details
             while (rset.next())
             {
                 Country count = new Country();
-                count.continent = rset.getString("Continent");
-                count.name = rset.getString("Name");
+
+
+                count.code = rset.getString("Code");
                 count.population = rset.getInt("Population");
+                count.name = rset.getString("Name");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
+                count.capitalName = rset.getString("city.Name");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
@@ -160,15 +269,12 @@ public class App
         }
     }
 
-   */
-
-    // 5th issue: All the top N countries in a continent where N is provided by the user.
+    //--------------------Issue #5: All the top N countries in a continent where N is provided by the user------------------
     /* ----------- printCountries(ArrayList<Country> countries) ---------------
    Objective: print all the countries in the ArrayList.
    Parameters: ArrayList<Country> countries -- list of countries to be printed
    Return type: VOID
    */
-    /*
     public ArrayList<Country> getTopCountryByContinentLargeToSmall(String continent, int limit) {
 
         try
@@ -198,7 +304,7 @@ public class App
                 Country count = new Country();
                 count.code = rset.getString("country.Code");
                 count.region = rset.getString("country.Region");
-                count.capital = rset.getString("city.Name");
+                count.capitalName = rset.getString("city.Name");
                 count.continent = rset.getString("country.Continent");
                 count.name = rset.getString("country.Name");
                 count.population = rset.getInt("country.Population");
@@ -221,18 +327,17 @@ public class App
         for (Country c : countries)
         {
             String c_string =
-                    String.format("%-20s %-15s %-20s %-20s %-20s %-20s", c.code, c.name, c.continent, c.region, c.population, c.capital);
+                    String.format("%-20s %-15s %-20s %-20s %-20s %-20s", c.code, c.name, c.continent, c.region, c.population, c.capitalName);
             System.out.println(c_string);
         }
     }
-*/
 
-    /* ----------- getAllCitiesLargestToSmallest --------------- ISSUE 7
+    /* -------------------------------Issue 7: getAllCitiesLargestToSmallest --------------
    Objective: get all cities in the world ordered from largest to smallest.
    Parameters: String region -- specified region.
    Return type: ArrayList<Country>
    */
-    public ArrayList<Country> getAllCitiesLargestToSmallest() {
+    public ArrayList<City> getAllCitiesLargestToSmallest() {
 
         try
         {
@@ -249,20 +354,20 @@ public class App
             ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
 
             //Create Country ArrayList
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<City> cities = new ArrayList<City>();
 
             // Check one is returned and go through all countries to get the details
             while (rset.next())
             {
-                Country count = new Country();
-                count.city_name = rset.getString("city.name");
-                count.name = rset.getString("country.name");
-                count.district = rset.getString("district");
-                count.population = rset.getInt("city.population");
-                countries.add(count); // add country in ArrayList<Country> countries
+                City acity = new City();
+                acity.name = rset.getString("city.name");
+                acity.countryName = rset.getString("country.name");
+                acity.district = rset.getString("district");
+                acity.population = rset.getInt("city.population");
+                cities.add(acity); // add country in ArrayList<Country> countries
 
             }
-            return countries; // return ArrayList
+            return cities; // return ArrayList
         }
         catch (Exception e) //no country found
         {
@@ -277,15 +382,15 @@ public class App
    Parameters: ArrayList<Country> countries -- list of countries to be printed
    Return type: VOID
    */
-    public void printCity(ArrayList<Country> countries)
+    public void printCity(ArrayList<City> cities)
     {
         // Print header
         System.out.println(String.format("%-14s %-14s %-14s %-20s", "City Name", "Country Name",  "District", "Population"));
         // Loop over all countries in the list
-        for (Country c : countries)
+        for (City cit : cities)
         {
             String c_string =
-                    String.format("%-20s %-30s %-25s %-20s", c.city_name, c.name, c.district, c.population);
+                    String.format("%-20s %-30s %-25s %-20s", cit.name, cit.countryName, cit.district, cit.population);
             System.out.println(c_string);
         }
     }
@@ -299,29 +404,11 @@ public class App
         // Connect to databasea
         a.connect();
 
-        /*
-        //------------------------------- Issue #3 --------------------------------
-        // the user can declare any region that they want
-        String region = "Caribbean";
-        //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getCountryByRegionLargeToSmall(region);
-        //print countries and column names
-        a.printCountries(countries);
-*/
-/*
-        //For while, the following variables:
-        String continent = "North America";
-        int limit = 5;
-        //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getTopCountryByContinentLargeToSmall(continent, limit);
-        //print countries and column names
-        a.printCountries(countries);
-*/
         //------------------------------- Issue #7 --------------------------------
-        //get all countries from that region from largest to smallest area
-        ArrayList<Country> countries = a.getAllCitiesLargestToSmallest();
-        //print countries and column names
-        a.printCity(countries);
+        //get all cities in the world ordered from largest to smallest.
+        ArrayList<City> cities = a.getAllCitiesLargestToSmallest();
+        //print cities and column names
+        a.printCity(cities);
 
         // Disconnect from database
         a.disconnect();

@@ -33,7 +33,9 @@ public class Country {
 
     public int capital;
 
-    public String city_name;
+    public String capitalName;
+
+    public String cityName;
 
     public String district;
 
