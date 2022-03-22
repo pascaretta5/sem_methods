@@ -1,3 +1,8 @@
+/**
+ * Author : Sara Hussein Celda
+ * Date: 22/03/22
+ * Test file to test PrintCountries() method from App.java
+ */
 package com.napier.sem_group22;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
