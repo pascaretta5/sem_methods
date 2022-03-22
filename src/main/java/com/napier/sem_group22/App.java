@@ -1,9 +1,8 @@
-/*
- * Author: Sara, Bruno, Andrei
+/**
+ * Author: Sara, Bruno, Andrei, Andrej
  * Date: 10/03/22
- * App with code to get data for issue #1-#5 and #7.
- * The method for the Issue #7 is called in the main methods. This method gets all cities in the
- * world ordered from largest to smallest.
+ *
+ * Update 22/02/22 : Sara --  The method for the Issue #6 is called in the main method.
  */
 package com.napier.sem_group22;
 
@@ -16,7 +15,7 @@ public class App
     /**
      * Connection to MySQL database.
      */
-    private Connection con = null;
+    public Connection con = null;
 
     /**
      * Connect to the MySQL database.
@@ -77,12 +76,13 @@ public class App
             }
         }
     }
-    //---------------------------------------Issue #1-------------------------
-    /* ----------- getCountryPopulationLargeToSmall() ---------------
-   Objective: get all the countries population from largest to smallest.
-   Parameters: NONE
-   Return type: ArrayList<Country> countries -- list of countries to be printed
-   */
+    /**
+     * ---------------------------------------Issue #1-------------------------
+     *    ----------- getCountryPopulationLargeToSmall() ---------------
+     *    Objective: get all the countries population from largest to smallest.
+     *    @return ArrayList<Country> countries -- list of countries to be printed
+     */
+
     public ArrayList<Country> getCountryPopulationLargeToSmall() {
 
         try
@@ -124,12 +124,13 @@ public class App
             return null;
         }
     }
-    //---------------------------------------Issue #2-------------------------
-    /* ----------- getCountryByContinentLargeToSmall() ---------------
-   Objective: get all the countries population in a continent from largest to smallest.
-   Parameters: NONE
-   Return type: ArrayList<Country> countries -- list of countries to be printed
-   */
+
+    /**
+     * ---------------------------------------Issue #2-------------------------
+     *     ----------- getCountryByContinentLargeToSmall() ---------------
+     * Objective: get all the countries population in a continent from largest to smallest.
+     * @return ArrayList<Country> countries -- list of countries to be printed
+     */
     public ArrayList<Country> getCountryByContinentLargeToSmall() {
 
         try
@@ -171,12 +172,13 @@ public class App
         }
     }
 
-    //---------------------------------------Issue #3-------------------------
-    /* ----------- getCountryByRegionLargeToSmall(String region) ---------------
-    Objective: get all the countries in a determined region ordered from largest to smallest.
-    Parameters: String region -- specified region.
-    Return type: ArrayList<Country>
-    */
+    /**
+     * ---------------------------------------Issue #3-------------------------
+     *     ----------- getCountryByRegionLargeToSmall(String region) ---------------
+     *     Objective: get all the countries in a determined region ordered from largest to smallest.
+     * @param region
+     * @return ArrayList<Country>
+     */
     public ArrayList<Country> getCountryByRegionLargeToSmall(String region) {
 
         try
@@ -220,12 +222,13 @@ public class App
         }
     }
 
-    //-------------------------------------- Issue #4 functions ---------------------------------------
-    /* ----------- getThreeBiggestCountries(String N) ---------------
-    Objective: get the N countries with the biggest population from each continent.
-    Parameters: String N -- number of countries from each continent.
-    Return type: ArrayList<Country>
-    */
+    /**
+     * -------------------------------------- Issue #4 functions --------------------------------------
+     * ----------- getThreeBiggestCountries(String N) ---------------
+     *     Objective: get the N countries with the biggest population from each continent.
+     *     @param N: Snumber of countries from each continent.
+     *     Return type: ArrayList<Country>
+     */
     public ArrayList<Country> getThreeBiggestCountries(String N) {
 
         try
@@ -269,12 +272,13 @@ public class App
         }
     }
 
-    //--------------------Issue #5: All the top N countries in a continent where N is provided by the user------------------
-    /* ----------- printCountries(ArrayList<Country> countries) ---------------
-   Objective: print all the countries in the ArrayList.
-   Parameters: ArrayList<Country> countries -- list of countries to be printed
-   Return type: VOID
-   */
+    /**
+     * --------------------Issue #5: All the top N countries in a continent where N is provided by the user--------
+     *    Objective: get all N top populated countries in continents -- Large to Small.
+     *    @param continent
+     *    @param limit
+     *    @return ArrayList<Country>
+     */
     public ArrayList<Country> getTopCountryByContinentLargeToSmall(String continent, int limit) {
 
         try
@@ -319,6 +323,13 @@ public class App
             return null;
         }
     }
+
+    /**
+     * -------------------- printCountries()------------------
+     *    Objective: print countries and the heather for the columns
+     *    @param countries
+     *    @return void
+     */
     public void printCountries(ArrayList<Country> countries)
     {
         // Print header
@@ -332,11 +343,12 @@ public class App
         }
     }
 
-    /* -------------------------------Issue 7: getAllCitiesLargestToSmallest --------------
-   Objective: get all cities in the world ordered from largest to smallest.
-   Parameters: String region -- specified region.
-   Return type: ArrayList<Country>
-   */
+    /**
+     * -------------------------------Issue 7: getAllCitiesLargestToSmallest --------------
+     *    Objective: get all cities in the world ordered from largest to smallest.
+     *    Parameters: String region -- specified region.
+     *    Return type: ArrayList<Country>
+     */
     public ArrayList<City> getAllCitiesLargestToSmallest() {
 
         try
@@ -377,11 +389,12 @@ public class App
         }
     }
 
-    /* ----------- printCountries(ArrayList<Country> countries) ---------------
-   Objective: print all the countries in the ArrayList.
-   Parameters: ArrayList<Country> countries -- list of countries to be printed
-   Return type: VOID
-   */
+    /**
+     * ----------- printCountries(ArrayList<Country> countries) ---------------
+     *    Objective: print all the countries in the ArrayList.
+     *    Parameters: ArrayList<Country> countries -- list of countries to be printed
+     *    Return type: VOID
+     */
     public void printCity(ArrayList<City> cities)
     {
         // Print header
@@ -401,14 +414,18 @@ public class App
         // Create new Application
         App a = new App();
 
-        // Connect to databasea
+        // Connect to database
         a.connect();
 
-        //------------------------------- Issue #7 --------------------------------
-        //get all cities in the world ordered from largest to smallest.
-        ArrayList<City> cities = a.getAllCitiesLargestToSmallest();
-        //print cities and column names
-        a.printCity(cities);
+        /**
+         * ------------------------------- Issue #6 --------------------------------
+         */
+        String N = "3"; //input example
+        /** Create instance of Issue6 Class-- this will have the required methods */
+        Issue6 issue = new Issue6();
+        ArrayList<Country> countries = issue.getNTopPopCountriesRegion(N, a.con);
+        /** Print countries and column names */
+        a.printCountries(countries);
 
         // Disconnect from database
         a.disconnect();

@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/SEM_GROUP22-0.1.0.8-jar-with-dependencies.jar /tmp
+COPY ./target/SEM_GROUP22-0.1.0.9-jar-with-dependencies.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "SEM_GROUP22-0.1.0.8-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "SEM_GROUP22-0.1.0.9-jar-with-dependencies.jar"]
