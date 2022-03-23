@@ -19,7 +19,7 @@ public class Test_Issue6 {
     {
         app = new App();
         issue6 = new Issue6();
-        app.connect("localhost:33060", 30000);
+        app.connect("db:3306", 30000);
     }
 
 
