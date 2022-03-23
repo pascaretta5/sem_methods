@@ -390,9 +390,9 @@ public class App
     }
 
     /**
-     * ----------- printCountries(ArrayList<Country> countries) ---------------
-     *    Objective: print all the countries in the ArrayList.
-     *    Parameters: ArrayList<Country> countries -- list of countries to be printed
+     * ----------- pprintCity(ArrayList<Country> cities) ---------------
+     *    Objective: print all the cities in the ArrayList.
+     *    Parameters: ArrayList<City> cities -- list of countries to be printed
      *    Return type: VOID
      */
     public void printCity(ArrayList<City> cities)
@@ -425,9 +425,10 @@ public class App
          * ------------------------------- Issue #6 --------------------------------
          */
         String N = "3"; //input example
+        String region = "Central America";
         /** Create instance of Issue6 Class-- this will have the required methods */
         Issue6 issue = new Issue6();
-        ArrayList<Country> countries = issue.getNTopPopCountriesRegion(N, a.con);
+        ArrayList<Country> countries = issue.getNTopPopCountriesRegion(N, a, region);
         /** Print countries and column names */
         a.printCountries(countries);
 

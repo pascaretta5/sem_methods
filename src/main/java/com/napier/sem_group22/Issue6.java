@@ -12,26 +12,29 @@ import java.util.ArrayList;
 
 public class Issue6 {
 
+
+
     /**
      *  ----- getNTopPopCountriesRegion() -------
-     *  Objective: return N top populated countries by region, where N is given by the user
+     *  Objective: return N top populated countries in a region, where N is given by the user
      * @param N
-     * @param con
      * @return  ArrayList<Country>
      */
-    public ArrayList<Country> getNTopPopCountriesRegion(String N, Connection con) {
+    public ArrayList<Country> getNTopPopCountriesRegion(String N, App app, String region) {
 
         try
         {
             // Create an SQL statement
-            Statement stmt = con.createStatement();
+            Statement stmt = app.con.createStatement();
 
             // Create string for SQL statement
             String strIssue6 =
-                    "SELECT x.Code, x.Population, x.Continent, x.Name, x.Region, city.Name "
-                            +"FROM country x  JOIN city ON x.Capital = city.ID " +
-                            "WHERE x.name IN (SELECT * FROM (SELECT y.Name FROM country y WHERE y.Region = x.Region "
-                            +"ORDER BY Population DESC LIMIT " + N + ") z) ORDER BY x.Region;";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            + "FROM country JOIN city ON country.Capital = city.ID "
+                            + "WHERE Region LIKE '" + region +"' "
+                            + "ORDER BY Population DESC "
+                            + "LIMIT " + N + "; ";
+
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strIssue6);
