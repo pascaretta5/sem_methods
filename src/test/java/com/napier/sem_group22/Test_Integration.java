@@ -1,15 +1,13 @@
 package com.napier.sem_group22;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 
-public class Test_Issue6 {
+public class Test_Integration {
     static App app;
 
     static Issue6 issue6;
@@ -19,7 +17,7 @@ public class Test_Issue6 {
     {
         app = new App();
         issue6 = new Issue6();
-        app.connect("db:3306", 30000);
+        app.connect("localhost:33060", 30000);
     }
 
 

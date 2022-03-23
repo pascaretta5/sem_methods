@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-public class Test_PrintCountry {
+public class Test_PrintMethods {
     static App app;
     static Issue6 issue6;
 
