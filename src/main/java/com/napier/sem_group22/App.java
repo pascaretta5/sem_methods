@@ -424,13 +424,22 @@ public class App
         /**
          * ------------------------------- Issue #6 --------------------------------
          */
+        /*
         String N = "3"; //input example
         String region = "Central America";
         /** Create instance of Issue6 Class-- this will have the required methods */
+        /*
         Issue6 issue = new Issue6();
         ArrayList<Country> countries = issue.getNTopPopCountriesRegion(N, a, region);
         /** Print countries and column names */
+        /*
         a.printCountries(countries);
+        */
+        /** Create instance of Issue6 Class-- this will have the required methods */
+        Issue17 issue17 = new Issue17();
+        ArrayList<City> cities = issue17.getIssue17(a);
+        /** Print countries and column names */
+        a.printCity(cities);
 
         // Disconnect from database
         a.disconnect();
