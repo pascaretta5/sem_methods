@@ -4,6 +4,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/*  To place into main /** Create instance of Issue6 Class-- this will have the required methods */
+        //Issue17 issue17 = new Issue17();
+                //ArrayList<City> cities = issue17.getIssue17(a);
+       // /** Print countries and column names */
+       // a.printCity(cities);
+
 public class Issue17 {
 
         /**

@@ -65,7 +65,3 @@ jobs:
         run: |
           mvn package -DskipTests
           docker-compose up --abort-on-container-exit
-
-        language: java
-        after_success:
-          - bash <(curl -s https://codecov.io/bash)
