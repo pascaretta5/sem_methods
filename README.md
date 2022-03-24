@@ -16,3 +16,4 @@ Sara Hussein Celda - 40496531@live.napier.ac.uk
 [![Releases](https://img.shields.io/github/release/40511028/SEM_GROUP22/all.svg?style=flat-square)](https://github.com/40511028/SEM_GROUP22/releases)
 [![LICENSE](https://img.shields.io/github/license/40511028/SEM_GROUP22.svg?style=flat-square)](https://github.com/40511028/SEM_GROUP22/blob/master/LICENSE)
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/40511028/SEM_GROUP22/A%20workflow%20for%20my%20Hello%20World%20App/master?style=flat-square)
+[![codecov](https://codecov.io/gh/40511028/SEM_GROUP22/branch/master/graph/badge.svg?token=4C5CECSCMM)](https://codecov.io/gh/40511028/SEM_GROUP22)
