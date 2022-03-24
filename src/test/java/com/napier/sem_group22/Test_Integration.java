@@ -45,10 +45,10 @@ public class Test_Integration {
             assertEquals(countries2.get(i).population, countries1.get(i).population);
             assertEquals(countries2.get(i).capitalName, countries1.get(i).capitalName);
         }
-
-
-
     }
+
+
+
 
 
 }
