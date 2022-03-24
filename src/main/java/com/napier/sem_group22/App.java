@@ -272,7 +272,7 @@ public class App
      *    @param limit
      *    @return ArrayList<Country>
      */
-    public ArrayList<Country> getTopCountryByContinentLargeToSmall(String continent, int limit) {
+    public ArrayList<Country> getTopCountryByContinentLargeToSmall(String continent, Integer limit) {
 
         try
         {
