@@ -1,5 +1,6 @@
 name: A workflow for my Hello World App
 on: push
+
 jobs:
   UnitTests:
     name: Unit Tests
@@ -15,8 +16,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=com.napier.sem_group22.Test_IntergrationIssue17 test
-
+        run: mvn -Dtest=com.napier.sem_group22.Test_PrintMethods test
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -30,21 +30,21 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Integration Tests and CodeCov
+      - name: Integration Tests
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
-          mvn -Dtest=com.napier.sem_group22.Test_IntergrationIssue17 test         
+          mvn -Dtest=com.napier.sem_group22.Test_Integration test
           docker stop world
           docker rm world
           docker image rm database
       - name: CodeCov
-        uses: codecov/codecov-action@v2
-        with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          directory: ./target/site/jacoco
-          flags: Integration Tests # optional
-          verbose: true # optional (default = false)
+          uses: codecov/codecov-action@v2
+          with:
+            # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+            directory: ./target/site/jacoco
+            flags: Integration Tests # optional
+            verbose: true # optional (default = false)
   build:
     name: Build and Start Using docker-compose
     runs-on: ubuntu-20.04
