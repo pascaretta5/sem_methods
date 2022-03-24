@@ -40,12 +40,13 @@ public class Test_IntegrationIssue6 {
         countries2.add(c1);
 
         for(int i = 0; i < countries1.size(); i++ ) {
-            assertEquals(countries2.get(i).code, countries1.get(i).code);
-            assertEquals(countries2.get(i).name, countries1.get(i).name);
-            assertEquals(countries2.get(i).continent, countries1.get(i).continent);
-            assertEquals(countries2.get(i).region, countries1.get(i).region);
-            assertEquals(countries2.get(i).population, countries1.get(i).population);
-            assertEquals(countries2.get(i).capitalName, countries1.get(i).capitalName);
+
+            assertEquals(countries2.get(i).code, countries1.get(i).code, "Test getNTopPopCountriesRegionTest 1/6 Failed");
+            assertEquals(countries2.get(i).name, countries1.get(i).name, "Test getNTopPopCountriesRegionTest 2/6 Failed");
+            assertEquals(countries2.get(i).continent, countries1.get(i).continent, "Test getNTopPopCountriesRegionTest 3/6 Failed");
+            assertEquals(countries2.get(i).region, countries1.get(i).region, "Test getNTopPopCountriesRegionTest 4/6 Failed");
+            assertEquals(countries2.get(i).population, countries1.get(i).population, "Test getNTopPopCountriesRegionTest 5/6 Failed");
+            assertEquals(countries2.get(i).capitalName, countries1.get(i).capitalName, "Test getNTopPopCountriesRegionTest 6/6 Failed");
         }
     }
 
