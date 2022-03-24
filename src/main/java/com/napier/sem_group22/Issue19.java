@@ -20,7 +20,7 @@ public class Issue19 {
 
     /**
      * -------------------------------Issue 19: getIssue19 --------------
-     *    Objective: All the capital cities in the world organised by largest population to smallest.
+     *    Objective: The top N populated capital cities in the world where N is provided by the user.
      *    Return type: ArrayList<Country>
      */
     public ArrayList<City> getIssue19(App app) {
