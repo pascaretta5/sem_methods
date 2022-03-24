@@ -122,8 +122,9 @@ public class App
      *     ----------- getCountryByContinentLargeToSmall() ---------------
      * Objective: get all the countries population in a continent from largest to smallest.
      * @return ArrayList<Country> countries -- list of countries to be printed
+     * @param app
      */
-    public ArrayList<Country> getCountryByContinentLargeToSmall() {
+    public ArrayList<Country> getCountryByContinentLargeToSmall(App app) {
 
         try
         {
@@ -390,7 +391,7 @@ public class App
     }
 
     /**
-     * ----------- pprintCity(ArrayList<Country> cities) ---------------
+     * ----------- printCity(ArrayList<Country> cities) ---------------
      *    Objective: print all the cities in the ArrayList.
      *    Parameters: ArrayList<City> cities -- list of countries to be printed
      *    Return type: VOID
