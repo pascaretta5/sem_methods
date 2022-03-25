@@ -20,10 +20,10 @@ public class Test_Integration {
     static Issue19 issue19;
     static Issue20 issue20;
     static Issue21 issue21;
-    static Issue29 issue24;
-    static Issue29 issue25;
-    static Issue29 issue26;
-    static Issue29 issue28;
+    static Issue24 issue24;
+    static Issue25 issue25;
+    static Issue26 issue26;
+    static Issue28 issue28;
     static Issue29 issue29;
 
 
@@ -392,9 +392,69 @@ public class Test_Integration {
 
 
     /**
-     * Issue 29
+     * Issue 24
      */
     @Test
+    void getIssue24AppNull()
+    {
+        ArrayList<Population> pop1 = issue24.getIssue24(null);
+    }
+    @Test
+    void getIssue24CountryNull()
+    {
+        ArrayList<Population> pop1 = issue24.getIssue24(app);
+    }
+
+
+    /**
+     * Issue 25
+     */
+    @Test
+    void getIssue25AppNull()
+    {
+        ArrayList<Population> pop1 = issue25.getIssue25(null);
+    }
+    @Test
+    void getIssue25CountryNull()
+    {
+        ArrayList<Population> pop1 = issue25.getIssue25(app);
+    }
+
+
+    /**
+     * Issue 26
+     */
+    @Test
+    void getIssue26AppNull()
+    {
+        ArrayList<Population> pop1 = issue26.getIssue26(null);
+    }
+    @Test
+    void getIssue26CountryNull()
+    {
+        ArrayList<Population> pop1 = issue26.getIssue26(app);
+    }
+
+
+   /**
+     * Issue 28
+     */
+    @Test
+    void getIssue28AppNull()
+    {
+        ArrayList<Population> pop1 = issue28.getIssue28(app, null);
+    }
+    @Test
+    void getIssue28CountryNull()
+    {
+        ArrayList<Population> pop1 = issue28.getIssue28(null, "Middle East");
+    }
+
+
+    /**
+     * Issue 29
+     */
+    /*@Test
     void getIssue29Test()
     {
         ArrayList<Population> pop1 = issue29.getIssue29(app, "Netherlands");
@@ -412,7 +472,7 @@ public class Test_Integration {
             assertEquals(pop2.get(i).inCities, pop1.get(i).inCities, "Test getIssue29Test 3/4 Failed");
             assertEquals(pop2.get(i).notinCities, pop1.get(i).notinCities, "Test getIssue29Test 4/4 Failed");
         }
-    }
+    }*/
     @Test
     void getIssue29AppNull()
     {
