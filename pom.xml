@@ -14,7 +14,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.18</version>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -41,7 +40,7 @@
                     <finalName>seMethods</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.napier.sem_group22.App</mainClass>
+                            <mainClass>com.napier.sem.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
