@@ -105,12 +105,12 @@ public class App
     public void printCity(ArrayList<City> cities)
     {
         // Print header
-        System.out.println(String.format("%-14s %-14s %-14s %-20s", "City Name", "Country Name",  "District", "Population"));
+        System.out.println(String.format("%-30s %-30s %-30s %-30s", "City Name", "Country Name",  "District", "Population"));
         // Loop over all countries in the list
         for (City cit : cities)
         {
             String c_string =
-                    String.format("%-20s %-30s %-25s %-20s", cit.name, cit.countryName, cit.district, cit.population);
+                    String.format("%-30s %-30s %-30s %-30s", cit.name, cit.countryName, cit.district, cit.population);
             System.out.println(c_string);
         }
     }
@@ -147,32 +147,11 @@ public class App
         }
 
         /**
-         * ------------------------------- Issue #6 --------------------------------
+         * ---------------------- Issue #30 ---------------------------
          */
-        /*
-        String N = "3"; //input example
-        String region = "Central America";
-        /** Create instance of Issue6 Class-- this will have the required methods */
-        /*
-        Issue6 issue = new Issue6();
-        ArrayList<Country> countries = issue.getNTopPopCountriesRegion(N, a, region);
-        /** Print countries and column names */
-        /*
-        a.printCountries(countries);
-        */
-        /** Create instance of Issue6 Class-- this will have the required methods */
-        //Issue17 issue17 = new Issue17();
-        //ArrayList<City> cities = issue17.getIssue17(a);
-        /** Print countries and column names */
-        //a.printCity(cities);
-
-        /**
-         * ---------------------- Issue #29 ---------------------------
-         */
-        String country = "Netherlands";
-        Issue29 iss = new Issue29();
-        ArrayList<Population> pop = iss.getIssue29(a, country);
-        a.printPopulation(pop);
+        Issue30 iss = new Issue30();
+        ArrayList<Population> populations = iss.getIssue30(a, "Seoul");
+        a.printPopulation(populations);
 
         // Disconnect from database
         a.disconnect();
