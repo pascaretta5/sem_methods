@@ -17,6 +17,7 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.sem_group22.Test_PrintMethods test
+
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
@@ -37,7 +38,15 @@ jobs:
           mvn -Dtest=com.napier.sem_group22.Test_Integration test
           docker stop world
           docker rm world
-          docker image rm database
+          docker image rm database 
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          token: CODECOV_TOKEN='4fe86412-2cb1-46a8-84a5-384f514f6d4f'
+          directory: ./target/site/jacoco
+          flags: Integration Tests # optional
+          verbose: true # optional (default = false)
+
   build:
     name: Build and Start Using docker-compose
     runs-on: ubuntu-20.04

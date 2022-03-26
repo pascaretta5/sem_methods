@@ -4,23 +4,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Issue21 {
-
-    /*  To place into main /** Create instance of Issue21 Class-- this will have the required methods */
-    //String N = "3"; //input example
-   // String continent = "Asia";
-//Issue21 issue21 = new Issue21();
-//ArrayList<City> cities = issue21.getTopNIssue21(a);
-// /** Print countries and column names */
-// a.printCity(cities);
+public class Issue18 {
 
     /**
-     * -------------------------------Issue 21: getTopNIssue21 --------------
-     *    Objective: The top N populated capital cities in a continent where N is provided by the user.
-     *    @param N
-     *    Return type: ArrayList<City>
+     * -------------------------------Issue 18: getIssue18 --------------
+     *    Objective: All the capital cities in a continent organised by largest population to smallest.
+     *    Return type: ArrayList<Country>
      */
-    public ArrayList<City> getTopNIssue21(String N, App app, String continent) {
+    public ArrayList<City> getIssue18(App app) {
 
         try
         {
@@ -28,15 +19,13 @@ public class Issue21 {
             Statement stmt = app.con.createStatement();
 
             // Create string for SQL statement
-            String strIssue21 =
+            String strIssue18 =
                     "SELECT city.name, country.name, district, city.population "
-                            + "FROM city JOIN country ON country.Capital = city.ID "
-                            + "WHERE continent LIKE " + "'" + continent + "' "
-                            + "ORDER BY city.population DESC "
-                            + "LIMIT " + N;
+                            +"FROM city JOIN country ON country.Capital = city.ID "
+                            + "ORDER BY Continent, city.population DESC;";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strIssue21);
+            ResultSet rset = stmt.executeQuery(strIssue18);
 
             //Create Country ArrayList
             ArrayList<City> cities = new ArrayList<City>();
