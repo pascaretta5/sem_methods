@@ -40,7 +40,7 @@
                     <finalName>seMethods</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.napier.sem.App</mainClass>
+                            <mainClass>com.napier.sem_group22.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
