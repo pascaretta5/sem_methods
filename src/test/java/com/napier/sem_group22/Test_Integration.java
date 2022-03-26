@@ -25,6 +25,7 @@ public class Test_Integration {
     static Issue26 issue26;
     static Issue28 issue28;
     static Issue29 issue29;
+    static Issue30 issue30;
 
 
     @BeforeAll
@@ -487,5 +488,25 @@ public class Test_Integration {
     void getIssue29AllNull()
     {
         ArrayList<Population> pop1 = issue29.getIssue29(null, null);
+    }
+
+
+    /**
+     * Issue30
+     */
+    @Test
+    void getIssue30AppNull()
+    {
+        ArrayList<Population> pop1 = issue30.getIssue30(null, "Seoul");
+    }
+    @Test
+    void getIssue30DistrictNull()
+    {
+        ArrayList<Population> pop1 = issue30.getIssue30(app, null);
+    }
+    @Test
+    void getIssue30AllNull()
+    {
+        ArrayList<Population> pop1 = issue30.getIssue30(null, null);
     }
 }
