@@ -42,7 +42,7 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          token: CODECOV_TOKEN='3c0e22b1-c998-4650-8892-d97edb6b07bc'
+          token: CODECOV_TOKEN='4fe86412-2cb1-46a8-84a5-384f514f6d4f'
           directory: ./target/site/jacoco
           flags: Integration Tests # optional
           verbose: true # optional (default = false)

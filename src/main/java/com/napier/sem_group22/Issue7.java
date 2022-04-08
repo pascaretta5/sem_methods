@@ -4,23 +4,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Issue21 {
-
-    /*  To place into main /** Create instance of Issue21 Class-- this will have the required methods */
-    //String N = "3"; //input example
-   // String continent = "Asia";
-//Issue21 issue21 = new Issue21();
-//ArrayList<City> cities = issue21.getTopNIssue21(a);
-// /** Print countries and column names */
-// a.printCity(cities);
-
+public class Issue7 {
     /**
-     * -------------------------------Issue 21: getTopNIssue21 --------------
-     *    Objective: The top N populated capital cities in a continent where N is provided by the user.
-     *    @param N
-     *    Return type: ArrayList<City>
+     * -------------------------------Issue 7: getAllCitiesLargestToSmallest --------------
+     *    Objective: get all cities in the world ordered from largest to smallest.
+     *    Parameters: String region -- specified region.
+     *    Return type: ArrayList<Country>
      */
-    public ArrayList<City> getTopNIssue21(String N, App app, String continent) {
+    public ArrayList<City> getAllCitiesLargestToSmallest(App app) {
 
         try
         {
@@ -28,15 +19,13 @@ public class Issue21 {
             Statement stmt = app.con.createStatement();
 
             // Create string for SQL statement
-            String strIssue21 =
+            String strPopulationLageSmall =
                     "SELECT city.name, country.name, district, city.population "
-                            + "FROM city JOIN country ON country.Capital = city.ID "
-                            + "WHERE continent LIKE " + "'" + continent + "' "
-                            + "ORDER BY city.population DESC "
-                            + "LIMIT " + N;
+                            +"FROM city JOIN country ON CountryCode = Code "
+                            + "ORDER BY city.population DESC;";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strIssue21);
+            ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
 
             //Create Country ArrayList
             ArrayList<City> cities = new ArrayList<City>();
@@ -61,5 +50,4 @@ public class Issue21 {
             return null;
         }
     }
-
 }
