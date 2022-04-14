@@ -30,6 +30,12 @@ public class Issue24 {
 
         try
         {
+            // Check for missing parameters
+            if (app == null)
+            {
+                System.out.println("'app' parameter is missing");
+                return null;
+            }
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
 
@@ -73,8 +79,8 @@ public class Issue24 {
                         citiesPop = rset2.getFloat(1);
                         p.name = po.name;
                         p.population = po.population;
-                        p.inCities = citiesPop/regionPop*100;
-                        p.notinCities = 100-(citiesPop/regionPop*100);
+                        p.inCities = (citiesPop/regionPop)*100;
+                        p.notinCities = 100-((citiesPop/regionPop)*100);
                         populations2.add(p);
                     }
                 }
