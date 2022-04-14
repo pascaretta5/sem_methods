@@ -1,10 +1,10 @@
 # Use the latest MySQL image
 
 #MAC
-#FROM --platform=linux/x86_64 mysql
+FROM --platform=linux/x86_64 mysql
 
 #Windows
-FROM mysql
+#FROM mysql
 
 # Set the working directory
 WORKDIR /tmp

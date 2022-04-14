@@ -31,6 +31,20 @@ public class Issue28 {
 
         try
         {
+            // Check for missing parameters
+            if (app == null && region == null)
+            {
+                System.out.println("'app' and 'region' parameters are missing");
+                return null;
+            } else if (region == null)
+            {
+                System.out.println("'Region' parameter is missing");
+                return null;
+            } else if (app == null)
+            {
+                System.out.println("'app' parameter is missing");
+                return null;
+            }
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
 

@@ -28,6 +28,12 @@ public class Issue26 {
 
         try
         {
+            // Check for missing parameters
+            if (app == null)
+            {
+                System.out.println("'app' parameter is missing");
+                return null;
+            }
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
 

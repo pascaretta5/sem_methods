@@ -85,7 +85,7 @@ public class App
         }
         // Print header
         System.out.println(String.format("%-20s %-15s %-20s %-20s %-20s %-20s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
-        // Loop over all employees in the list
+        // Loop over all countries in the list
         for (Country c : countries)
         {
             if (c == null)
@@ -102,13 +102,21 @@ public class App
      *    @param cities
      *    @return: void
      */
-    public void printCity(ArrayList<City> cities)
+    public void printCities(ArrayList<City> cities)
     {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s %-30s", "City Name", "Country Name",  "District", "Population"));
-        // Loop over all countries in the list
+        // Loop over all cities in the list
         for (City cit : cities)
         {
+            if (cit == null)
+                continue;
             String c_string =
                     String.format("%-30s %-30s %-30s %-30s", cit.name, cit.countryName, cit.district, cit.population);
             System.out.println(c_string);
@@ -123,14 +131,22 @@ public class App
      */
     public void printPopulation(ArrayList<Population> populations)
     {
+        // Check populations is not null
+        if (populations == null)
+        {
+            System.out.println("No populations");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-30s %-30s %-30s %-30s", "Name", "Population", "% living in cities", "% NOT living in cities"));
-        // Loop over all countries in the list
+        // Loop over all populations in the list
         for (Population p : populations)
         {
-            String c_string =
+            if (p == null)
+                continue;
+            String p_string =
                     String.format("%-30s %-30s %-30s %-30s", p.name, p.population, p.inCities, p.notinCities);
-            System.out.println(c_string);
+            System.out.println(p_string);
         }
     }
 
