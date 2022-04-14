@@ -2,14 +2,13 @@ package com.napier.sem_group22;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Integration_tests {
+public class IntegrationTests {
     static App app;
 
     static Issue1 issue1;
@@ -34,7 +33,7 @@ public class Integration_tests {
     @BeforeAll
     static void init() {
         app = new App();
-        app.connect("localhost:33060", 0);
+        app.connect("localhost:33060", 3000);
 
         issue1 = new Issue1();
         issue2 = new Issue2();
@@ -70,9 +69,9 @@ public class Integration_tests {
         ArrayList<Population> populations = issue24.getIssue24(app);
 
         ArrayList<Population> pop2 = new ArrayList<>();
-        for (int i = 0; i < pop1.size(); i++) {
+        for (Population population : pop1) {
             for (Population po : populations) {
-                if (Objects.equals(po.name, pop1.get(i).name)) {
+                if (Objects.equals(po.name, population.name)) {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
@@ -90,4 +89,39 @@ public class Integration_tests {
                 assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue24 4/4 Failed");
             }
         }
+
+    //Issue25
+    @Test
+    void getIssue25Test() {
+        ArrayList<Population> pop1 = new ArrayList<>();
+        Population pop = new Population();
+        pop.name = "United Kingdom";
+        pop.population = 59623400;
+        pop.inCities = 37.630645751953125;
+        pop.notinCities = 62.369354248046875;
+        pop1.add(pop);
+
+        ArrayList<Population> populations = issue25.getIssue25(app);
+
+        ArrayList<Population> pop2 = new ArrayList<>();
+        for (Population population : pop1) {
+            for (Population po : populations) {
+                if (Objects.equals(po.name, population.name)) {
+                    Population p = new Population();
+                    p.name = po.name;
+                    p.population = po.population;
+                    p.inCities = po.inCities;
+                    p.notinCities = po.notinCities;
+                    pop2.add(p);
+                }
+            }
+        }
+        for (int i = 0; i < pop1.size(); i++) {
+
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/4 Failed");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/4 Failed");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 3/4 Failed");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 4/4 Failed");
+        }
+    }
     }

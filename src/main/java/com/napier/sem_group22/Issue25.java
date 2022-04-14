@@ -40,19 +40,19 @@ public class Issue25 {
             Statement stmt = app.con.createStatement();
 
             // Create string for SQL statement
-            String strIssue26 =
+            String strIssue25 =
                     "SELECT SUM(country.Population), country.Name "
                             + "FROM country "
                             + "GROUP BY country.Name";
 
-            String strIssue26b =
-                    "SELECT SUM(city.Population), country.Code "
+            String strIssue25b =
+                    "SELECT SUM(city.Population), country.Name "
                             + "FROM city "
                             + "JOIN country ON city.CountryCode=country.Code "
-                            + "GROUP BY country.Code";
+                            + "GROUP BY country.Name";
 
             // Execute SQL statement and Extrapolate the values from columns
-            ResultSet rset = stmt.executeQuery(strIssue26);
+            ResultSet rset = stmt.executeQuery(strIssue25);
 
             //Create Population ArrayList
             ArrayList<Population> populations = new ArrayList<Population>();
@@ -67,7 +67,7 @@ public class Issue25 {
             }
 
             ArrayList<Population> populations2 = new ArrayList<Population>();
-            ResultSet rset2 = stmt.executeQuery(strIssue26b);
+            ResultSet rset2 = stmt.executeQuery(strIssue25b);
             while(rset2.next())
             {
                 for(Population po : populations)
