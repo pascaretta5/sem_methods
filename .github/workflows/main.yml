@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - issue23
+      - feature/issue23
 jobs:
   UnitTests:
     name: Unit Tests
