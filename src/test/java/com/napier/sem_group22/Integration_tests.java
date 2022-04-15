@@ -56,6 +56,60 @@ public class Integration_tests {
         issue30 = new Issue30();
     }
 
+    //test Issue 6
+    @Test
+    void getNTopPopCountriesRegionTest()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion("1", app, "Central America");
+        ArrayList<Country> countries2 = new ArrayList<>();
+        Country c1 = new Country();
+        c1.code = "MEX";
+        c1.name = "Mexico";
+        c1.continent = "North America";
+        c1.region = "Central America";
+        c1.population = 98881000;
+        c1.capitalName = "Ciudad de México";
+
+        countries2.add(c1);
+
+        for(int i = 0; i < countries1.size(); i++ ) {
+            assertEquals(countries2.get(i).code, countries1.get(i).code);
+            assertEquals(countries2.get(i).name, countries1.get(i).name);
+            assertEquals(countries2.get(i).continent, countries1.get(i).continent);
+            assertEquals(countries2.get(i).region, countries1.get(i).region);
+            assertEquals(countries2.get(i).population, countries1.get(i).population);
+            assertEquals(countries2.get(i).capitalName, countries1.get(i).capitalName);
+        }
+    }
+
+    @Test
+    void getNTopPopCountriesRegionTestNullN()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion(null, app, "Central America");
+
+    }
+
+    @Test
+    void getNTopPopCountriesRegionTestNullRegion()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion("2", app, null);
+
+    }
+
+    @Test
+    void getNTopPopCountriesRegionTestNullApp()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion("2", null, "Central America");
+
+    }
+
+    @Test
+    void getNTopPopCountriesRegionTestNullAllParams()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion(null, null, null);
+
+    }
+
     //Issue24
     @Test
     void getIssue24Test() {
@@ -90,4 +144,5 @@ public class Integration_tests {
                 assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue24 4/4 Failed");
             }
         }
+
     }

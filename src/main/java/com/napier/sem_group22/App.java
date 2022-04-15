@@ -163,11 +163,11 @@ public class App
         }
 
         /**
-         * ---------------------- Issue #30 ---------------------------
+         * ---------------------- Issue #8 ---------------------------
          */
-        Issue30 iss = new Issue30();
-        ArrayList<Population> populations = iss.getIssue30(a, "Seoul");
-        a.printPopulation(populations);
+        Issue8 is8 = new Issue8();
+        ArrayList<City> cities = is8.getCitiesLargeSmallPop(a, "Europe");
+        a.printCities(cities);
 
         // Disconnect from database
         a.disconnect();
