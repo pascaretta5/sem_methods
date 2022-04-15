@@ -165,8 +165,8 @@ public class App
         /*
          * ---------------------- Issue #10 ---------------------------
          */
-        Issue10 is10 = new Issue10();
-        ArrayList<City> cities = is10.getCitiesLargeSmallPopCountry(a, "Japan");
+        Issue11 is11 = new Issue11();
+        ArrayList<City> cities = is11.getCitiesLargeSmallPopDistrict(a, "Gelderland");
         a.printCities(cities);
 
         // Disconnect from database
