@@ -163,10 +163,10 @@ public class App
         }
 
         /**
-         * ---------------------- Issue #8 ---------------------------
+         * ---------------------- Issue #9 ---------------------------
          */
-        Issue8 is8 = new Issue8();
-        ArrayList<City> cities = is8.getCitiesLargeSmallPop(a, "Europe");
+        Issue9 is9 = new Issue9();
+        ArrayList<City> cities = is9.getCitiesLargeSmallPopRegion(a, "Caribbean");
         a.printCities(cities);
 
         // Disconnect from database

@@ -19,6 +19,7 @@ public class IntegrationTests {
     static Issue6 issue6;
     static Issue7 issue7;
     static Issue8 issue8;
+    static Issue9 issue9;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -45,6 +46,7 @@ public class IntegrationTests {
         issue6 = new Issue6();
         issue7 = new Issue7();
         issue8 = new Issue8();
+        issue9 = new Issue9();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -188,6 +190,77 @@ public class IntegrationTests {
     void getCitiesLargeSmallPopNullAllParams()
     {
         ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(null, null);
+
+    }
+
+    /**
+     * -------------------- Tests for Issue9 ------------------------
+     * -getCitiesLargeSmallPopRegionTest -- test that the sql statement works
+     * -getCitiesLargeSmallPopRegionNullRegion() -- test error handling if Region null
+     * -getCitiesLargeSmallPopRegionNullApp() -- test error handling if App instance class null
+     * -getCitiesLargeSmallPopRegionNullAllParams() -- test error handling if all @param null
+     */
+    @Test
+    void getCitiesLargeSmallPopRegionTest()
+    {
+        ArrayList<City> cities = issue9.getCitiesLargeSmallPopRegion(app, "Caribbean");
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        c1.name = "La Habana";
+        c1.countryName = "Cuba";
+        c1.district = "La Habana";
+        c1.population = 2256000;
+
+        City c2 = new City();
+        c2.name = "Santo Domingo de Guzmán";
+        c2.countryName = "Dominican Republic";
+        c2.district = "Distrito Nacional";
+        c2.population = 1609966;
+
+        cities1.add(c1);
+        cities1.add(c2);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
+
+                    cities2.add(city);
+                }
+            }
+        }
+        for (int i = 0; i < cities1.size(); i++) {
+
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue8 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue8 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue8 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue8 4/4 Failed");
+        }
+    }
+
+
+    @Test
+    void getCitiesLargeSmallPopRegionNullRegion()
+    {
+        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(app, null);
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopRegionNullApp()
+    {
+        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(null, "Caribbean");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopRegionNullAllParams()
+    {
+        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(null, null);
 
     }
 
