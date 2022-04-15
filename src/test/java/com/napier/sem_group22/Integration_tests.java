@@ -19,6 +19,7 @@ public class Integration_tests {
     static Issue5 issue5;
     static Issue6 issue6;
     static Issue7 issue7;
+    static Issue8 issue8;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -43,6 +44,7 @@ public class Integration_tests {
         issue5 = new Issue5();
         issue6 = new Issue6();
         issue7 = new Issue7();
+        issue8 = new Issue8();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -56,7 +58,14 @@ public class Integration_tests {
         issue30 = new Issue30();
     }
 
-    //test Issue 6
+    /**
+     * -------------------- Tests for Issue6 ------------------------
+     * -getNTopPopCountriesRegionTest() -- test that the sql statement works
+     * -getNTopPopCountriesRegionTestNullN() -- test error handling if N null
+     * -getNTopPopCountriesRegionTestNullRegion() -- test error handling if Region null
+     * -getNTopPopCountriesRegionTestNullApp() -- test error handling if App instance class null
+     * -getNTopPopCountriesRegionTestNullAllParams() -- test error handling if all @param null
+     */
     @Test
     void getNTopPopCountriesRegionTest()
     {
@@ -107,6 +116,77 @@ public class Integration_tests {
     void getNTopPopCountriesRegionTestNullAllParams()
     {
         ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion(null, null, null);
+
+    }
+
+    /**
+     * -------------------- Tests for Issue8 ------------------------
+     * -getCitiesLargeSmallPopTest -- test that the sql statement works
+     * -getCitiesLargeSmallPopNullContinent() -- test error handling if Continent null
+     * -getCitiesLargeSmallPopNullApp() -- test error handling if App instance class null
+     * -getCitiesLargeSmallPopNullAllParams() -- test error handling if all @param null
+     */
+    @Test
+    void getCitiesLargeSmallPopTest()
+    {
+        ArrayList<City> cities = issue8.getCitiesLargeSmallPop(app, "Europe");
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        c1.name = "Moscow";
+        c1.countryName = "Russian Federation";
+        c1.district = "Moscow (City)";
+        c1.population = 8389200;
+
+        City c2 = new City();
+        c2.name = "London";
+        c2.countryName = "United Kingdom";
+        c2.district = "England";
+        c2.population = 7285000;
+
+        cities1.add(c1);
+        cities1.add(c2);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
+
+                    cities2.add(city);
+                }
+            }
+        }
+        for (int i = 0; i < cities1.size(); i++) {
+
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue8 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue8 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue8 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue8 4/4 Failed");
+        }
+    }
+
+
+    @Test
+    void getCitiesLargeSmallPopNullContinent()
+    {
+        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(app, "Europe");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopNullApp()
+    {
+        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(null, "Europe");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopNullAllParams()
+    {
+        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(null, null);
 
     }
 
