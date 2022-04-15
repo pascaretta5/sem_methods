@@ -5,7 +5,6 @@
  */
 package com.napier.sem_group22;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class Issue26 {
 
             ArrayList<Population> population = new ArrayList<Population>();
             Population p = new Population();
-            p.name = "Entire wolrld";
+            p.name = "Entire world";
             p.population = worldPop;
             p.inCities = citiesPop/worldPop*100;
             p.notinCities = 100 - (citiesPop/worldPop*100);
