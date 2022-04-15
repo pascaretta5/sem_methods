@@ -4,6 +4,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Author: Sara
+ * Date: 15/04/22
+ * Issue 7 method : get all cities in the world ordered from largest to smallest from the database.
+ */
+
 public class Issue7 {
     /**
      * -------------------------------Issue 7: getAllCitiesLargestToSmallest --------------

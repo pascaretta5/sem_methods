@@ -20,6 +20,7 @@ public class IntegrationTests {
     static Issue7 issue7;
     static Issue8 issue8;
     static Issue9 issue9;
+    static Issue10 issue10;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -47,6 +48,7 @@ public class IntegrationTests {
         issue7 = new Issue7();
         issue8 = new Issue8();
         issue9 = new Issue9();
+        issue10 = new Issue10();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -235,10 +237,10 @@ public class IntegrationTests {
         }
         for (int i = 0; i < cities1.size(); i++) {
 
-            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue8 1/4 Failed");
-            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue8 2/4 Failed");
-            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue8 3/4 Failed");
-            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue8 4/4 Failed");
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue9 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue9 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue9 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue9 4/4 Failed");
         }
     }
 
@@ -261,6 +263,77 @@ public class IntegrationTests {
     void getCitiesLargeSmallPopRegionNullAllParams()
     {
         ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(null, null);
+
+    }
+
+    /**
+     * -------------------- Tests for Issue10 ------------------------
+     * -getCitiesLargeSmallPopCountryTest -- test that the sql statement works
+     * -getCitiesLargeSmallPopCountryNullCountry() -- test error handling if Country null
+     * -getCitiesLargeSmallPopCountryNullApp() -- test error handling if App instance class null
+     * -getCitiesLargeSmallPopRegionNullAllParams() -- test error handling if all @param null
+     */
+    @Test
+    void getCitiesLargeSmallPopCountryTest()
+    {
+        ArrayList<City> cities = issue10.getCitiesLargeSmallPopCountry(app, "Japan");
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        c1.name = "Tokyo";
+        c1.countryName = "Japan";
+        c1.district = "Tokyo-to";
+        c1.population = 7980230;
+
+        City c2 = new City();
+        c2.name = "Jokohama [Yokohama]";
+        c2.countryName = "Japan";
+        c2.district = "Kanagawa";
+        c2.population = 3339594;
+
+        cities1.add(c1);
+        cities1.add(c2);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
+
+                    cities2.add(city);
+                }
+            }
+        }
+        for (int i = 0; i < cities1.size(); i++) {
+
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue10 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue10 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue10 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue10 4/4 Failed");
+        }
+    }
+
+
+    @Test
+    void getCitiesLargeSmallPopCountryNullCountry()
+    {
+        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(app, null);
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopCountryNullApp()
+    {
+        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(null, "Japan");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopCountryNullAllParams()
+    {
+        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(null, null);
 
     }
 
