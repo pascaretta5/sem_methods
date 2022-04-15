@@ -19,6 +19,7 @@ public class UnitTests {
     static Issue19 issue19;
     static Issue20 issue20;
     static Issue21 issue21;
+    static Issue23 issue23;
     static Issue24 issue24;
     static Issue25 issue25;
     static Issue26 issue26;
@@ -43,6 +44,7 @@ public class UnitTests {
         issue19 = new Issue19();
         issue20 = new Issue20();
         issue21 = new Issue21();
+        issue23 = new Issue23();
         issue24 = new Issue24();
         issue25 = new Issue25();
         issue26 = new Issue26();
@@ -160,6 +162,19 @@ public class UnitTests {
         Populations.add(p);
         app.printPopulation(Populations);
     }
+
+    //Issue 23
+    @Test
+    void getIssue23AppNull()
+    {
+        ArrayList<Population> pop1 = issue23.getIssue23(null);
+    }
+    @Test
+    void getIssue23Normal()
+    {
+        ArrayList<Population> pop1 = issue23.getIssue23(app);
+    }
+
 
     //Issue 24
     @Test

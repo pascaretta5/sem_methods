@@ -23,6 +23,7 @@ public class IntegrationTests {
     static Issue19 issue19;
     static Issue20 issue20;
     static Issue21 issue21;
+    static Issue23 issue23;
     static Issue24 issue24;
     static Issue25 issue25;
     static Issue26 issue26;
@@ -47,12 +48,48 @@ public class IntegrationTests {
         issue19 = new Issue19();
         issue20 = new Issue20();
         issue21 = new Issue21();
+        issue23 = new Issue23();
         issue24 = new Issue24();
         issue25 = new Issue25();
         issue26 = new Issue26();
         issue28 = new Issue28();
         issue29 = new Issue29();
         issue30 = new Issue30();
+    }
+
+    //Issue23
+    @Test
+    void getIssue23Test() {
+        ArrayList<Population> pop1 = new ArrayList<>();
+        Population pop = new Population();
+        pop.name = "South America";
+        pop.population = 345780000;
+        pop.inCities = 49.75355911254883;
+        pop.notinCities = 50.24644088745117;
+        pop1.add(pop);
+
+        ArrayList<Population> populations = issue23.getIssue23(app);
+
+        ArrayList<Population> pop2 = new ArrayList<>();
+        for (Population population : pop1) {
+            for (Population po : populations) {
+                if (Objects.equals(po.name, population.name)) {
+                    Population p = new Population();
+                    p.name = po.name;
+                    p.population = po.population;
+                    p.inCities = po.inCities;
+                    p.notinCities = po.notinCities;
+                    pop2.add(p);
+                }
+            }
+        }
+        for (int i = 0; i < pop1.size(); i++) {
+
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue24 1/4 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue24 2/4 Failed (Population not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue24 3/4 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue24 4/4 Failed (% not living in cities not matching)");
+        }
     }
 
     //Issue24

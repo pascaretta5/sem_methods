@@ -162,12 +162,6 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        /**
-         * ---------------------- Issue #30 ---------------------------
-         */
-        Issue30 iss = new Issue30();
-        ArrayList<Population> populations = iss.getIssue30(a, "Seoul");
-        a.printPopulation(populations);
 
         // Disconnect from database
         a.disconnect();
