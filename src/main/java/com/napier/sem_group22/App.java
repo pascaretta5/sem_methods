@@ -162,11 +162,11 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        /**
-         * ---------------------- Issue #9 ---------------------------
+        /*
+         * ---------------------- Issue #10 ---------------------------
          */
-        Issue9 is9 = new Issue9();
-        ArrayList<City> cities = is9.getCitiesLargeSmallPopRegion(a, "Caribbean");
+        Issue10 is10 = new Issue10();
+        ArrayList<City> cities = is10.getCitiesLargeSmallPopCountry(a, "Japan");
         a.printCities(cities);
 
         // Disconnect from database
