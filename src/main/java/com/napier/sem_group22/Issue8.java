@@ -16,9 +16,10 @@ public class Issue8 {
 
     /**
      * ------------ getCitiesSmallPop ---------------
+     * .
      * @param app = get the app class instance for connection
      * @param continent = specified continent to get cities from
-     * @return ArrayList<City> = return an array list with all the cities
+     * @return  ArrayList<City> = return an array list with all the cities
      * purpose = get all the cities and their populations from largest to smallest on a specific
      *           continent.
      */
