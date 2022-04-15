@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Issue8 {
 
     /**
-     * ------------ getCitiesSmallPop ---------------
+     * ------------ getCitiesLargeSmallPop ---------------
      * .
      * @param app = get the app class instance for connection
      * @param continent = specified continent to get cities from

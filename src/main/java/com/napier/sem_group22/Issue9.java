@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Issue9 {
     /**
-     * ------------ getCitiesSmallPopRegion ---------------
+     * ------------ getCitiesLargeSmallPopRegion ---------------
      * .
      * @param app = get the app class instance for connection
      * @param region = specified region to get cities from
