@@ -1,8 +1,6 @@
 /**
- * Author: Sara, Bruno, Andrei, Andrej
+ * Authors: Sara, Bruno, Andrei, Andrej
  * Date: 10/03/22
- *
- * Update 22/02/22 : Sara --  The method for the Issue #6 is called in the main method.
  */
 package com.napier.sem_group22;
 
@@ -150,6 +148,37 @@ public class App
         }
     }
 
+    /**
+     * ------------ printLPopulation(ArrayList<LPopulation> language_population) ------------
+     * Objective: Print the populations stored in the ArrayList.
+     * @param langpop
+     * @return void
+     */
+    public static void printLPopulation(ArrayList<LPopulation> langpop)
+    {
+        // Check populations is not null
+        if (langpop == null)
+        {
+            System.out.println("No language populations");
+            return;
+        }
+        // Print header
+        System.out.println(String.format("%-30s %-30s %-30s", "Name", "Population", "% in world"));
+        // Loop over all populations in the list
+        for (LPopulation lp : langpop)
+        {
+            if (lp == null)
+                continue;
+            String lp_string =
+                    String.format("%-30s %-30s %-30s", lp.name, lp.population, lp.pINworld);
+            System.out.println(lp_string);
+        }
+    }
+
+    /**
+     * Main method - allows connection to the database
+     * @param args
+     */
     public static void main(String[] args)
     {
         // Create new Application
@@ -161,13 +190,6 @@ public class App
         }else{
             a.connect(args[0], Integer.parseInt(args[1]));
         }
-
-        /*
-         * ---------------------- Issue #10 ---------------------------
-         */
-        Issue11 is11 = new Issue11();
-        ArrayList<City> cities = is11.getCitiesLargeSmallPopDistrict(a, "Gelderland");
-        a.printCities(cities);
 
         // Disconnect from database
         a.disconnect();

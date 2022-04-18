@@ -1,6 +1,6 @@
 # Use the latest MySQL image
 
-#MAC
+#MAC on arm
 #FROM --platform=linux/x86_64 mysql
 
 #Windows
@@ -10,7 +10,6 @@ FROM mysql
 WORKDIR /tmp
 # Copy all the files to the working directory of the container
 COPY *.sql /tmp/
-#COPY *.dump /tmp/ -- not needed!
 # Copy the main SQL file to docker-entrypoint-initdb.d.
 # Scripts and SQL files in this folder are executed on container startup.
 # This is specific to MySQL.

@@ -30,6 +30,7 @@ public class UnitTests {
     static Issue28 issue28;
     static Issue29 issue29;
     static Issue30 issue30;
+    static Issue32 issue32;
 
     @BeforeAll
     static void init()
@@ -59,6 +60,7 @@ public class UnitTests {
         issue28 = new Issue28();
         issue29 = new Issue29();
         issue30 = new Issue30();
+        issue32 = new Issue32();
     }
 
     //testing the printCountries method
@@ -169,6 +171,41 @@ public class UnitTests {
         p.notinCities = 0;
         Populations.add(p);
         app.printPopulation(Populations);
+    }
+
+    //testing the printLPopulation method
+    @Test
+    void printLPopulationTestNull()
+    {
+        app.printCountries(null);
+
+    }
+    @Test
+    void printLPopulationTestEmpty()
+    {
+        ArrayList<LPopulation> lpop = new ArrayList<>();
+        app.printLPopulation(lpop);
+
+    }
+
+    @Test
+    void printLPopulationTestContainsNull()
+    {
+        ArrayList<LPopulation> lpop = new ArrayList<>();
+        lpop.add(null);
+        app.printLPopulation(lpop);
+    }
+
+    @Test
+    void printLPopulationNormal()
+    {
+        ArrayList<LPopulation> lpop = new ArrayList<>();
+        LPopulation l = new LPopulation();
+        l.name = "Chinese";
+        l.population = 1968265500;
+        l.pINworld = 32.38;
+        lpop.add(l);
+        app.printLPopulation(lpop);
     }
 
     //Issue 6
@@ -405,4 +442,15 @@ public class UnitTests {
         ArrayList<Population> pop1 = issue30.getIssue30(app, "Seoul");
     }
 
+    //Issue 32
+    @Test
+    void getIssue32AppNull()
+    {
+        ArrayList<LPopulation> pop1 = issue32.getIssue32(null);
+    }
+    @Test
+    void getIssue32Normal()
+    {
+        ArrayList<LPopulation> pop1 = issue32.getIssue32(app);
+    }
 }
