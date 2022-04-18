@@ -50,7 +50,7 @@ public class Issue26 {
             worldPop = rset.getLong(1);
             citiesPop = rset.getDouble(2);
 
-            ArrayList<Population> population = new ArrayList<Population>();
+            ArrayList<Population> population = new ArrayList<>();
             Population p = new Population();
             p.name = "Entire world";
             p.population = worldPop;

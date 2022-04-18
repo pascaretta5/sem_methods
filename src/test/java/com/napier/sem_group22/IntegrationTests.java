@@ -98,34 +98,6 @@ public class IntegrationTests {
         }
     }
 
-    @Test
-    void getNTopPopCountriesRegionTestNullN()
-    {
-        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion(null, app, "Central America");
-
-    }
-
-    @Test
-    void getNTopPopCountriesRegionTestNullRegion()
-    {
-        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion("2", app, null);
-
-    }
-
-    @Test
-    void getNTopPopCountriesRegionTestNullApp()
-    {
-        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion("2", null, "Central America");
-
-    }
-
-    @Test
-    void getNTopPopCountriesRegionTestNullAllParams()
-    {
-        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion(null, null, null);
-
-    }
-
     /**
      * -------------------- Tests for Issue8 ------------------------
      * -getCitiesLargeSmallPopTest -- test that the sql statement works
@@ -173,28 +145,6 @@ public class IntegrationTests {
             assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue8 3/4 Failed");
             assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue8 4/4 Failed");
         }
-    }
-
-
-    @Test
-    void getCitiesLargeSmallPopNullContinent()
-    {
-        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(app, "Europe");
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopNullApp()
-    {
-        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(null, "Europe");
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopNullAllParams()
-    {
-        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(null, null);
-
     }
 
     /**
@@ -246,28 +196,6 @@ public class IntegrationTests {
         }
     }
 
-
-    @Test
-    void getCitiesLargeSmallPopRegionNullRegion()
-    {
-        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(app, null);
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopRegionNullApp()
-    {
-        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(null, "Caribbean");
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopRegionNullAllParams()
-    {
-        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(null, null);
-
-    }
-
     /**
      * -------------------- Tests for Issue10 ------------------------
      * -getCitiesLargeSmallPopCountryTest -- test that the sql statement works
@@ -317,28 +245,6 @@ public class IntegrationTests {
         }
     }
 
-
-    @Test
-    void getCitiesLargeSmallPopCountryNullCountry()
-    {
-        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(app, null);
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopCountryNullApp()
-    {
-        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(null, "Japan");
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopCountryNullAllParams()
-    {
-        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(null, null);
-
-    }
-
     /**
      * -------------------- Tests for Issue11 ------------------------
      * -getCitiesLargeSmallPopDistrictTest -- test that the sql statement works
@@ -386,28 +292,6 @@ public class IntegrationTests {
             assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue10 3/4 Failed");
             assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue10 4/4 Failed");
         }
-    }
-
-
-    @Test
-    void getCitiesLargeSmallPopDistrictNullDistrict()
-    {
-        ArrayList<City> cities1 = issue11.getCitiesLargeSmallPopDistrict(app, null);
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopDistrictNullApp()
-    {
-        ArrayList<City> cities1 = issue11.getCitiesLargeSmallPopDistrict(null, "Gelderland");
-
-    }
-
-    @Test
-    void getCitiesLargeSmallPopDistrictNullAllParams()
-    {
-        ArrayList<City> cities1 = issue11.getCitiesLargeSmallPopDistrict(null, null);
-
     }
 
     //Issue23

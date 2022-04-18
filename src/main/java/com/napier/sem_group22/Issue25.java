@@ -54,7 +54,7 @@ public class Issue25 {
             ResultSet rset = stmt.executeQuery(strIssue25);
 
             //Create Population ArrayList
-            ArrayList<Population> populations = new ArrayList<Population>();
+            ArrayList<Population> populations = new ArrayList<>();
 
             while(rset.next()) {
 
@@ -65,7 +65,7 @@ public class Issue25 {
                 populations.add(p);
             }
 
-            ArrayList<Population> populations2 = new ArrayList<Population>();
+            ArrayList<Population> populations2 = new ArrayList<>();
             ResultSet rset2 = stmt.executeQuery(strIssue25b);
             while(rset2.next())
             {

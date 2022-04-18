@@ -14,6 +14,10 @@ public class UnitTests {
     static Issue5 issue5;
     static Issue6 issue6;
     static Issue7 issue7;
+    static Issue8 issue8;
+    static Issue9 issue9;
+    static Issue10 issue10;
+    static Issue11 issue11;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -39,6 +43,10 @@ public class UnitTests {
         issue5 = new Issue5();
         issue6 = new Issue6();
         issue7 = new Issue7();
+        issue8 = new Issue8();
+        issue9 = new Issue9();
+        issue10 = new Issue10();
+        issue11 = new Issue11();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -161,6 +169,123 @@ public class UnitTests {
         p.notinCities = 0;
         Populations.add(p);
         app.printPopulation(Populations);
+    }
+
+    //Issue 6
+    @Test
+    void getNTopPopCountriesRegionTestNullN()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion(null, app, "Central America");
+
+    }
+
+    @Test
+    void getNTopPopCountriesRegionTestNullRegion()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion("2", app, null);
+
+    }
+
+    @Test
+    void getNTopPopCountriesRegionTestNullApp()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion("2", null, "Central America");
+
+    }
+
+    @Test
+    void getNTopPopCountriesRegionTestNullAllParams()
+    {
+        ArrayList<Country> countries1 = issue6.getNTopPopCountriesRegion(null, null, null);
+
+    }
+
+    //Issue 8
+    @Test
+    void getCitiesLargeSmallPopNullContinent()
+    {
+        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(app, "Europe");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopNullApp()
+    {
+        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(null, "Europe");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopNullAllParams()
+    {
+        ArrayList<City> cities1 = issue8.getCitiesLargeSmallPop(null, null);
+
+    }
+
+    //Issue 9
+    @Test
+    void getCitiesLargeSmallPopRegionNullRegion()
+    {
+        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(app, null);
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopRegionNullApp()
+    {
+        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(null, "Caribbean");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopRegionNullAllParams()
+    {
+        ArrayList<City> cities1 = issue9.getCitiesLargeSmallPopRegion(null, null);
+
+    }
+
+    //Issue 10
+    @Test
+    void getCitiesLargeSmallPopCountryNullCountry()
+    {
+        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(app, null);
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopCountryNullApp()
+    {
+        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(null, "Japan");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopCountryNullAllParams()
+    {
+        ArrayList<City> cities1 = issue10.getCitiesLargeSmallPopCountry(null, null);
+
+    }
+
+    //Issue 11
+    @Test
+    void getCitiesLargeSmallPopDistrictNullDistrict()
+    {
+        ArrayList<City> cities1 = issue11.getCitiesLargeSmallPopDistrict(app, null);
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopDistrictNullApp()
+    {
+        ArrayList<City> cities1 = issue11.getCitiesLargeSmallPopDistrict(null, "Gelderland");
+
+    }
+
+    @Test
+    void getCitiesLargeSmallPopDistrictNullAllParams()
+    {
+        ArrayList<City> cities1 = issue11.getCitiesLargeSmallPopDistrict(null, null);
+
     }
 
     //Issue 23
