@@ -78,8 +78,8 @@ public class Issue23 {
                         citiesPop = rset2.getFloat(1);
                         p.name = po.name;
                         p.population = po.population;
-                        p.inCities = (citiesPop/continentPop)*100;
-                        p.notinCities = 100-((citiesPop/continentPop)*100);
+                        p.inCities = Math.round((citiesPop/continentPop*100)*100)/100d;
+                        p.notinCities = 100d - Math.round((citiesPop/continentPop*100)*100)/100d;
                         populations2.add(p);
                     }
                 }

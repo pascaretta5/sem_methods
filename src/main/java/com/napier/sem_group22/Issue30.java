@@ -62,8 +62,8 @@ public class Issue30 {
             Population po = new Population();
             po.name = district;
             po.population = districtPop;
-            po.inCities = 100;
-            po.notinCities = 0;
+            po.inCities = 100.00;
+            po.notinCities = 0.00;
             p.add(po);
 
             return p;

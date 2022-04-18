@@ -54,8 +54,8 @@ public class Issue26 {
             Population p = new Population();
             p.name = "Entire world";
             p.population = worldPop;
-            p.inCities = citiesPop/worldPop*100;
-            p.notinCities = 100 - (citiesPop/worldPop*100);
+            p.inCities = Math.round((citiesPop/worldPop*100)*100)/100d;
+            p.notinCities = 100d - Math.round((citiesPop/worldPop*100)*100)/100d;
             population.add(p);
 
             return population;

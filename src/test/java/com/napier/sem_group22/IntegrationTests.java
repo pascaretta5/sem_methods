@@ -301,8 +301,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "South America";
         pop.population = 345780000;
-        pop.inCities = 49.75355911254883;
-        pop.notinCities = 50.24644088745117;
+        pop.inCities = 49.75; //49.75355911254883
+        pop.notinCities = 50.25; //50.24644088745117
         pop1.add(pop);
 
         ArrayList<Population> populations = issue23.getIssue23(app);
@@ -336,8 +336,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Middle East";
         pop.population = 188380700;
-        pop.inCities = 37.355934143066406;
-        pop.notinCities = 62.644065856933594;
+        pop.inCities = 37.36; //37.355934143066406
+        pop.notinCities = 62.64; //62.644065856933594
         pop1.add(pop);
 
         ArrayList<Population> populations = issue24.getIssue24(app);
@@ -371,8 +371,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "United Kingdom";
         pop.population = 59623400;
-        pop.inCities = 37.630645751953125;
-        pop.notinCities = 62.369354248046875;
+        pop.inCities = 37.63; //37.630645751953125
+        pop.notinCities = 62.37; //62.369354248046875
         pop1.add(pop);
 
         ArrayList<Population> populations = issue25.getIssue25(app);
@@ -406,8 +406,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Entire world";
         pop.population = 6078749450L;
-        pop.inCities = 23.517335197949308;
-        pop.notinCities = 76.48266480205069;
+        pop.inCities = 23.52; //23.517335197949308
+        pop.notinCities = 76.48; //76.48266480205069
         pop1.add(pop);
 
         ArrayList<Population> populations = issue26.getIssue26(app);
@@ -443,8 +443,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Middle East";
         pop.population = 188380700;
-        pop.inCities = 37.355934143066406;
-        pop.notinCities = 62.644065856933594;
+        pop.inCities = 37.36; //37.355934143066406
+        pop.notinCities = 62.64; //62.644065856933594
         pop1.add(pop);
 
         ArrayList<Population> populations = issue28.getIssue28(app, pop1.get(0).name);
@@ -478,8 +478,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "United Kingdom";
         pop.population = 59623400;
-        pop.inCities = 37.630645751953125;
-        pop.notinCities = 62.369354248046875;
+        pop.inCities = 37.63; //37.630645751953125
+        pop.notinCities = 62.37; //62.369354248046875
         pop1.add(pop);
 
         ArrayList<Population> populations = issue29.getIssue29(app, pop1.get(0).name);
@@ -513,8 +513,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Seoul";
         pop.population = 9981619;
-        pop.inCities = 100;
-        pop.notinCities = 0;
+        pop.inCities = 100.00;
+        pop.notinCities = 0.00;
         pop1.add(pop);
 
         ArrayList<Population> populations = issue30.getIssue30(app, pop1.get(0).name);

@@ -74,8 +74,8 @@ public class Issue29 {
             Population po = new Population();
             po.name = country;
             po.population = countryPop;
-            po.inCities = citiesPop/countryPop*100;
-            po.notinCities = 100 - (citiesPop/countryPop*100);
+            po.inCities = Math.round((citiesPop/countryPop*100)*100)/100d;
+            po.notinCities = 100d - Math.round((citiesPop/countryPop*100)*100)/100d;
             p.add(po);
 
             return p;
