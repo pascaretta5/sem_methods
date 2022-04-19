@@ -136,14 +136,14 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-30s %-30s %-30s %-30s", "Name", "Population", "% living in cities", "% NOT living in cities"));
+        System.out.println(String.format("%-30s %-30s %-30s %-30s %-30s %-30s", "Name", "Population", "Living in cities", "NOT living in cities", "% living in cities", "% NOT living in cities"));
         // Loop over all populations in the list
         for (Population p : populations)
         {
             if (p == null)
                 continue;
             String p_string =
-                    String.format("%-30s %-30s %-30s %-30s", p.name, p.population, p.inCities, p.notinCities);
+                    String.format("%-30s %-30s %-30s %-30s %-30s %-30s", p.name, p.population, p.CityPop, p.notINCityPop, p.inCities, p.notinCities);
             System.out.println(p_string);
         }
     }

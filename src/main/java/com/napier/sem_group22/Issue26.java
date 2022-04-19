@@ -19,6 +19,8 @@ public class Issue26 {
      *  ----- getIssue26() -------
      *  Objectives:
      *      return the population of the world,
+     *      population of people living in cities,
+     *      population of people NOT living in cities,
      *      the percentage of the world population living in cities,
      *      percentage NOT living in cities.
      * @return  ArrayList<Population>
@@ -33,6 +35,8 @@ public class Issue26 {
                 System.out.println("'app' parameter is missing");
                 return null;
             }
+
+
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
 
@@ -54,12 +58,14 @@ public class Issue26 {
             Population p = new Population();
             p.name = "Entire world";
             p.population = worldPop;
+            p.CityPop = rset.getLong(2);
+            p.notINCityPop = rset.getLong(1) - rset.getLong(2);
             p.inCities = Math.round((citiesPop/worldPop*100)*100)/100d;
             p.notinCities = 100d - Math.round((citiesPop/worldPop*100)*100)/100d;
             population.add(p);
 
-            return population;
 
+            return population;
         }
         catch (Exception e) //couldn't find world population
         {

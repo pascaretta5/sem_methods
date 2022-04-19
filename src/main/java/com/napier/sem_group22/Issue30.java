@@ -18,6 +18,8 @@ public class Issue30 {
      *  ----- getIssue30() -------
      *  Objectives:
      *      return the population of a district,
+     *      population of people living in cities,
+     *      population of people NOT living in cities,
      *      the percentage of the population living in cities,
      *      percentage NOT living in cities.
      *
@@ -43,6 +45,8 @@ public class Issue30 {
                 System.out.println("'app' parameter is missing");
                 return null;
             }
+
+
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
 
@@ -54,7 +58,7 @@ public class Issue30 {
             // Execute SQL statement and Extrapolate the values from columns
             ResultSet rset = stmt.executeQuery(strIssue30);
             rset.next();
-            districtPop = rset.getInt(1);
+            districtPop = rset.getLong(1);
 
             //Creating Population ArrayList
             ArrayList<Population> p = new ArrayList<Population>();
@@ -62,9 +66,12 @@ public class Issue30 {
             Population po = new Population();
             po.name = district;
             po.population = districtPop;
+            po.CityPop = rset.getLong(1);
+            po.notINCityPop = districtPop - rset.getLong(1);
             po.inCities = 100.00;
             po.notinCities = 0.00;
             p.add(po);
+
 
             return p;
         }

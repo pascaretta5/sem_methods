@@ -19,6 +19,8 @@ public class Issue28 {
      *  ----- getIssue28() -------
      *  Objectives:
      *      return the population of a region,
+     *      population of people living in cities,
+     *      population of people NOT living in cities,
      *      the percentage of the population living in cities,
      *      percentage NOT living in cities.
      *
@@ -44,6 +46,8 @@ public class Issue28 {
                 System.out.println("'app' parameter is missing");
                 return null;
             }
+
+
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
 
@@ -59,10 +63,10 @@ public class Issue28 {
                             + "JOIN country ON city.CountryCode=country.Code "
                             + "WHERE country.Region=" + "'" + region + "' ";
 
-            // Execute SQL statement and Extrapolate the values from columns
+            // Execute SQL statements and Extrapolate the values from columns
             ResultSet rset = stmt.executeQuery(strIssue28);
             rset.next();
-            regionPop = rset.getInt(1);
+            regionPop = rset.getLong(1);
 
             ResultSet rset2 = stmt.executeQuery(strIssue28b);
             rset2.next();
@@ -74,9 +78,12 @@ public class Issue28 {
             Population po = new Population();
             po.name = region;
             po.population = regionPop;
+            po.CityPop = rset2.getLong(1);
+            po.notINCityPop = regionPop - rset2.getLong(1);
             po.inCities = Math.round((citiesPop/regionPop*100)*100)/100d;
             po.notinCities = 100d - Math.round((citiesPop/regionPop*100)*100)/100d;
             p.add(po);
+
             //calling print function
             return p;
         }

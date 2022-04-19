@@ -20,6 +20,8 @@ public class Issue25 {
      *  ----- getIssue25() -------
      *  Objectives:
      *      return for each country the population of people,
+     *      population of people living in cities,
+     *      population of people NOT living in cities,
      *      the percentage of the population living in cities,
      *      percentage NOT living in cities.
      *
@@ -35,6 +37,8 @@ public class Issue25 {
                 System.out.println("'app' parameter is missing");
                 return null;
             }
+
+
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
 
@@ -56,6 +60,9 @@ public class Issue25 {
             //Create Population ArrayList
             ArrayList<Population> populations = new ArrayList<>();
 
+            /*
+            Since there are 2 sql statements I had to work on each data separately
+             */
             while(rset.next()) {
 
                 Population p = new Population();
@@ -78,12 +85,15 @@ public class Issue25 {
                         citiesPop = rset2.getFloat(1);
                         p.name = po.name;
                         p.population = po.population;
+                        p.CityPop = rset2.getLong(1);
+                        p.notINCityPop = countryPop - rset2.getLong(1);
                         p.inCities = Math.round((citiesPop/countryPop*100)*100)/100d;
                         p.notinCities = 100d - Math.round((citiesPop/countryPop*100)*100)/100d;
                         populations2.add(p);
                     }
                 }
             }
+
 
             return populations2;
         }

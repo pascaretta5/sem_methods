@@ -303,6 +303,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "South America";
         pop.population = 345780000;
+        pop.CityPop = 172037859;
+        pop.notINCityPop = 173742141;
         pop.inCities = 49.75; //49.75355911254883
         pop.notinCities = 50.25; //50.24644088745117
         pop1.add(pop);
@@ -316,6 +318,8 @@ public class IntegrationTests {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
                     p.inCities = po.inCities;
                     p.notinCities = po.notinCities;
                     pop2.add(p);
@@ -324,10 +328,12 @@ public class IntegrationTests {
         }
         for (int i = 0; i < pop1.size(); i++) {
 
-            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue23 1/4 Failed (Name not matching)");
-            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue23 2/4 Failed (Population not matching)");
-            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue23 3/4 Failed (% living in cities not matching)");
-            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue23 4/4 Failed (% not living in cities not matching)");
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+            assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
 
@@ -338,6 +344,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Middle East";
         pop.population = 188380700;
+        pop.CityPop = 70371374;
+        pop.notINCityPop = 118009326;
         pop.inCities = 37.36; //37.355934143066406
         pop.notinCities = 62.64; //62.644065856933594
         pop1.add(pop);
@@ -351,6 +359,8 @@ public class IntegrationTests {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
                     p.inCities = po.inCities;
                     p.notinCities = po.notinCities;
                     pop2.add(p);
@@ -359,10 +369,12 @@ public class IntegrationTests {
         }
             for (int i = 0; i < pop1.size(); i++) {
 
-                assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue24 1/4 Failed (Name not matching)");
-                assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue24 2/4 Failed (Population not matching)");
-                assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue24 3/4 Failed (% living in cities not matching)");
-                assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue24 4/4 Failed (% not living in cities not matching)");
+                assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+                assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+                assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+                assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+                assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+                assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
             }
         }
 
@@ -373,6 +385,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "United Kingdom";
         pop.population = 59623400;
+        pop.CityPop = 22436673;
+        pop.notINCityPop = 37186727;
         pop.inCities = 37.63; //37.630645751953125
         pop.notinCities = 62.37; //62.369354248046875
         pop1.add(pop);
@@ -386,6 +400,8 @@ public class IntegrationTests {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
                     p.inCities = po.inCities;
                     p.notinCities = po.notinCities;
                     pop2.add(p);
@@ -394,10 +410,12 @@ public class IntegrationTests {
         }
         for (int i = 0; i < pop1.size(); i++) {
 
-            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/4 Failed (Name not matching)");
-            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/4 Failed (Population not matching)");
-            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 3/4 Failed (% living in cities not matching)");
-            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 4/4 Failed (% not living in cities not matching)");
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+            assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
 
@@ -408,6 +426,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Entire world";
         pop.population = 6078749450L;
+        pop.CityPop = 1429559884;
+        pop.notINCityPop = 4649189566L;
         pop.inCities = 23.52; //23.517335197949308
         pop.notinCities = 76.48; //76.48266480205069
         pop1.add(pop);
@@ -421,6 +441,8 @@ public class IntegrationTests {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
                     p.inCities = po.inCities;
                     p.notinCities = po.notinCities;
                     pop2.add(p);
@@ -429,10 +451,12 @@ public class IntegrationTests {
         }
         for (int i = 0; i < pop1.size(); i++) {
 
-            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue26 1/4 Failed (Name not matching)");
-            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue26 2/4 Failed (Population not matching)");
-            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue26 3/4 Failed (% living in cities not matching)");
-            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue26 4/4 Failed (% not living in cities not matching)");
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+            assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
 
@@ -445,6 +469,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Middle East";
         pop.population = 188380700;
+        pop.CityPop = 70371374;
+        pop.notINCityPop = 118009326;
         pop.inCities = 37.36; //37.355934143066406
         pop.notinCities = 62.64; //62.644065856933594
         pop1.add(pop);
@@ -458,6 +484,8 @@ public class IntegrationTests {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
                     p.inCities = po.inCities;
                     p.notinCities = po.notinCities;
                     pop2.add(p);
@@ -466,10 +494,12 @@ public class IntegrationTests {
         }
         for (int i = 0; i < pop1.size(); i++) {
 
-            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue28 1/4 Failed (Name not matching)");
-            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue28 2/4 Failed (Population not matching)");
-            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue28 3/4 Failed (% living in cities not matching)");
-            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue28 4/4 Failed (% not living in cities not matching)");
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+            assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
 
@@ -480,6 +510,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "United Kingdom";
         pop.population = 59623400;
+        pop.CityPop = 22436673;
+        pop.notINCityPop = 37186727;
         pop.inCities = 37.63; //37.630645751953125
         pop.notinCities = 62.37; //62.369354248046875
         pop1.add(pop);
@@ -493,6 +525,8 @@ public class IntegrationTests {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
                     p.inCities = po.inCities;
                     p.notinCities = po.notinCities;
                     pop2.add(p);
@@ -501,10 +535,12 @@ public class IntegrationTests {
         }
         for (int i = 0; i < pop1.size(); i++) {
 
-            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue29 1/4 Failed (Name not matching)");
-            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue29 2/4 Failed (Population not matching)");
-            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue29 3/4 Failed (% living in cities not matching)");
-            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue29 4/4 Failed (% not living in cities not matching)");
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+            assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
 
@@ -515,6 +551,8 @@ public class IntegrationTests {
         Population pop = new Population();
         pop.name = "Seoul";
         pop.population = 9981619;
+        pop.CityPop = 9981619;
+        pop.notINCityPop = 0;
         pop.inCities = 100.00;
         pop.notinCities = 0.00;
         pop1.add(pop);
@@ -528,6 +566,8 @@ public class IntegrationTests {
                     Population p = new Population();
                     p.name = po.name;
                     p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
                     p.inCities = po.inCities;
                     p.notinCities = po.notinCities;
                     pop2.add(p);
@@ -536,10 +576,12 @@ public class IntegrationTests {
         }
         for (int i = 0; i < pop1.size(); i++) {
 
-            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue30 1/4 Failed (Name not matching)");
-            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue30 2/4 Failed (Population not matching)");
-            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue30 3/4 Failed (% living in cities not matching)");
-            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue30 4/4 Failed (% not living in cities not matching)");
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+            assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
 
