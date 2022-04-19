@@ -127,7 +127,7 @@ public class App
      * @param populations
      * @return void
      */
-    public void printPopulation(ArrayList<Population> populations)
+    public static void printPopulation(ArrayList<Population> populations)
     {
         // Check populations is not null
         if (populations == null)
