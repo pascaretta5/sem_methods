@@ -63,11 +63,11 @@ public class Issue9 {
     }
 
     /*
-     * Code to add in App.java main method to call this Issue9 method -->
-     *
-     *         Issue9 is9 = new Issue9();
-     *         ArrayList<City> cities = is9.getCitiesLargeSmallPopRegion(a, "Caribbean");
-     *         a.printCities(cities);
+      Code to add in App.java main method to call this Issue9 method -->
+
+              Issue9 is9 = new Issue9();
+              ArrayList<City> cities = is9.getCitiesLargeSmallPopRegion(a, "Caribbean");
+              a.printCities(cities);
      */
 
 }

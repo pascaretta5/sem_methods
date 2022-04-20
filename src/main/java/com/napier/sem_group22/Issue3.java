@@ -54,4 +54,11 @@ public class Issue3 {
             return null;
         }
     }
+    /*  Code for main method on app
+        Issue3 iss3 = new Issue3();
+        //call method to execute the query and get the population
+        ArrayList<Country> countries = iss3.getCountryByRegionLargeToSmall(a, "Eastern Asia");
+        //print Name and Population in console
+        a.printCountries(countries);
+     */
 }

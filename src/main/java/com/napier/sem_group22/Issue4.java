@@ -54,4 +54,11 @@ public class Issue4 {
             return null;
         }
     }
+    /*
+        Issue4 iss4 = new Issue4();
+        //call method to execute the query and get the population
+        ArrayList<Country> countries = iss4.getThreeBiggestCountries(a, "2");
+        //print Name and Population in console
+        a.printCountries(countries);
+     */
 }

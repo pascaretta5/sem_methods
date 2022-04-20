@@ -65,9 +65,9 @@ public class Issue11 {
 
     /*
      * Code to add in App.java main method to call this Issue11 method -->
-     *
-     *         Issue10 is11 = new Issue11();
-     *         ArrayList<City> cities = is11.getCitiesLargeSmallPopDistrict(a, "Gelderland");
-     *         a.printCities(cities);
+
+              Issue11 is11 = new Issue11();
+              ArrayList<City> cities = is11.getCitiesLargeSmallPopDistrict(a, "Gelderland");
+              a.printCities(cities);
      */
 }

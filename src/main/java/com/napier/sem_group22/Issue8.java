@@ -66,10 +66,10 @@ public class Issue8 {
     }
 
     /*
-     * Code to add in App.java main method to call this Issue8 method -->
-     *
-     *         Issue8 is8 = new Issue8();
-     *         ArrayList<City> cities = is8.getIssue8(a, "Europe");
-     *         a.printCities(cities);
+      Code to add in App.java main method to call this Issue8 method -->
+
+              Issue8 is8 = new Issue8();
+              ArrayList<City> cities = is8.getCitiesLargeSmallPop(a, "Europe");
+              a.printCities(cities);
      */
 }

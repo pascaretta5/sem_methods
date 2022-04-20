@@ -66,5 +66,12 @@ public class Issue6 {
             return null;
         }
     }
+    /*
+        Issue6 iss6 = new Issue6();
+        //call method to execute the query and get the population
+        ArrayList<Country> countries = iss6.getNTopPopCountriesRegion("4", a, "North America");
+        //print Name and Population in console
+        a.printCountries(countries);
+     */
 
 }

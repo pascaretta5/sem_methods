@@ -65,10 +65,10 @@ public class Issue10 {
     }
 
     /*
-     * Code to add in App.java main method to call this Issue10 method -->
-     *
-     *         Issue10 is10 = new Issue10();
-     *         ArrayList<City> cities = is10.getCitiesLargeSmallPopCountry(a, "Japan");
-     *         a.printCities(cities);
+      Code to add in App.java main method to call this Issue10 method -->
+
+              Issue10 is10 = new Issue10();
+              ArrayList<City> cities = is10.getCitiesLargeSmallPopCountry(a, "Japan");
+              a.printCities(cities);
      */
 }
