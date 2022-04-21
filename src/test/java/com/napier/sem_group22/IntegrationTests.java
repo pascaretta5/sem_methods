@@ -316,7 +316,7 @@ public class IntegrationTests {
     @Test
     void getIssue12Test()
     {
-        ArrayList<City> cities = issue12.getTopNIssue12("1", app);
+        ArrayList<City> cities = issue12.getTopNIssue12("2", app);
         ArrayList<City> cities1 = new ArrayList<>();
         City c1 = new City();
         c1.name = "Seoul";
@@ -366,7 +366,7 @@ public class IntegrationTests {
     @Test
     void getIssue13Test()
     {
-        ArrayList<City> cities = issue13.getTopNIssue13("1", app, "Europe");
+        ArrayList<City> cities = issue13.getTopNIssue13("2", app, "Europe");
         ArrayList<City> cities1 = new ArrayList<>();
         City c1 = new City();
         c1.name = "Moscow";
