@@ -186,18 +186,11 @@ public class App
 
         // Connect to database
         if(args.length < 1){
-            a.connect("localhost:33060", 30000);
+            a.connect("localhost:33060", 0000);
         }else{
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        String N = String.valueOf(2);
-
-        //** Create instance of Issue12 Class-- this will have the required methods */
-Issue12 issue12 = new Issue12();
-ArrayList<City> cities = issue12.getTopNIssue12(N,a);
-// /** Print countries and column names */
-a.printCities(cities);
 
         // Disconnect from database
         a.disconnect();

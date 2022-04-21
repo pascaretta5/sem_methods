@@ -19,6 +19,7 @@ public class UnitTests {
     static Issue10 issue10;
     static Issue11 issue11;
     static Issue12 issue12;
+    static Issue13 issue13;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -50,6 +51,7 @@ public class UnitTests {
         issue10 = new Issue10();
         issue11 = new Issue11();
         issue12 = new Issue12();
+        issue13 = new Issue13();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -334,6 +336,16 @@ public class UnitTests {
     void getIssue12TestNullApp() {ArrayList<City> cities1 = issue12.getTopNIssue12("1",null);}
     @Test
     void getIssue12TestNullAllParam() {ArrayList<City> cities1 = issue12.getTopNIssue12(null,null);}
+
+    //Issue 13
+    @Test
+    void getIssue13TestNullN() {ArrayList<City> cities1 = issue13.getTopNIssue13(null,app, "Europe");}
+    @Test
+    void getIssue13TestNullApp() {ArrayList<City> cities1 = issue13.getTopNIssue13("1",null, "Europe");}
+    @Test
+    void getIssue13TestNullContinent() {ArrayList<City> cities1 = issue13.getTopNIssue13("1", app, null);}
+    @Test
+    void getIssue13TestNullAllParam() {ArrayList<City> cities1 = issue13.getTopNIssue13(null,null, null);}
 
     //Issue 23
     @Test
