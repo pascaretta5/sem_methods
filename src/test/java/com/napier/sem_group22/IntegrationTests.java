@@ -22,6 +22,7 @@ public class IntegrationTests {
     static Issue9 issue9;
     static Issue10 issue10;
     static Issue11 issue11;
+    static Issue12 issue12;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -52,6 +53,7 @@ public class IntegrationTests {
         issue9 = new Issue9();
         issue10 = new Issue10();
         issue11 = new Issue11();
+        issue12 = new Issue12();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -270,6 +272,55 @@ public class IntegrationTests {
         c2.countryName = "Netherlands";
         c2.district = "Gelderland";
         c2.population = 152463;
+
+        cities1.add(c1);
+        cities1.add(c2);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
+
+                    cities2.add(city);
+                }
+            }
+        }
+        for (int i = 0; i < cities1.size(); i++) {
+
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue10 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue10 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue10 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue10 4/4 Failed");
+        }
+    }
+
+    /**
+     * -------------------- Tests for Issue12 ------------------------
+     * -getIssue12Test -- test that the sql statement works
+     * -getIssue12TestNullN() -- test error handling if N is null
+     * -getIssue12TestNullApp() -- test error handling if App instance class null
+     * -getIssue12NullAllParams() -- test error handling if all @param null
+     */
+    @Test
+    void getIssue12Test()
+    {
+        ArrayList<City> cities = issue12.getTopNIssue12("1", app);
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        c1.name = "Seoul";
+        c1.countryName = "South Korea";
+        c1.district = "Seoul";
+        c1.population = 9981619;
+
+        City c2 = new City();
+        c2.name = "Jakarta";
+        c2.countryName = "Indonesia";
+        c2.district = "Jakarta Raya";
+        c2.population = 9604900;
 
         cities1.add(c1);
         cities1.add(c2);

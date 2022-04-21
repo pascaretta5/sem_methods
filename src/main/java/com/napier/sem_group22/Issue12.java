@@ -1,29 +1,27 @@
-/**
- * Author: Andrej
- * Date: 22/02/22
- * Issue 19
- */
-
 package com.napier.sem_group22;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/*  To place into main /** Create instance of Issue19 Class-- this will have the required methods */
-//Issue19 issue19 = new Issue19();
-//ArrayList<City> cities = issue19.getIssue19(a);
-// /** Print countries and column names */
-// a.printCity(cities);
+/**
+ * Author: Andrej Legen
+ * Date: 20/04/22
+ * Purpose:
+ * Get all the top N populated cities in the world where N is provided by the user.
+ */
 
-public class Issue19 {
+public class Issue12 {
 
     /**
-     * -------------------------------Issue 19: getIssue19 --------------
-     *    Objective: The top N populated capital cities in the world where N is provided by the user.
-     *    Return type: ArrayList<Country>
+     * ------------ getTopNIssue12 ---------------
+     * .
+     * @param app = get the app class instance for connection
+     * @param N = specifies number of results shown
+     * @return  ArrayList<City> = return an array list with all the cities
+     * purpose = Get all the top N populated cities in the world where N is provided by the user.
      */
-    public ArrayList<City> getIssue19(App app) {
+    public ArrayList<City> getTopNIssue12(String N, App app) {
 
         try
         {
@@ -31,13 +29,14 @@ public class Issue19 {
             Statement stmt = app.con.createStatement();
 
             // Create string for SQL statement
-            String strIssue19 =
+            String strIssue12 =
                     "SELECT city.name, country.name, district, city.population "
                             +"FROM city JOIN country ON country.Capital = city.ID "
-                            + "ORDER BY country.region, city.population DESC;";
+                            + "ORDER BY city.population DESC "
+                            + "LIMIT " + N + ";";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strIssue19);
+            ResultSet rset = stmt.executeQuery(strIssue12);
 
             //Create Country ArrayList
             ArrayList<City> cities = new ArrayList<City>();
@@ -64,3 +63,10 @@ public class Issue19 {
     }
 
 }
+
+//*  To place into main
+//** Create instance of Issue12 Class-- this will have the required methods */
+//Issue12 issue12 = new Issue12();
+//ArrayList<City> cities = issue12.getTopNIssue12(N,a);
+// /** Print countries and column names */
+// a.printCities(cities);
