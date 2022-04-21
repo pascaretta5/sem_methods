@@ -24,6 +24,7 @@ public class IntegrationTests {
     static Issue11 issue11;
     static Issue12 issue12;
     static Issue13 issue13;
+    static Issue14 issue14;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -56,6 +57,7 @@ public class IntegrationTests {
         issue11 = new Issue11();
         issue12 = new Issue12();
         issue13 = new Issue13();
+        issue14 = new Issue14();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -396,6 +398,56 @@ public class IntegrationTests {
             assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue13 2/4 Failed");
             assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue13 3/4 Failed");
             assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue13 4/4 Failed");
+        }
+    }
+
+    /**
+     * -------------------- Tests for Issue14 ------------------------
+     * -getIssue14Test -- test that the sql statement works
+     * -getIssue14TestNullN() -- test error handling if N is null
+     * -getIssue14TestNullApp() -- test error handling if App instance class null
+     * -getIssue14TestNullRegion() -- test error handling if region is null
+     * -getIssue14NullAllParams() -- test error handling if all @param null
+     */
+    @Test
+    void getIssue14Test()
+    {
+        ArrayList<City> cities = issue14.getTopNIssue14("2", app, "Eastern Europe");
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        c1.name = "Moscow";
+        c1.countryName = "Russian Federation";
+        c1.district = "Moscow (City)";
+        c1.population = 8389200;
+
+        City c2 = new City();
+        c2.name = "Kyiv";
+        c2.countryName = "Ukraine";
+        c2.district = "Kiova";
+        c2.population = 2624000;
+
+        cities1.add(c1);
+        cities1.add(c2);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
+
+                    cities2.add(city);
+                }
+            }
+        }
+        for (int i = 0; i < cities1.size(); i++) {
+
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue14 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue14 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue14 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue14 4/4 Failed");
         }
     }
 
