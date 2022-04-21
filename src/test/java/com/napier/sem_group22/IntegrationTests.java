@@ -23,6 +23,7 @@ public class IntegrationTests {
     static Issue10 issue10;
     static Issue11 issue11;
     static Issue12 issue12;
+    static Issue13 issue13;
     static Issue17 issue17;
     static Issue18 issue18;
     static Issue19 issue19;
@@ -54,6 +55,7 @@ public class IntegrationTests {
         issue10 = new Issue10();
         issue11 = new Issue11();
         issue12 = new Issue12();
+        issue13 = new Issue13();
         issue17 = new Issue17();
         issue18 = new Issue18();
         issue19 = new Issue19();
@@ -340,10 +342,60 @@ public class IntegrationTests {
         }
         for (int i = 0; i < cities1.size(); i++) {
 
-            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue10 1/4 Failed");
-            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue10 2/4 Failed");
-            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue10 3/4 Failed");
-            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue10 4/4 Failed");
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue12 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue12 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue12 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue12 4/4 Failed");
+        }
+    }
+
+    /**
+     * -------------------- Tests for Issue13 ------------------------
+     * -getIssue13Test -- test that the sql statement works
+     * -getIssue13TestNullN() -- test error handling if N is null
+     * -getIssue13TestNullApp() -- test error handling if App instance class null
+     * -getIssue13TestNullContinent() -- test error handling if continent is null
+     * -getIssue13NullAllParams() -- test error handling if all @param null
+     */
+    @Test
+    void getIssue13Test()
+    {
+        ArrayList<City> cities = issue13.getTopNIssue13("1", app, "Europe");
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        c1.name = "Moscow";
+        c1.countryName = "Russian Federation";
+        c1.district = "Moscow (City)";
+        c1.population = 8389200;
+
+        City c2 = new City();
+        c2.name = "London";
+        c2.countryName = "United Kingdom";
+        c2.district = "England";
+        c2.population = 7285000;
+
+        cities1.add(c1);
+        cities1.add(c2);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
+
+                    cities2.add(city);
+                }
+            }
+        }
+        for (int i = 0; i < cities1.size(); i++) {
+
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue13 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue13 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue13 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue13 4/4 Failed");
         }
     }
 

@@ -6,22 +6,22 @@ import java.util.ArrayList;
 
 /**
  * Author: Andrej Legen
- * Date: 20/04/22
+ * Date: 21/04/22
  * Purpose:
- * Get all the top N populated cities in the world where N is provided by the user.
+ * Get all the top N populated cities in a continent where N is provided by the user.
  */
-
-public class Issue12 {
+public class Issue13 {
 
     /**
-     * ------------ getTopNIssue12 ---------------
+    * ------------ getTopNIssue13 ---------------
      * .
      * @param app = get the app class instance for connection
      * @param N = specifies number of results shown
      * @return  ArrayList<City> = return an array list with all the cities
      * purpose = Get all the top N populated cities in the world where N is provided by the user.
      */
-    public ArrayList<City> getTopNIssue12(String N, App app) {
+
+    public ArrayList<City> getTopNIssue13(String N, App app, String continent) {
 
         try
         {
@@ -29,14 +29,15 @@ public class Issue12 {
             Statement stmt = app.con.createStatement();
 
             // Create string for SQL statement
-            String strIssue12 =
+            String strIssue13 =
                     "SELECT city.name, country.name, district, city.population "
                             +"FROM city JOIN country ON country.Capital = city.ID "
+                            +"WHERE country.Continent LIKE '" + continent + "'"
                             + "ORDER BY city.population DESC "
                             + "LIMIT " + N + ";";
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strIssue12);
+            ResultSet rset = stmt.executeQuery(strIssue13);
 
             //Create Country ArrayList
             ArrayList<City> cities = new ArrayList<City>();
@@ -61,14 +62,13 @@ public class Issue12 {
             return null;
         }
     }
-
 }
 
 //*  To place into main
 //User input
 //String N = String.valueOf(2);
-//** Create instance of Issue12 Class-- this will have the required methods */
-//Issue12 issue12 = new Issue12();
-//ArrayList<City> cities = issue12.getTopNIssue12(N,a);
+//** Create instance of Issue13 Class-- this will have the required methods */
+//Issue13 issue13 = new Issue13();
+//ArrayList<City> cities = issue13.getTopNIssue13(N,a, "Europe");
 // /** Print countries and column names */
 // a.printCities(cities);
