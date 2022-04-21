@@ -21,7 +21,6 @@ public class Issue12 {
      * @return  ArrayList<City> = return an array list with all the cities
      * purpose = Get all the top N populated cities in the world where N is provided by the user.
      */
-
     public ArrayList<City> getTopNIssue12(String N, App app) {
 
         try
@@ -68,6 +67,6 @@ public class Issue12 {
 //*  To place into main
 //** Create instance of Issue12 Class-- this will have the required methods */
 //Issue12 issue12 = new Issue12();
-//ArrayList<City> cities = issue12.getIssue12(a);
+//ArrayList<City> cities = issue12.getTopNIssue12(N,a);
 // /** Print countries and column names */
-// a.printCity(cities);
+// a.printCities(cities);
