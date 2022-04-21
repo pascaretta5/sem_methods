@@ -191,7 +191,12 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-
+//*  To place into main
+//** Create instance of Issue16 Class-- this will have the required methods */
+Issue16 issue16 = new Issue16();
+ArrayList<City> cities = issue16.getTopNIssue16("2",a, "Kairo");
+// /** Print countries and column names */
+ a.printCities(cities);
 
         // Disconnect from database
         a.disconnect();
