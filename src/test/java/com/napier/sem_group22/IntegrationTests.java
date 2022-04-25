@@ -83,6 +83,26 @@ public class IntegrationTests {
         issue31 = new Issue31();
         issue32 = new Issue32();
     }
+    /**
+     * ---------------- Tests for Issue 1 -----------------------
+     * getCountryPopulationLargeToSmallTest() -- test if the sql statement works
+     * getCountryPopulationLargeToSmallTestNull() -- test error handling if app is null
+     */
+    @Test
+    void getCountryPopulationLargeToSmallTest(){
+        ArrayList<Country> countries1 = issue1.getCountryPopulationLargeToSmall(app);
+        ArrayList<Country> countries2 = new ArrayList<>();
+        Country c1 = new Country();
+        c1.name = "Brazil";
+        c1.population = 170115000;
+        countries2.add(c1);
+
+        for(int i = 0; i < countries1.size(); i++ ) {
+            assertEquals(countries2.get(i).name, countries1.get(i).name);
+            assertEquals(countries2.get(i).population, countries1.get(i).population);
+        }
+
+    }
 
     /**
      * -------------------- Tests for Issue6 ------------------------
