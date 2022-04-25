@@ -54,14 +54,12 @@ public class Issue31 {
         Population po = new Population();
         po.name = city;
         po.CityPop = rset.getLong(1);
-        po.inCities = 100.00;
-        po.notinCities = 0.00;
         p.add(po);
 
 
         return p;
     }
-        catch (Exception e) //couldn't find district population
+        catch (Exception e) //couldn't find city population
     {
         System.out.println(e.getMessage());
         System.out.println("Failed to get city population (Issue 31)");

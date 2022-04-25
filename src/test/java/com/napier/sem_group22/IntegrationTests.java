@@ -830,7 +830,36 @@ public class IntegrationTests {
             assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
+    //Issue31
+    @Test
+    void getIssue31Test() {
+        ArrayList<Population> pop1 = new ArrayList<>();
+        Population pop = new Population();
+        pop.name = "Recife";
+        pop.CityPop = 1378087;
+        pop1.add(pop);
 
+        ArrayList<Population> populations = issue31.getIssue31(app, pop1.get(0).name);
+
+        ArrayList<Population> pop2 = new ArrayList<>();
+        for (Population population : pop1) {
+            for (Population po : populations) {
+                if (Objects.equals(po.name, population.name)) {
+                    Population p = new Population();
+                    p.name = po.name;
+                    p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    pop2.add(p);
+                }
+            }
+        }
+        for (int i = 0; i < pop1.size(); i++) {
+
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue31 1/3 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue31 2/3 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue31 3/3 Failed (City population not matching)");
+        }
+    }
     //Issue32
     @Test
     void getIssue32Test() {

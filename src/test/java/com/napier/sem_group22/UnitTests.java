@@ -505,6 +505,13 @@ public class UnitTests {
     //Issue 31
     @Test
     void getIssue31AppNull() { ArrayList<Population> pop1 = issue31.getIssue31(null, "Recife"); }
+    @Test
+    void getIssue31CityNull() { ArrayList<Population> pop1 = issue31.getIssue31(app, null); }
+    @Test
+    void getIssue31AllNull() { ArrayList<Population> pop1 = issue31.getIssue31(null, null); }
+    @Test
+    void getIssue31Normal() { ArrayList<Population> pop1 = issue31.getIssue31(app, "Recife"); }
+
     //Issue 32
     @Test
     void getIssue32AppNull()
