@@ -189,7 +189,7 @@ public class UnitTests {
     @Test
     void printLPopulationTestNull()
     {
-        app.printCountries(null);
+        app.printLPopulation(null);
 
     }
     @Test
