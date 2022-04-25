@@ -93,8 +93,8 @@ public class IntegrationTests {
         ArrayList<Country> countries1 = issue1.getCountryPopulationLargeToSmall(app);
         ArrayList<Country> countries2 = new ArrayList<>();
         Country c1 = new Country();
-        c1.name = "Brazil";
-        c1.population = 170115000;
+        c1.name = "China";
+        c1.population = 1277558000;
         countries2.add(c1);
 
         for(int i = 0; i < countries1.size(); i++ ) {
