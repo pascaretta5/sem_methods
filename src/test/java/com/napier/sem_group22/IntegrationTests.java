@@ -36,6 +36,7 @@ public class IntegrationTests {
     static Issue24 issue24;
     static Issue25 issue25;
     static Issue26 issue26;
+    static Issue27 issue27;
     static Issue28 issue28;
     static Issue29 issue29;
     static Issue30 issue30;
@@ -72,6 +73,7 @@ public class IntegrationTests {
         issue24 = new Issue24();
         issue25 = new Issue25();
         issue26 = new Issue26();
+        issue27 = new Issue27();
         issue28 = new Issue28();
         issue29 = new Issue29();
         issue30 = new Issue30();
@@ -703,6 +705,36 @@ public class IntegrationTests {
             assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
             assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
             assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
+        }
+    }
+
+    //Issue27
+    @Test
+    void getIssue27Test(){
+        ArrayList<Population> pop1 = new ArrayList<>();
+        Population pop = new Population();
+        pop.name = "North America";
+        pop.population = 482993000;
+        pop1.add(pop);
+
+        ArrayList<Population> populations = issue27.getIssue27(app, pop1.get(0).name);
+
+        ArrayList<Population> pop2 = new ArrayList<>();
+        for (Population population : pop1) {
+            for (Population po : populations) {
+                if (Objects.equals(po.name, population.name)) {
+                    Population p = new Population();
+                    p.name = po.name;
+                    p.population = po.population;
+                    pop2.add(p);
+                }
+            }
+        }
+        for (int i = 0; i < pop1.size(); i++) {
+
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue27 1/2 Failed (Continent Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue27 2/2 Failed (Population not matching)");
+
         }
     }
 

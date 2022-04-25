@@ -1,6 +1,8 @@
 package com.napier.sem_group22;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -32,6 +34,7 @@ public class UnitTests {
     static Issue24 issue24;
     static Issue25 issue25;
     static Issue26 issue26;
+    static Issue27 issue27;
     static Issue28 issue28;
     static Issue29 issue29;
     static Issue30 issue30;
@@ -68,6 +71,7 @@ public class UnitTests {
         issue24 = new Issue24();
         issue25 = new Issue25();
         issue26 = new Issue26();
+        issue27 = new Issue27();
         issue28 = new Issue28();
         issue29 = new Issue29();
         issue30 = new Issue30();
@@ -435,6 +439,16 @@ public class UnitTests {
     {
         ArrayList<Population> pop1 = issue26.getIssue26(app);
     }
+
+    //Issue27
+    @Test
+    void getIssue27AppNull() { ArrayList<Population> pop1 = issue27.getIssue27(null, "North America"); }
+    @Test
+    void getIssue27AllNull() { ArrayList<Population> pop1 = issue27.getIssue27(null, null); }
+    @Test
+    void getIssue27ContinentNull() { ArrayList<Population> pop1 = issue27.getIssue27(app, null); }
+    @Test
+    void getIssue27Normal() { ArrayList<Population> pop1 = issue27.getIssue27(app,"North America"); }
 
     //Issue 28
     @Test
