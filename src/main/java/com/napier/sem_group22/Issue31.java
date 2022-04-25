@@ -37,11 +37,11 @@ public class Issue31 {
 
         // Create an SQL statement
         Statement stmt = app.con.createStatement();
-        city = "London";
+        city = "Recife";
         String strIssue31 =
-                "SELECT SUM(city.Population) "
+                "SELECT Population "
                         + "FROM city "
-                        + "WHERE city.District=" + "'" + city + "'";
+                        + "WHERE Name =" + "'" + city + "'";
 
         // Execute SQL statement and Extrapolate the values from columns
         ResultSet rset = stmt.executeQuery(strIssue31);
