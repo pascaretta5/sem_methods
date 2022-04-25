@@ -94,12 +94,10 @@ public class IntegrationTests {
         ArrayList<Country> countries2 = new ArrayList<>();
         Country c1 = new Country();
         c1.name = "China";
-        c1.population = 1277558000;
         countries2.add(c1);
 
         for(int i = 0; i < countries1.size(); i++ ) {
             assertEquals(countries2.get(i).name, countries1.get(i).name);
-            assertEquals(countries2.get(i).population, countries1.get(i).population);
         }
 
     }
