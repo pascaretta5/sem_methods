@@ -393,6 +393,7 @@ public class UnitTests {
 
 
     //Issue 22
+
     @Test
     void getIssue22AppNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(null, "South America", 5) ; }
     @Test
@@ -403,6 +404,7 @@ public class UnitTests {
     void getIssue22AllNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(null,null, null ); }
     @Test
     void getIssue22AllNormal() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(app, "South America", 5);}
+
     //Issue 23
     @Test
     void getIssue23AppNull()

@@ -576,7 +576,6 @@ public class IntegrationTests {
         }
 
     }
-
     //Issue23
     @Test
     void getIssue23Test() {

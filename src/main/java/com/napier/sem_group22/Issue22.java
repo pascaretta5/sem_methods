@@ -48,6 +48,7 @@ public class Issue22 {
         }
         catch (Exception e) //no country found
         {
+
             System.out.println(e.getMessage());
             System.out.println("Failed to get capital cities population");
             return null;
