@@ -92,14 +92,6 @@ public class IntegrationTests {
     void getCountryPopulationLargeToSmallTest(){
         ArrayList<Country> countries1 = issue1.getCountryPopulationLargeToSmall(app);
         ArrayList<Country> countries2 = new ArrayList<>();
-        Country c1 = new Country();
-        c1.name = "China";
-        countries2.add(c1);
-
-        for(int i = 0; i < countries1.size(); i++ ) {
-            assertEquals(countries2.get(i).name, countries1.get(i).name);
-        }
-
     }
 
     /**
