@@ -226,14 +226,19 @@ public class UnitTests {
         app.printLPopulation(lpop);
     }
 
-    //Issue1
+    //Issue 1
     @Test
     void getCountryPopulationLargeToSmallTestNull() { ArrayList<Country> countries1 = issue1.getCountryPopulationLargeToSmall(null); }
     @Test
     void getCountryPopulationLargeToSmallNormal() { ArrayList<Country> countries1 = issue1.getCountryPopulationLargeToSmall(app); }
 
-    //Issue2
-    
+    //Issue 2
+    @Test
+    void getCountryByContinentLargeToSmallTestNull() { ArrayList<Country> countries1 = issue2.getCountryByContinentLargeToSmall(null); }
+    @Test
+    void getCountryByContinentLargeToSmallNormal() { ArrayList<Country> countries1 = issue2.getCountryByContinentLargeToSmall(app); }
+
+    //Issue 3
     //Issue 6
     @Test
     void getNTopPopCountriesRegionTestNullN()

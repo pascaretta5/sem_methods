@@ -92,6 +92,21 @@ public class IntegrationTests {
     void getCountryPopulationLargeToSmallTest(){
         ArrayList<Country> countries1 = issue1.getCountryPopulationLargeToSmall(app);
         ArrayList<Country> countries2 = new ArrayList<>();
+        Objects.equals(countries2, countries1);
+
+    }
+
+    /**
+     * ------------------ Tests for Issue 2
+     * getCountryByContinentLargeToSmallTestNull() -- test error handling if app is null
+     * getCountryByContinentLargeToSmallNormal() -- test if the sql statement works
+     */
+    @Test
+    void getCountryByContinentLargeToSmallNormal(){
+        ArrayList<Country> countries1 = issue2.getCountryByContinentLargeToSmall(app);
+        ArrayList<Country> countries2 = new ArrayList<>();
+
+        Objects.equals(countries2, countries1);
     }
 
     /**
