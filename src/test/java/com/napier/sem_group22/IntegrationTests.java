@@ -39,6 +39,7 @@ public class IntegrationTests {
     static Issue28 issue28;
     static Issue29 issue29;
     static Issue30 issue30;
+    static Issue31 issue31;
     static Issue32 issue32;
 
     @BeforeAll
@@ -74,6 +75,7 @@ public class IntegrationTests {
         issue28 = new Issue28();
         issue29 = new Issue29();
         issue30 = new Issue30();
+        issue31 = new Issue31();
         issue32 = new Issue32();
     }
 

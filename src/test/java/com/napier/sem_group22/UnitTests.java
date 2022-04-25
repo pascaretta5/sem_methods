@@ -35,6 +35,7 @@ public class UnitTests {
     static Issue28 issue28;
     static Issue29 issue29;
     static Issue30 issue30;
+    static Issue31 issue31;
     static Issue32 issue32;
 
     @BeforeAll
@@ -70,6 +71,7 @@ public class UnitTests {
         issue28 = new Issue28();
         issue29 = new Issue29();
         issue30 = new Issue30();
+        issue31 = new Issue31();
         issue32 = new Issue32();
     }
 
@@ -500,6 +502,9 @@ public class UnitTests {
         ArrayList<Population> pop1 = issue30.getIssue30(app, "Seoul");
     }
 
+    //Issue 31
+    @Test
+    void getIssue31AppNull() { ArrayList<Population> pop1 = issue31.getIssue31(null, "London"); }
     //Issue 32
     @Test
     void getIssue32AppNull()
