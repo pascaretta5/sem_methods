@@ -3,6 +3,7 @@ package com.napier.sem_group22;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.event.PopupMenuListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -32,6 +33,7 @@ public class IntegrationTests {
     static Issue19 issue19;
     static Issue20 issue20;
     static Issue21 issue21;
+    static Issue22 issue22;
     static Issue23 issue23;
     static Issue24 issue24;
     static Issue25 issue25;
@@ -69,6 +71,7 @@ public class IntegrationTests {
         issue19 = new Issue19();
         issue20 = new Issue20();
         issue21 = new Issue21();
+        issue22 = new Issue22();
         issue23 = new Issue23();
         issue24 = new Issue24();
         issue25 = new Issue25();
@@ -544,6 +547,36 @@ public class IntegrationTests {
             assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue16 4/4 Failed");
         }
     }
+
+    //Issue22
+    @Test
+    void getIssue22Test(){
+        ArrayList<Country> countries1 = new ArrayList<>();
+        Country c1 = new Country();
+        c1.region = "South America";
+        c1.population = 170115000;
+        countries1.add(c1);
+
+        ArrayList<Country> countries2 = new ArrayList<>();
+        for (int i = 0; i < countries1.size(); i++) {
+            for (Country c : countries1) {
+                if (Objects.equals(c.region, countries1.get(i).region)) {
+                    Country country = new Country();
+                    country.region = c.region;
+                    country.population = c.population;
+
+                    countries2.add(country);
+                }
+            }
+        }
+        for (int i = 0; i < countries1.size(); i++) {
+
+            assertEquals(countries1.get(i).region, countries2.get(i).region, "Test getIssue22 1/2 Failed");
+            assertEquals(countries1.get(i).population, countries2.get(i).population, "Test getIssue22 2/2 Failed");
+        }
+
+    }
+
     //Issue23
     @Test
     void getIssue23Test() {
