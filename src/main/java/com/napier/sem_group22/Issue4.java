@@ -12,7 +12,7 @@ public class Issue4 {
      *     @param N: Snumber of countries from each continent.
      *     Return type: ArrayList<Country>
      */
-    public ArrayList<Country> getThreeBiggestCountries(App app, String N) {
+    public ArrayList<Country> getNBiggestCountries(App app, String N) {
 
         try
         {
@@ -57,7 +57,7 @@ public class Issue4 {
     /*
         Issue4 iss4 = new Issue4();
         //call method to execute the query and get the population
-        ArrayList<Country> countries = iss4.getThreeBiggestCountries(a, "2");
+        ArrayList<Country> countries = iss4.getNBiggestCountries(a, "2");
         //print Name and Population in console
         a.printCountries(countries);
      */

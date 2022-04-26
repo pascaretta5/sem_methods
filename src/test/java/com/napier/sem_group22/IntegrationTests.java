@@ -110,6 +110,79 @@ public class IntegrationTests {
     }
 
     /**
+     * Test for Issue 3
+     */
+    @Test
+    void getCountryByRegionLargeToSmallTest()
+    {
+        ArrayList<Country> countries1 = issue3.getCountryByRegionLargeToSmall(app, "Eastern Asia");
+        ArrayList<Country> countries2 = new ArrayList<>();
+        Country c1 = new Country();
+        c1.code = "CHN";
+        c1.name = "China";
+        c1.continent = "Asia";
+        c1.region = "Eastern Asia";
+        c1.population = 1277558000;
+        c1.capitalName = "Peking";
+
+        Country c2 = new Country();
+        c2.code = "MNG";
+        c2.name = "Mongolia";
+        c2.continent = "Asia";
+        c2.region = "Eastern Asia";
+        c2.population = 2662000;
+        c2.capitalName = "Ulan Bator";
+
+        countries2.add(c1);
+        countries2.add(c2);
+
+        for(int i = 0; i < countries2.size(); i++ ) {
+            assertEquals(countries2.get(i).code, countries1.get(i).code);
+            assertEquals(countries2.get(i).name, countries1.get(i).name);
+            assertEquals(countries2.get(i).continent, countries1.get(i).continent);
+            assertEquals(countries2.get(i).region, countries1.get(i).region);
+            assertEquals(countries2.get(i).population, countries1.get(i).population);
+            assertEquals(countries2.get(i).capitalName, countries1.get(i).capitalName);
+        }
+    }
+
+    /**
+     * Test for Issue 4
+     */
+    @Test
+    void getNBiggestCountriesTest()
+    {
+        ArrayList<Country> countries1 = issue4.getNBiggestCountries(app, "1");
+        ArrayList<Country> countries2 = new ArrayList<>();
+        Country c1 = new Country();
+        c1.code = "CHN";
+        c1.name = "China";
+        c1.continent = "Asia";
+        c1.region = "Eastern Asia";
+        c1.population = 1277558000;
+        c1.capitalName = "Peking";
+
+        Country c2 = new Country();
+        c2.code = "RUS";
+        c2.name = "Russian Federation";
+        c2.continent = "Europe";
+        c2.region = "Eastern Europe";
+        c2.population = 146934000;
+        c2.capitalName = "Moscow";
+
+        countries2.add(c1);
+        countries2.add(c2);
+
+        for(int i = 0; i < countries2.size(); i++ ) {
+            assertEquals(countries2.get(i).code, countries1.get(i).code);
+            assertEquals(countries2.get(i).name, countries1.get(i).name);
+            assertEquals(countries2.get(i).continent, countries1.get(i).continent);
+            assertEquals(countries2.get(i).region, countries1.get(i).region);
+            assertEquals(countries2.get(i).population, countries1.get(i).population);
+            assertEquals(countries2.get(i).capitalName, countries1.get(i).capitalName);
+        }
+    }
+    /**
      * -------------------- Tests for Issue6 ------------------------
      * -getNTopPopCountriesRegionTest() -- test that the sql statement works
      * -getNTopPopCountriesRegionTestNullN() -- test error handling if N null

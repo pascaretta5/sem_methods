@@ -239,6 +239,27 @@ public class UnitTests {
     void getCountryByContinentLargeToSmallNormal() { ArrayList<Country> countries1 = issue2.getCountryByContinentLargeToSmall(app); }
 
     //Issue 3
+    @Test
+    void getCountryByRegionLargeToSmallTestNullRegion()
+    { ArrayList<Country> countries1 = issue3.getCountryByRegionLargeToSmall(app, null); }
+    @Test
+    void getCountryByRegionLargeToSmallTestNullApp()
+    { ArrayList<Country> countries1 = issue3.getCountryByRegionLargeToSmall(null, "Eastern Asia"); }
+    @Test
+    void getCountryByRegionLargeToSmallTestNullAllParams()
+    { ArrayList<Country> countries1 = issue3.getCountryByRegionLargeToSmall(null, null); }
+
+    //Issue 4
+    @Test
+    void getNBiggestCountriesTestNullN()
+    { ArrayList<Country> countries1 = issue4.getNBiggestCountries(app, null); }
+    @Test
+    void getNBiggestCountriesTestNullApp()
+    { ArrayList<Country> countries1 = issue4.getNBiggestCountries(null, "3"); }
+    @Test
+    void getNBiggestCountriesTestNullAllParams()
+    { ArrayList<Country> countries1 = issue4.getNBiggestCountries(null, null); }
+
     //Issue 6
     @Test
     void getNTopPopCountriesRegionTestNullN()
