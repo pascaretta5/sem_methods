@@ -278,7 +278,6 @@ public class UnitTests {
     { ArrayList<Country> countries1 = issue5.getTopCountryByContinentLargeToSmall(null, null, null); }
     
 
-
     //Issue 6
     @Test
     void getNTopPopCountriesRegionTestNullN()

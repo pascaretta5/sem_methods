@@ -203,6 +203,7 @@ public class IntegrationTests {
         c1.population = 1277558000;
         c1.capitalName = "Peking";
 
+
         countries2.add(c1);
 
         for(int i = 0; i < countries1.size(); i++ ) {
