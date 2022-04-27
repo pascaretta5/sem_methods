@@ -4,6 +4,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Author: Andrej
+ * Date: 15/04/22
+ * Issue 21 method : get the top N populated capital cities in a continent where N is provided by the user from the database.
+ */
+
 public class Issue21 {
 
     /*  To place into main /** Create instance of Issue21 Class-- this will have the required methods */
@@ -61,5 +67,9 @@ public class Issue21 {
             return null;
         }
     }
-
 }
+/*
+Issue21 issue21 = new Issue21();
+ArrayList<City> cities = issue21.getTopNIssue21("1", a, "Europe");
+a.printCities(cities);
+*/

@@ -12,13 +12,6 @@ import java.util.ArrayList;
 
 public class Issue20 {
 
-    /*  To place into main /** Create instance of Issue20 Class-- this will have the required methods */
-    //String N = "3"; //input example
-//Issue20 issue20 = new Issue20();
-//ArrayList<City> cities = issue20.getTopNIssue20(a);
-// /** Print countries and column names */
-// a.printCity(cities);
-
         /**
          * -------------------------------Issue 20: getTopNIssue20 --------------
          *    Objective: All the capital cities in the world organised by largest population to smallest.

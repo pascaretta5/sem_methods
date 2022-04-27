@@ -769,6 +769,49 @@ public class IntegrationTests {
         }
     }
 
+    /**
+     * -------------------- Tests for Issue21 ------------------------
+     * -getTopNIssue21Test -- test that the sql statement works
+     * -getTopNIssue21TestNullN() -- test error handling if N is null
+     * -getTopNIssue21TestNullApp() -- test error handling if App instance class null
+     * -getTopNIssue21TestNullContinent() -- test error handling if continent instance class null
+     * -getTopNIssue21NullAllParams() -- test error handling if all @param null
+     */
+    @Test
+    void getIssue21Test()
+    {
+        ArrayList<City> cities = issue21.getTopNIssue21("1", app, "Europe");
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        c1.name = "Moscow";
+        c1.countryName = "Russian Federation";
+        c1.district = "Moscow (City)";
+        c1.population = 8389200;
+
+        cities1.add(c1);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
+
+                    cities2.add(city);
+                }
+            }
+        }
+        for (int i = 0; i < cities1.size(); i++) {
+
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue15 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue15 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue15 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue15 4/4 Failed");
+        }
+    }
+
     //Issue22
     @Test
     void getIssue22Test(){
