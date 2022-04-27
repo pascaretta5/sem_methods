@@ -1198,30 +1198,35 @@ public class IntegrationTests {
     //Issue31
     @Test
     void getIssue31Test() {
-        ArrayList<Population> pop1 = new ArrayList<>();
-        Population pop = new Population();
-        pop.name = "Recife";
-        pop.population = 1378087;
-        pop1.add(pop);
+        ArrayList<City> cities = issue31.getIssue31(app, "Recife");
+        ArrayList<City> cities1 = new ArrayList<>();
+        City c1 = new City();
+        /*c1.name = "Moscow";
+        c1.countryName = "Russian Federation";
+        c1.district = "Moscow (City)";
+        c1.population = 8389200;
+*/
+        cities1.add(c1);
+        ArrayList<City> cities2 = new ArrayList<>();
+        for (int i = 0; i < cities1.size(); i++) {
+            for (City c : cities) {
+                if (Objects.equals(c.name, cities1.get(i).name)) {
+                    City city = new City();
+                    city.name = c.name;
+                    city.countryName = c.countryName;
+                    city.district = c.district;
+                    city.population = c.population;
 
-        ArrayList<Population> populations = issue31.getIssue31(app, pop1.get(0).name);
-
-        ArrayList<Population> pop2 = new ArrayList<>();
-        for (Population population : pop1) {
-            for (Population po : populations) {
-                if (Objects.equals(po.name, population.name)) {
-                    Population p = new Population();
-                    p.name = po.name;
-                    p.population = po.population;
-                    pop2.add(p);
+                    cities2.add(city);
                 }
             }
         }
-        for (int i = 0; i < pop1.size(); i++) {
+        for (int i = 0; i < cities1.size(); i++) {
 
-            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue31 1/2 Failed (Name not matching)");
-            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue31 2/2 Failed (Population not matching)");
-
+            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue15 1/4 Failed");
+            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue15 2/4 Failed");
+            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue15 3/4 Failed");
+            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue15 4/4 Failed");
         }
     }
     //Issue32

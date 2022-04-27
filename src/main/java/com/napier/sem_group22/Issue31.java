@@ -11,9 +11,9 @@ public class Issue31 {
      *      return the population of a city.
      *
      * @param city
-     * @return  ArrayList<Population>
+     * @return  ArrayList<City>
      */
-    public ArrayList<Population> getIssue31(App app, String city)
+    public ArrayList<City> getIssue31(App app, String city)
     {
 
         try
@@ -37,11 +37,12 @@ public class Issue31 {
 
         // Create an SQL statement
         Statement stmt = app.con.createStatement();
-        city = "Recife";
+
         String strIssue31 =
-                "SELECT Population "
-                        + "FROM city "
-                        + "WHERE Name =" + "'" + city + "'";
+                "SELECT city.Name, country.Name, city.District, city.Population "
+                        + "FROM city JOIN country ON city.CountryCode = country.Code "
+                        + "WHERE city.Name LIKE '" + city +"' ";
+
 
         // Execute SQL statement and Extrapolate the values from columns
         ResultSet rset = stmt.executeQuery(strIssue31);
@@ -49,15 +50,18 @@ public class Issue31 {
 
 
         //Creating Population ArrayList
-        ArrayList<Population> p = new ArrayList<Population>();
+        ArrayList<City> cities = new ArrayList<City>();
         //Formatting data and storing it
-        Population po = new Population();
-        po.name = city;
-        po.population = rset.getLong(1);
-        p.add(po);
+            City city1= new City();
+
+            city1.population = rset.getInt("city.Population");
+            city1.name = rset.getString("city.Name");
+            city1.district = rset.getString("city.District");
+            city1.countryName = rset.getString("country.Name");
+            cities.add(city1); // add city in ArrayList<City> cities
 
 
-        return p;
+        return cities;
     }
         catch (Exception e) //couldn't find city population
     {
