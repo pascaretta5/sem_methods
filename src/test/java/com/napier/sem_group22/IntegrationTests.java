@@ -216,6 +216,19 @@ public class IntegrationTests {
     }
 
     /**
+     * ------------------ Tests for Issue 7
+     * getAllCitiesLargestToSmallestNull() -- test error handling if app is null
+     * getAllCitiesLargestToSmallestNormal() -- test if the sql statement works
+     */
+    @Test
+    void getAllCitiesLargestToSmallest(){
+        ArrayList<City> cities1 = issue7.getAllCitiesLargestToSmallest(app);
+        ArrayList<City> cities2 = new ArrayList<>();
+
+        Objects.equals(cities2, cities1);
+    }
+
+    /**
      * -------------------- Tests for Issue8 ------------------------
      * -getCitiesLargeSmallPopTest -- test that the sql statement works
      * -getCitiesLargeSmallPopNullContinent() -- test error handling if Continent null

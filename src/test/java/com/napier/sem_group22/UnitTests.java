@@ -289,6 +289,12 @@ public class UnitTests {
 
     }
 
+    //Issue 7
+    @Test
+    void getAllCitiesLargestToSmallestNull() { ArrayList<City> city1 = issue7.getAllCitiesLargestToSmallest(null); }
+    @Test
+    void getAllCitiesLargestToSmallestNormal() { ArrayList<City> city1 = issue7.getAllCitiesLargestToSmallest(app); }
+
     //Issue 8
     @Test
     void getCitiesLargeSmallPopNullContinent()
