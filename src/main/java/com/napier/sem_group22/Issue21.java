@@ -60,7 +60,7 @@ public class Issue21 {
         }
     }
 }
-/*
+/* To be placed into main to run
 Issue21 issue21 = new Issue21();
 ArrayList<City> cities = issue21.getTopNIssue21("1", a, "Europe");
 a.printCities(cities);

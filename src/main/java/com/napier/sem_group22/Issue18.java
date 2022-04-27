@@ -57,7 +57,7 @@ public class Issue18 {
         }
     }
 }
-/*
+/* To be placed into main to run
 Issue18 issue18 = new Issue18();
 ArrayList<City> cities = issue18.getIssue18(a);
 a.printCities(cities);

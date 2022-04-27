@@ -59,7 +59,7 @@ public class Issue17 {
 
 }
 
-/*
+/* To be placed into main to run
 Issue17 issue17 = new Issue17();
 ArrayList<City> cities = issue17.getIssue17(a);
 a.printCities(cities);
