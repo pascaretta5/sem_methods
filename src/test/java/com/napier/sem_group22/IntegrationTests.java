@@ -1201,11 +1201,11 @@ public class IntegrationTests {
         ArrayList<City> cities = issue31.getIssue31(app, "Recife");
         ArrayList<City> cities1 = new ArrayList<>();
         City c1 = new City();
-        /*c1.name = "Moscow";
-        c1.countryName = "Russian Federation";
-        c1.district = "Moscow (City)";
-        c1.population = 8389200;
-*/
+        c1.name = "Recife";
+        c1.countryName = "Brazil";
+        c1.district = "Pernambuco";
+        c1.population = 1378087;
+
         cities1.add(c1);
         ArrayList<City> cities2 = new ArrayList<>();
         for (int i = 0; i < cities1.size(); i++) {
