@@ -191,8 +191,8 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        Issue5 issue5 = new Issue5();
-        ArrayList<Country> countries = issue5.getTopCountryByContinentLargeToSmall(a, "Asia", 5);
+        Issue22 issue22 = new Issue22();
+        ArrayList<Country> countries = issue22.getTopCapitalsRegion(a, "South America", 5);
         a.printCountries(countries);
 
         // Disconnect from database
