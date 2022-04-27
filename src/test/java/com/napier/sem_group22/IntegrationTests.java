@@ -183,6 +183,42 @@ public class IntegrationTests {
         }
     }
     /**
+     * -------------------- Tests for Issue5 ------------------------
+     * -getTopCountryByContinentLargeToSmallTestAllNormal -- test that the sql statement works
+     * -getTopCountryByContinentLargeToSmallTestAppNull -- test error handling if app instance class null
+     * -getTopCountryByContinentLargeToSmallTestContinentNull -- test error handling if continent null
+     * -getTopCountryByContinentLargeToSmallTestLimitNull -- test error handling if limit is null
+     * -getTopCountryByContinentLargeToSmallTestAllNull -- test error handling if all @param null
+     */
+    @Test
+    void getTopCountryByContinentLargeToSmallTest()
+    {
+        ArrayList<Country> countries1 = issue5.getTopCountryByContinentLargeToSmall(app, "Asia", 1);
+        ArrayList<Country> countries2 = new ArrayList<>();
+        Country c1 = new Country();
+        c1.code = "CHN";
+        c1.name = "China";
+        c1.continent = "Asia";
+        c1.region = "Eastern Asia";
+        c1.population = 1277558000;
+        c1.capitalName = "Peking";
+
+        countries2.add(c1);
+
+        for(int i = 0; i < countries1.size(); i++ ) {
+            assertEquals(countries2.get(i).code, countries1.get(i).code);
+            assertEquals(countries2.get(i).name, countries1.get(i).name);
+            assertEquals(countries2.get(i).continent, countries1.get(i).continent);
+            assertEquals(countries2.get(i).region, countries1.get(i).region);
+            assertEquals(countries2.get(i).population, countries1.get(i).population);
+            assertEquals(countries2.get(i).capitalName, countries1.get(i).capitalName);
+        }
+    }
+
+
+
+
+    /**
      * -------------------- Tests for Issue6 ------------------------
      * -getNTopPopCountriesRegionTest() -- test that the sql statement works
      * -getNTopPopCountriesRegionTestNullN() -- test error handling if N null
