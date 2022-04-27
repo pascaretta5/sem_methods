@@ -53,7 +53,7 @@ public class Issue31 {
         //Formatting data and storing it
         Population po = new Population();
         po.name = city;
-        po.CityPop = rset.getLong(1);
+        po.population = rset.getLong(1);
         p.add(po);
 
 
