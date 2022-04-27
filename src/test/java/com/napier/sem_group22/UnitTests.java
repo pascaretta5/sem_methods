@@ -437,6 +437,18 @@ public class UnitTests {
     @Test
     void getIssue17Normal() { ArrayList<City> city1 = issue17.getIssue17(app); }
 
+    //Issue 18
+    @Test
+    void getIssue18Null() { ArrayList<City> city1 = issue18.getIssue18(null); }
+    @Test
+    void getIssue18Normal() { ArrayList<City> city1 = issue18.getIssue18(app); }
+
+    //Issue 19
+
+    //Issue 20
+
+    //Issue 21
+
     //Issue 22
     @Test
     void getIssue22AppNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(null, "South America", 5) ; }

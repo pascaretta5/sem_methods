@@ -4,6 +4,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Author: Andrej
+ * Date: 15/04/22
+ * Issue 18 method : get all the capital cities in a continent organised by largest population to smallest from the database.
+ */
+
 public class Issue18 {
 
     /**
@@ -50,5 +56,9 @@ public class Issue18 {
             return null;
         }
     }
-
 }
+/*
+Issue18 issue18 = new Issue18();
+ArrayList<City> cities = issue18.getIssue18(a);
+a.printCities(cities);
+*/
