@@ -444,6 +444,12 @@ public class UnitTests {
     void getIssue18Normal() { ArrayList<City> city1 = issue18.getIssue18(app); }
 
     //Issue 19
+    @Test
+    void getIssue19TestNullN() {ArrayList<City> cities1 = issue19.getIssue19(null,app);}
+    @Test
+    void getIssue19TestNullApp() {ArrayList<City> cities1 = issue19.getIssue19("1",null);}
+    @Test
+    void getIssue19TestNullAllParam() {ArrayList<City> cities1 = issue19.getIssue19(null,null);}
 
     //Issue 20
 
