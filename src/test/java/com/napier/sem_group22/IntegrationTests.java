@@ -659,6 +659,19 @@ public class IntegrationTests {
         }
     }
 
+    /**
+     * ------------------ Tests for Issue 17
+     * getIssue17Null() -- test error handling if app is null
+     * getIssue17Normal() -- test if the sql statement works
+     */
+    @Test
+    void getIssue17(){
+        ArrayList<City> cities1 = issue17.getIssue17(app);
+        ArrayList<City> cities2 = new ArrayList<>();
+
+        Objects.equals(cities2, cities1);
+    }
+
     //Issue22
     @Test
     void getIssue22Test(){

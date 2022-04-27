@@ -4,11 +4,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/*  To place into main /** Create instance of Issue6 Class-- this will have the required methods */
-        //Issue17 issue17 = new Issue17();
-                //ArrayList<City> cities = issue17.getIssue17(a);
-       // /** Print countries and column names */
-       // a.printCity(cities);
+/**
+ * Author: Andrej
+ * Date: 15/04/22
+ * Issue 17 method : get all the capital cities in the world organised by largest population to smallest from the database.
+ */
 
 public class Issue17 {
 
@@ -58,3 +58,9 @@ public class Issue17 {
         }
 
 }
+
+/*
+Issue17 issue17 = new Issue17();
+ArrayList<City> cities = issue17.getIssue17(a);
+a.printCities(cities);
+*/
