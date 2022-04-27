@@ -39,9 +39,12 @@ public class Issue22 {
             while (rset.next())
             {
                 Country count = new Country();
-                count.region = rset.getString("country.Region");
+                count.name = rset.getString("Name");
+                count.population = rset.getInt("Population");
+                count.code = rset.getString("Code");
+                count.continent = rset.getString("Continent");
+                count.region = rset.getString("Region");
                 count.capitalName = rset.getString("city.Name");
-                count.population = rset.getInt("country.Population");
                 countries.add(count); // add country in ArrayList<Country> countries
             }
             return countries; // return ArrayList
