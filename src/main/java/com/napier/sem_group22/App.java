@@ -191,9 +191,9 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        Issue27 issue27 = new Issue27();
-        ArrayList<Population> populations = issue27.getIssue27(a, "North America");
-        a.printPopulation(populations);
+        Issue22 issue22 = new Issue22();
+        ArrayList<City> cities = issue22.getTopCapitalsRegion(a, "North America", 5);
+        a.printCities(cities);
 
         // Disconnect from database
         a.disconnect();

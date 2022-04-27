@@ -10,9 +10,9 @@ public class Issue22 {
      *    Objective: get all N top populated capital cities in a region.
      *    @param region
      *    @param limit
-     *    @return ArrayList<Country>
+     *    @return  ArrayList<City> = return an array list with all the cities
      */
-    public ArrayList<Country> getTopCapitalsRegion(App app, String region, Integer limit) {
+    public ArrayList<City> getTopCapitalsRegion(App app, String region, Integer limit) {
 
         try
         {
@@ -23,31 +23,30 @@ public class Issue22 {
 
             //Needed to join both table CITY and COUNTRY in order to retrieve the right capital.
             String strPopulationLageSmall =
-                    "SELECT country.Region, country.Population, city.Name "
+                    "SELECT country.Region, country.Name, city.Name, city.Population, city.District "
                             + "FROM city JOIN country ON CountryCode = Code "
-                            + "WHERE country.capital = city.ID AND Continent LIKE '" + region +"' "
+                            + "WHERE country.capital = city.ID AND Region LIKE '" + region +"' "
                             + "ORDER BY Population DESC "
                             + "LIMIT " + limit + "; ";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strPopulationLageSmall);
 
-            //Create Country ArrayList
-            ArrayList<Country> countries = new ArrayList<Country>();
+            //Create city ArrayList
+            ArrayList<City> cities = new ArrayList<>();
 
             // Check one is returned and go through all countries and to get the details
             while (rset.next())
             {
-                Country count = new Country();
-                count.code = rset.getString("country.Code");
-                count.region = rset.getString("country.Region");
-                count.capitalName = rset.getString("city.Name");
-                count.continent = rset.getString("country.Continent");
-                count.name = rset.getString("country.Name");
-                count.population = rset.getInt("country.Population");
-                countries.add(count); // add country in ArrayList<Country> countries
+                City city= new City();
+
+                city.population = rset.getInt("city.Population");
+                city.name = rset.getString("city.Name");
+                city.district = rset.getString("city.District");
+                city.countryName = rset.getString("country.Name");
+                cities.add(city); // add city in ArrayList<City> cities
             }
-            return countries; // return ArrayList
+            return cities; // return ArrayList
         }
         catch (Exception e) //no country found
         {
