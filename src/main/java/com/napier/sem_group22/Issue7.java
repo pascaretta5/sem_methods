@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Author: Sara
+ * Author: Andrej
  * Date: 15/04/22
  * Issue 7 method : get all cities in the world ordered from largest to smallest from the database.
  */
@@ -57,3 +57,12 @@ public class Issue7 {
         }
     }
 }
+
+    /*
+        //*  To place into main
+        Issue7 iss7 = new Issue7();
+        //call method to execute the query and get the population
+        ArrayList<City> cities = iss7.getAllCitiesLargestToSmallest(a);
+        //print Name and Population in console
+        a.printCities(cities);
+     */

@@ -4,14 +4,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Issue20 {
+/**
+ * Author: Andrej
+ * Date: 15/04/22
+ * Issue 20 method : get the top N populated capital cities in the world where N is provided by the user from the database.
+ */
 
-    /*  To place into main /** Create instance of Issue20 Class-- this will have the required methods */
-    //String N = "3"; //input example
-//Issue20 issue20 = new Issue20();
-//ArrayList<City> cities = issue20.getTopNIssue20(a);
-// /** Print countries and column names */
-// a.printCity(cities);
+public class Issue20 {
 
         /**
          * -------------------------------Issue 20: getTopNIssue20 --------------
@@ -58,5 +57,9 @@ public class Issue20 {
                 return null;
             }
         }
-
 }
+/* To be placed into main to run
+Issue20 issue20 = new Issue20();
+ArrayList<City> cities = issue20.getTopNIssue20("1", a);
+a.printCities(cities);
+*/

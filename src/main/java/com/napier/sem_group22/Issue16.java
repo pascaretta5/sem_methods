@@ -68,7 +68,7 @@ public class Issue16 {
 //*  To place into main
 //** Create instance of Issue16 Class-- this will have the required methods */
 //Issue16 issue16 = new Issue16();
-//ArrayList<City> cities = issue16.getTopNIssue16("2",a, "Tokyo-to");
+//ArrayList<City> cities = issue16.getTopNIssue16("2",a, "Kairo");
 // /** Print countries and column names */
 // a.printCities(cities);
 

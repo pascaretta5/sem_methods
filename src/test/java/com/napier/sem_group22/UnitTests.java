@@ -308,6 +308,12 @@ public class UnitTests {
 
     }
 
+    //Issue 7
+    @Test
+    void getAllCitiesLargestToSmallestNull() { ArrayList<City> city1 = issue7.getAllCitiesLargestToSmallest(null); }
+    @Test
+    void getAllCitiesLargestToSmallestNormal() { ArrayList<City> city1 = issue7.getAllCitiesLargestToSmallest(app); }
+
     //Issue 8
     @Test
     void getCitiesLargeSmallPopNullContinent()
@@ -444,9 +450,45 @@ public class UnitTests {
     @Test
     void getIssue16TestNullAllParam() {ArrayList<City> cities1 = issue16.getTopNIssue16(null,null, null);}
 
+    //Issue 17
+    @Test
+    void getIssue17Null() { ArrayList<City> city1 = issue17.getIssue17(null); }
+    @Test
+    void getIssue17Normal() { ArrayList<City> city1 = issue17.getIssue17(app); }
+
+    //Issue 18
+    @Test
+    void getIssue18Null() { ArrayList<City> city1 = issue18.getIssue18(null); }
+    @Test
+    void getIssue18Normal() { ArrayList<City> city1 = issue18.getIssue18(app); }
+
+    //Issue 19
+    @Test
+    void getIssue19TestNullN() {ArrayList<City> cities1 = issue19.getIssue19(null,app);}
+    @Test
+    void getIssue19TestNullApp() {ArrayList<City> cities1 = issue19.getIssue19("1",null);}
+    @Test
+    void getIssue19TestNullAllParam() {ArrayList<City> cities1 = issue19.getIssue19(null,null);}
+
+    //Issue 20
+    @Test
+    void getTopNIssue20TestNullN() {ArrayList<City> cities1 = issue20.getTopNIssue20(null,app);}
+    @Test
+    void getTopNIssue20TestNullApp() {ArrayList<City> cities1 = issue20.getTopNIssue20("1",null);}
+    @Test
+    void getTopNIssue20TestNullAllParam() {ArrayList<City> cities1 = issue20.getTopNIssue20(null,null);}
+
+    //Issue 21
+    @Test
+    void getIssue21TestNullN() {ArrayList<City> cities1 = issue21.getTopNIssue21(null,app, "Europe");}
+    @Test
+    void getIssue21TestNullApp() {ArrayList<City> cities1 = issue21.getTopNIssue21("1",null, "Europe");}
+    @Test
+    void getIssue21TestNullContinent() {ArrayList<City> cities1 = issue21.getTopNIssue21("1", app, null);}
+    @Test
+    void getIssue21TestNullAllParam() {ArrayList<City> cities1 = issue21.getTopNIssue21(null,null, null);}
 
     //Issue 22
-
     @Test
     void getIssue22AppNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(null, "South America", 5) ; }
     @Test

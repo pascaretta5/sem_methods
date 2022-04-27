@@ -10,11 +10,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/*  To place into main /** Create instance of Issue19 Class-- this will have the required methods */
-//Issue19 issue19 = new Issue19();
-//ArrayList<City> cities = issue19.getIssue19(a);
-// /** Print countries and column names */
-// a.printCity(cities);
+/**
+ * Author: Andrej
+ * Date: 15/04/22
+ * Issue 19 method : get the top N populated capital cities in the world where N is provided by the user from the database.
+ */
 
 public class Issue19 {
 
@@ -23,7 +23,7 @@ public class Issue19 {
      *    Objective: The top N populated capital cities in the world where N is provided by the user.
      *    Return type: ArrayList<Country>
      */
-    public ArrayList<City> getIssue19(App app) {
+    public ArrayList<City> getIssue19(String N, App app) {
 
         try
         {
@@ -34,7 +34,8 @@ public class Issue19 {
             String strIssue19 =
                     "SELECT city.name, country.name, district, city.population "
                             +"FROM city JOIN country ON country.Capital = city.ID "
-                            + "ORDER BY country.region, city.population DESC;";
+                            + "ORDER BY country.region, city.population DESC "
+                            + "LIMIT " + N + ";";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strIssue19);
@@ -62,5 +63,10 @@ public class Issue19 {
             return null;
         }
     }
-
 }
+
+/* To be placed into main to run
+Issue19 issue19 = new Issue19();
+ArrayList<City> cities = issue19.getIssue19("1", a);
+a.printCities(cities);
+*/

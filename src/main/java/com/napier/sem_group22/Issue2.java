@@ -52,5 +52,10 @@ public class Issue2 {
             return null;
         }
     }
-
 }
+
+/*
+Issue2 issue2 = new Issue2();
+ArrayList<Country> countries = issue2.getCountryByContinentLargeToSmall(a);
+a.printCountries(countries);
+*/
