@@ -16,12 +16,6 @@ import java.util.ArrayList;
  * Issue 19 method : get the top N populated capital cities in the world where N is provided by the user from the database.
  */
 
-/*  To place into main /** Create instance of Issue19 Class-- this will have the required methods */
-//Issue19 issue19 = new Issue19();
-//ArrayList<City> cities = issue19.getIssue19(a);
-// /** Print countries and column names */
-// a.printCity(cities);
-
 public class Issue19 {
 
     /**

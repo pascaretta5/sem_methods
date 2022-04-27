@@ -191,7 +191,9 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-
+        Issue20 issue20 = new Issue20();
+        ArrayList<City> cities = issue20.getTopNIssue20("1", a);
+        a.printCities(cities);
 
         // Disconnect from database
         a.disconnect();
