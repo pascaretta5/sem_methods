@@ -12,14 +12,6 @@ import java.util.ArrayList;
 
 public class Issue21 {
 
-    /*  To place into main /** Create instance of Issue21 Class-- this will have the required methods */
-    //String N = "3"; //input example
-   // String continent = "Asia";
-//Issue21 issue21 = new Issue21();
-//ArrayList<City> cities = issue21.getTopNIssue21(a);
-// /** Print countries and column names */
-// a.printCity(cities);
-
     /**
      * -------------------------------Issue 21: getTopNIssue21 --------------
      *    Objective: The top N populated capital cities in a continent where N is provided by the user.
