@@ -5,6 +5,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Issue27 {
+    // storing temporary data
+    long regionPop = 0;
+    float citiesPop = 0;
     /**
      *  ----- getIssue27() -------
      *  Objectives:
@@ -34,26 +37,40 @@ public class Issue27 {
             }
 
 
-
             // Create an SQL statement
             Statement stmt = app.con.createStatement();
-            continent = "North America";
-            String strIssue27 =
-                    "SELECT SUM(Population) "
-                            + "FROM country "
-                            + "WHERE continent =" + "'" + continent + "'";
 
-            // Execute SQL statement and Extrapolate the values from columns
+            String strIssue27 =
+                    "SELECT SUM(country.Population) "
+                            + "FROM country "
+                            + "WHERE country.continent =" + "'" + continent + "'";
+            String strIssue27b =
+                    "SELECT SUM(city.Population) "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.continent =" + "'" + continent + "'";
+
+
+
+            // Execute SQL statements and Extrapolate the values from columns
             ResultSet rset = stmt.executeQuery(strIssue27);
             rset.next();
+            regionPop = rset.getLong(1);
 
+            ResultSet rset2 = stmt.executeQuery(strIssue27b);
+            rset2.next();
+            citiesPop = rset2.getFloat(1);
 
             //Creating Population ArrayList
             ArrayList<Population> p = new ArrayList<Population>();
             //Formatting data and storing it
             Population po = new Population();
             po.name = continent;
-            po.population = rset.getLong(1);
+            po.population = regionPop;
+            po.CityPop = rset2.getLong(1);
+            po.notINCityPop = regionPop - rset2.getLong(1);
+            po.inCities = Math.round((citiesPop/regionPop*100)*100)/100d;
+            po.notinCities = 100d - Math.round((citiesPop/regionPop*100)*100)/100d;
             p.add(po);
 
 
