@@ -1205,35 +1205,41 @@ public class IntegrationTests {
     //Issue31
     @Test
     void getIssue31Test() {
-        ArrayList<City> cities = issue31.getIssue31(app, "Recife");
-        ArrayList<City> cities1 = new ArrayList<>();
-        City c1 = new City();
-        c1.name = "Recife";
-        c1.countryName = "Brazil";
-        c1.district = "Pernambuco";
-        c1.population = 1378087;
+        ArrayList<Population> pop1 = new ArrayList<>();
+        Population pop = new Population();
+        pop.name = "Seoul";
+        pop.population = 9981619;
+        pop.CityPop = 9981619;
+        pop.notINCityPop = 0;
+        pop.inCities = 100.00;
+        pop.notinCities = 0.00;
+        pop1.add(pop);
 
-        cities1.add(c1);
-        ArrayList<City> cities2 = new ArrayList<>();
-        for (int i = 0; i < cities1.size(); i++) {
-            for (City c : cities) {
-                if (Objects.equals(c.name, cities1.get(i).name)) {
-                    City city = new City();
-                    city.name = c.name;
-                    city.countryName = c.countryName;
-                    city.district = c.district;
-                    city.population = c.population;
+        ArrayList<Population> populations = issue31.getIssue31(app, pop1.get(0).name);
 
-                    cities2.add(city);
+        ArrayList<Population> pop2 = new ArrayList<>();
+        for (Population population : pop1) {
+            for (Population po : populations) {
+                if (Objects.equals(po.name, population.name)) {
+                    Population p = new Population();
+                    p.name = po.name;
+                    p.population = po.population;
+                    p.CityPop = po.CityPop;
+                    p.notINCityPop = po.notINCityPop;
+                    p.inCities = po.inCities;
+                    p.notinCities = po.notinCities;
+                    pop2.add(p);
                 }
             }
         }
-        for (int i = 0; i < cities1.size(); i++) {
+        for (int i = 0; i < pop1.size(); i++) {
 
-            assertEquals(cities1.get(i).name, cities2.get(i).name, "Test getIssue15 1/4 Failed");
-            assertEquals(cities1.get(i).countryName, cities2.get(i).countryName, "Test getIssue15 2/4 Failed");
-            assertEquals(cities1.get(i).district, cities2.get(i).district, "Test getIssue15 3/4 Failed");
-            assertEquals(cities1.get(i).population, cities2.get(i).population, "Test getIssue15 4/4 Failed");
+            assertEquals(pop1.get(i).name, pop2.get(i).name, "Test getIssue25 1/6 Failed (Name not matching)");
+            assertEquals(pop1.get(i).population, pop2.get(i).population, "Test getIssue25 2/6 Failed (Population not matching)");
+            assertEquals(pop1.get(i).CityPop, pop2.get(i).CityPop, "Test getIssue25 3/6 Failed (Population living in cities not matching)");
+            assertEquals(pop1.get(i).notINCityPop, pop2.get(i).notINCityPop, "Test getIssue25 4/6 Failed (Population NOT living in cities not matching)");
+            assertEquals(pop1.get(i).inCities, pop2.get(i).inCities, "Test getIssue25 5/6 Failed (% living in cities not matching)");
+            assertEquals(pop1.get(i).notinCities, pop2.get(i).notinCities, "Test getIssue25 6/6 Failed (% not living in cities not matching)");
         }
     }
     //Issue32

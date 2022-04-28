@@ -628,13 +628,13 @@ public class UnitTests {
 
     //Issue 31
     @Test
-    void getIssue31AppNull() { ArrayList<City> cities1 = issue31.getIssue31(null, "Recife"); }
+    void getIssue31AppNull() { ArrayList<Population> cities1 = issue31.getIssue31(null, "Recife"); }
     @Test
-    void getIssue31CityNull() { ArrayList<City> cities1 = issue31.getIssue31(app, null); }
+    void getIssue31CityNull() { ArrayList<Population> cities1 = issue31.getIssue31(app, null); }
     @Test
-    void getIssue31AllNull() { ArrayList<City> cities1 = issue31.getIssue31(null, null); }
+    void getIssue31AllNull() { ArrayList<Population> cities1 = issue31.getIssue31(null, null); }
     @Test
-    void getIssue31Normal() { ArrayList<City> cities1 = issue31.getIssue31(app, "Recife"); }
+    void getIssue31Normal() { ArrayList<Population> cities1 = issue31.getIssue31(app, "Recife"); }
 
     //Issue 32
     @Test

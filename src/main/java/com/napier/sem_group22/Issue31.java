@@ -11,9 +11,9 @@ public class Issue31 {
      *      return the population of a city.
      *
      * @param city
-     * @return  ArrayList<City>
+     * @return  ArrayList<Population>
      */
-    public ArrayList<City> getIssue31(App app, String city)
+    public ArrayList<Population> getIssue31(App app, String city)
     {
 
         try
@@ -33,35 +33,33 @@ public class Issue31 {
                 return null;
             }
 
-
-
         // Create an SQL statement
         Statement stmt = app.con.createStatement();
 
         String strIssue31 =
-                "SELECT city.Name, country.Name, city.District, city.Population "
-                        + "FROM city JOIN country ON city.CountryCode = country.Code "
-                        + "WHERE city.Name LIKE '" + city +"' ";
-
+                "SELECT city.Name, city.Population "
+                        + "FROM city "
+                        + "WHERE city.Name='" + city +"' ";
 
         // Execute SQL statement and Extrapolate the values from columns
         ResultSet rset = stmt.executeQuery(strIssue31);
         rset.next();
 
-
         //Creating Population ArrayList
-        ArrayList<City> cities = new ArrayList<City>();
+        ArrayList<Population> pop = new ArrayList<Population>();
         //Formatting data and storing it
-            City city1= new City();
+            Population p = new Population();
+            p.name = rset.getString(1);
+            p.population = rset.getInt(2);
+            p.CityPop = rset.getInt(2);
+            p.notINCityPop = 0;
+            p.inCities = 100.00;
+            p.notinCities = 0.00;
 
-            city1.population = rset.getInt("city.Population");
-            city1.name = rset.getString("city.Name");
-            city1.district = rset.getString("city.District");
-            city1.countryName = rset.getString("country.Name");
-            cities.add(city1); // add city in ArrayList<City> cities
 
+            pop.add(p);
 
-        return cities;
+        return pop;
     }
         catch (Exception e) //couldn't find city population
     {
