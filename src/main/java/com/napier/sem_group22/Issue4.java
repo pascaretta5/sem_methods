@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Author: Sara
+ * Class to get the issue 4 data from the database
+ */
 public class Issue4 {
     /**
      * -------------------------------------- Issue #4 functions --------------------------------------

@@ -18,7 +18,8 @@ public class Issue6 {
     /**
      *  ----- getNTopPopCountriesRegion() -------
      *  Objective: return N top populated countries in a region, where N is given by the user
-     * @param N
+     * @param N : number og countries
+     * @param app : application class instance
      * @return  ArrayList<Country>
      */
     public ArrayList<Country> getNTopPopCountriesRegion(String N, App app, String region) {

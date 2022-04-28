@@ -1,12 +1,12 @@
-/**
- * Authors: Sara, Bruno, Andrei, Andrej
- * Date: 10/03/22
- */
+
 package com.napier.sem_group22;
 
 import java.sql.*;
 import java.util.ArrayList;
-
+/**
+ * Authors: Sara, Bruno, Andrei, Andrej
+ * Date: 10/03/22
+ */
 
 public class App
 {
