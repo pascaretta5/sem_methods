@@ -4,6 +4,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/* Author: Sara H. Celda
+ * Purpose: get all the countries in a determined region ordered from largest to smallest.
+ */
 public class Issue3 {
     /**
      * ---------------------------------------Issue #3-------------------------
