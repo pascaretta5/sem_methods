@@ -3,6 +3,12 @@ package com.napier.sem_group22;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+/**
+ * Author: Bruno Pascaretta Guerra
+ * Date: 28/04/22
+ * Purpose:
+ * Get all countries in a continent organised by largest to small population.
+ */
 
 public class Issue2 {
     /**
