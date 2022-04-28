@@ -4,9 +4,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * Author: Sara
- * Class to get the issue 4 data from the database
+/*
+ * Author: Sara Celda
+ * Purpose: get the N countries with the biggest population from each continent.
  */
 public class Issue4 {
     /**
