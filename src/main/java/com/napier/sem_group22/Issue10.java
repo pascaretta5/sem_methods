@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-/**
+/*
  * Author: Sara Hussein Celda
  * Date: 15/04/22
  * Purpose:
