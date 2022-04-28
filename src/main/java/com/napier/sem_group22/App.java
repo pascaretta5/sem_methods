@@ -191,10 +191,6 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        Issue31 issue31 = new Issue31();
-        ArrayList<City> cities = issue31.getIssue31(a, "Recife");
-        a.printCities(cities);
-
         // Disconnect from database
         a.disconnect();
     }
