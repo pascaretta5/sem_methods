@@ -489,15 +489,15 @@ public class UnitTests {
 
     //Issue 22
     @Test
-    void getIssue22AppNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(null, "South America", 5) ; }
+    void getIssue22AppNull() {ArrayList<City> cities1 = issue22.getTopCapitalsRegion(null, "South America", 5) ; }
     @Test
-    void getIssue22RegionNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(app, null, 5);}
+    void getIssue22RegionNull() {ArrayList<City> cities1 = issue22.getTopCapitalsRegion(app, null, 5);}
     @Test
-    void getIssue22NNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(app, "South America", null);}
+    void getIssue22NNull() {ArrayList<City> cities1 = issue22.getTopCapitalsRegion(app, "South America", null);}
     @Test
-    void getIssue22AllNull() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(null,null, null ); }
+    void getIssue22AllNull() {ArrayList<City> cities1 = issue22.getTopCapitalsRegion(null,null, null ); }
     @Test
-    void getIssue22AllNormal() {ArrayList<Country> countries1 = issue22.getTopCapitalsRegion(app, "South America", 5);}
+    void getIssue22AllNormal() {ArrayList<City> cities1 = issue22.getTopCapitalsRegion(app, "South America", 5);}
 
     //Issue 23
     @Test
@@ -628,13 +628,13 @@ public class UnitTests {
 
     //Issue 31
     @Test
-    void getIssue31AppNull() { ArrayList<Population> pop1 = issue31.getIssue31(null, "Recife"); }
+    void getIssue31AppNull() { ArrayList<City> cities1 = issue31.getIssue31(null, "Recife"); }
     @Test
-    void getIssue31CityNull() { ArrayList<Population> pop1 = issue31.getIssue31(app, null); }
+    void getIssue31CityNull() { ArrayList<City> cities1 = issue31.getIssue31(app, null); }
     @Test
-    void getIssue31AllNull() { ArrayList<Population> pop1 = issue31.getIssue31(null, null); }
+    void getIssue31AllNull() { ArrayList<City> cities1 = issue31.getIssue31(null, null); }
     @Test
-    void getIssue31Normal() { ArrayList<Population> pop1 = issue31.getIssue31(app, "Recife"); }
+    void getIssue31Normal() { ArrayList<City> cities1 = issue31.getIssue31(app, "Recife"); }
 
     //Issue 32
     @Test
