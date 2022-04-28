@@ -3,6 +3,10 @@ package com.napier.sem_group22;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+/*
+ * Author: Sara Celda
+ * Purpose: get all the countries population from largest to smallest.
+ */
 
 public class Issue1 {
     /**
