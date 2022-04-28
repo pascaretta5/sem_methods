@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * Author: Andrej
+/*
+ * Author: Andrej Legen
  * Date: 15/04/22
  * Issue 7 method : get all cities in the world ordered from largest to smallest from the database.
  */
@@ -15,7 +15,7 @@ public class Issue7 {
      * -------------------------------Issue 7: getAllCitiesLargestToSmallest --------------
      *    Objective: get all cities in the world ordered from largest to smallest.
      *    Parameters: String region -- specified region.
-     *    Return type: ArrayList<Country>
+     *    Return type: ArrayList<City>
      */
     public ArrayList<City> getAllCitiesLargestToSmallest(App app) {
 

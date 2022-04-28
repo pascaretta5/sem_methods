@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
+/*
  * Author: Andrej Legen
  * Date: 21/04/22
  * Purpose:
@@ -40,10 +40,10 @@ public class Issue14 {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strIssue14);
 
-            //Create Country ArrayList
+            //Create City ArrayList
             ArrayList<City> cities = new ArrayList<City>();
 
-            // Check one is returned and go through all countries to get the details
+            // Check one is returned and go through all cities to get the details
             while (rset.next())
             {
                 City acity = new City();
@@ -51,12 +51,12 @@ public class Issue14 {
                 acity.countryName = rset.getString("country.name");
                 acity.district = rset.getString("district");
                 acity.population = rset.getInt("city.population");
-                cities.add(acity); // add country in ArrayList<Country> countries
+                cities.add(acity); // add city in ArrayList<City> cities
 
             }
             return cities; // return ArrayList
         }
-        catch (Exception e) //no country found
+        catch (Exception e) //no city found
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get countries population");

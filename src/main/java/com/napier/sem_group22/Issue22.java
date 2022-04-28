@@ -35,7 +35,7 @@ public class Issue22 {
             //Create city ArrayList
             ArrayList<City> cities = new ArrayList<>();
 
-            // Check one is returned and go through all countries and to get the details
+            // Check one is returned and go through all cities and to get the details
             while (rset.next())
             {
                 City city= new City();
@@ -48,7 +48,7 @@ public class Issue22 {
             }
             return cities; // return ArrayList
         }
-        catch (Exception e) //no country found
+        catch (Exception e) //no city found
         {
 
             System.out.println(e.getMessage());
