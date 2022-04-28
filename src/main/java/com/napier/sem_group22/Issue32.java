@@ -27,7 +27,8 @@ public class Issue32 {
             // Check for missing parameters
             if (app == null)
             {
-                throw new NullPointerException("'app' parameter missing");
+                System.out.println("'app' parameter missing");
+                return null;
             }
             // Create an SQL statement
             Statement stmt = app.con.createStatement();

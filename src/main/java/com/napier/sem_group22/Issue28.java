@@ -35,13 +35,16 @@ public class Issue28 {
             // Check for missing parameters
             if (app == null && region == null)
             {
-                throw new NullPointerException("'app' and 'region' parameters missing");
+                System.out.println("'app' and 'region' parameters missing");
+                return null;
             } else if (region == null)
             {
-                throw new NullPointerException("'region' parameter missing");
+                System.out.println("'region' parameter missing");
+                return null;
             } else if (app == null)
             {
-                throw new NullPointerException("'app' parameter missing");
+                System.out.println("'app' parameter missing");
+                return null;
             }
 
 

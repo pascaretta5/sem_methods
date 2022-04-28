@@ -34,7 +34,8 @@ public class Issue25 {
             // Check for missing parameters
             if (app == null)
             {
-                throw new NullPointerException("'app' parameter missing");
+                System.out.println("'app' parameter missing");
+                return null;
             }
 
 
