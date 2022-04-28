@@ -3,6 +3,13 @@ package com.napier.sem_group22;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+/**
+ * Author: Bruno Pascaretta Guerra
+ * Date: 28/04/22
+ * Purpose:
+ * Return the population of a continent
+ */
+
 
 public class Issue27 {
     // storing temporary data

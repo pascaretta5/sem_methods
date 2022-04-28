@@ -3,6 +3,13 @@ package com.napier.sem_group22;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+/**
+ * Author: Bruno Pascaretta Guerra
+ * Date: 28/04/22
+ * Purpose:
+ * Return the top N populated countries in a continent where N is provided by the user.
+ */
+
 
 public class Issue5 {
     /**

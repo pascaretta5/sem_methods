@@ -3,6 +3,13 @@ package com.napier.sem_group22;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+/**
+ * Author: Bruno Pascaretta Guerra
+ * Date: 28/04/22
+ * Purpose:
+ * Return the top N populated capital cities in a region where N is provided by the user
+ */
+
 
 public class Issue22 {
     /**

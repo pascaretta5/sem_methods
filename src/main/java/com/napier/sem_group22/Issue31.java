@@ -3,6 +3,12 @@ package com.napier.sem_group22;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+/**
+ * Author: Bruno Pascaretta Guerra
+ * Date: 28/04/22
+ * Purpose:
+ * Retrun the population of a city
+ */
 
 public class Issue31 {
     /**
